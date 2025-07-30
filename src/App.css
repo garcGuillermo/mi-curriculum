@@ -1,42 +1,161 @@
+/* Reseteo global para eliminar márgenes y paddings por defecto del navegador */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* ¡CLAVE! Evita el scroll en todo el documento */
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex; /* Añadido para que #root también se comporte como un flex container */
+  justify-content: center; /* Centra el contenedor-app */
+  align-items: center; /* Centra el contenedor-app */
+}
+
+/* Estilos para el cuerpo de la página */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* Estilos para la sección de navegación lateral (AHORA FIJA) */
+.navegacion-lateral {
+  position: fixed; /* Hace que la navegación se quede fija en la ventana */
+  top: 20px; /* Alineado con el margen superior del contenedor principal */
+  left: 20px; /* Alineado con el margen izquierdo del contenedor principal */
+  width: 280px; /* Ancho de la barra lateral */
+  height: calc(100vh - 40px); /* Ocupa casi toda la altura de la ventana, dejando 20px arriba y 20px abajo */
+  background-color: #2c3e50;
+  padding: 30px 20px;
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px; /* Bordes redondeados para que coincida con el contenedor principal */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra para que "flote" */
+  z-index: 1000; /* Asegura que esté por encima de otros contenidos */
+  overflow-y: auto; /* Permite scroll si el menú es muy largo */
+}
+
+/* Estilos para el contenedor principal del CV (AHORA SOLO EL CONTENIDO) */
+.contenedor-app {
+  /* Ya no es un flex container que contenga la navegación lateral */
+  /* Ahora es solo el contenedor del contenido principal */
+  margin-left: calc(280px + 40px); /* Desplaza el contenido a la derecha del menú fijo (ancho nav + margen) */
+  margin-right: 20px; /* Margen a la derecha para que no ocupe todo */
+  margin-top: 20px; /* Margen superior */
+  margin-bottom: 20px; /* Margen inferior */
+  width: calc(100% - (280px + 40px + 20px)); /* Ancho restante después de la nav y los márgenes */
+  max-width: 1600px; /* Límite superior para pantallas muy grandes */
+  min-height: calc(100vh - 40px); /* Ocupa casi toda la altura de la ventana */
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  overflow: hidden; /* Mantenemos overflow hidden para los bordes redondeados */
+}
+
+.contenido-principal {
+  /* Este div ahora es el contenido dentro del contenedor-app */
+  padding: 40px;
+  background-color: #ffffff;
+  overflow-y: auto; /* ¡CLAVE! Permite scroll solo en esta sección */
+  height: calc(100vh - 80px); /* Establece una altura fija para que el scroll funcione */
+  /* 80px = 20px (margin-top de contenedor-app) + 20px (margin-bottom de contenedor-app) + 40px (padding vertical de contenido-principal) */
+}
+
+/* Media queries para hacer el diseño responsivo en pantallas más pequeñas */
+@media (max-width: 992px) {
+  .navegacion-lateral {
+    position: static; /* En pantallas pequeñas, la navegación vuelve al flujo normal */
+    width: 100%;
+    height: auto;
+    top: auto;
+    left: auto;
+    border-radius: 12px 12px 0 0; /* Bordes redondeados solo arriba */
+    box-shadow: none;
+    margin-bottom: 10px; /* Espacio entre nav y contenido */
+    align-items: center; /* ¡NUEVO! Centra los elementos hijos horizontalmente */
+  }
+
+  .contenedor-app {
+    flex-direction: column; /* Apila los elementos en columna (navegación y contenido) */
+    margin: 10px; /* Márgenes ajustados para móviles */
+    width: calc(100% - 20px); /* Ocupa casi todo el ancho */
+    min-height: auto; /* La altura mínima es automática */
+    height: calc(100vh - 20px); /* ¡CLAVE! El contenedor-app ahora ocupa casi toda la altura del viewport */
+    overflow-y: auto; /* ¡CLAVE! Permite el scroll en todo el contenedor-app */
+  }
+
+  .contenido-principal {
+    padding: 30px;
+    height: auto; /* En móviles, la altura del contenido es automática para que se adapte al scroll del padre */
+    overflow-y: visible; /* Aseguramos que el overflow del contenido-principal no impida el scroll del padre */
+  }
+}
+
+@media (max-width: 768px) {
+  .navegacion-lateral {
+    padding: 20px;
+  }
+
+  .contenedor-app {
+    margin: 10px;
+    border-radius: 12px;
+  }
+
+  .contenido-principal {
+    padding: 25px;
+  }
+}
+
+/* Estilos para elementos dentro de la navegación lateral */
+.navegacion-lateral h2 {
+  color: #f39c12;
+  margin-bottom: 25px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.navegacion-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navegacion-lateral ul li {
+  margin-bottom: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.navegacion-lateral ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  display: block;
 }
 
-.card {
-  padding: 2em;
+.navegacion-lateral ul li a:hover {
+  background-color: #34495e;
 }
 
-.read-the-docs {
-  color: #888;
+/* Estilos para el contenido principal */
+.contenido-principal h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f39c12;
+  padding-bottom: 10px;
+}
+
+.contenido-principal p {
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
