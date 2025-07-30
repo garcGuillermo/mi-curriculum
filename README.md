@@ -1,12 +1,52 @@
-# React + Vite
+# 📄 Mi Currículum Interactivo - Guillermo García Inurria
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Descripción del Proyecto
 
-Currently, two official plugins are available:
+Este repositorio contiene mi currículum vitae interactivo, desarrollado como un proyecto personal y de aprendizaje con **React.js**. El objetivo es presentar mi experiencia profesional, titulaciones y habilidades de una manera dinámica y accesible en la web.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características Principales
 
-## Expanding the ESLint configuration
+* **Información General:** Detalles de contacto y perfil personal.
+* **Experiencia Educativa:** Lista de formación académica.
+* **Experiencia Profesional:** Historial laboral con responsabilidades clave.
+* **Modo Edición/Visualización:** (Pendiente de implementación) Posibilidad de alternar entre la edición de datos y la visualización final del CV.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tecnologías Utilizadas
+
+* **React.js** (con Vite)
+* **JavaScript**
+* **HTML5**
+* **CSS3**
+
+## 💻 Instalación y Ejecución Local
+
+Para ejecutar este proyecto en tu máquina local, sigue estos sencillos pasos:
+
+1.  **Clona el repositorio:**
+    ```
+    git clone [https://github.com/garcGuillermo/mi-curriculum.git](https://github.com/garcGuillermo/mi-curriculum.git)
+    ```
+
+2.  **Navega a la carpeta del proyecto:**
+    ```
+    cd mi-curriculum
+    ```
+
+3.  **Instala las dependencias:**
+    ```
+    npm install
+    ```
+
+4.  **Inicia el servidor de desarrollo:**
+    ```
+    npm run dev
+    ```
+    El proyecto se abrirá automáticamente en tu navegador en `http://localhost:5173` (o el puerto que indique Vite en la terminal).
+
+## 🌐 Enlace al CV Online
+
+(Pronto...)
+
+## 📧 Contacto
+
+Puedes contactarme a través de garciainurriaguillermo@gmail.com / ggarciainurria@gmail.com o visitar mi perfil de [LinkedIn](www.linkedin.com/in/guillermo-garcía-inurria-857084152).
