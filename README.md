@@ -24,7 +24,7 @@ Para ejecutar este proyecto en tu máquina local, sigue estos sencillos pasos:
 
 1.  **Clona el repositorio:**
     ```
-    git clone [https://github.com/garcGuillermo/mi-curriculum.git](https://github.com/garcGuillermo/mi-curriculum.git)
+    git clone https://github.com/garcGuillermo/mi-curriculum.git
     ```
 
 2.  **Navega a la carpeta del proyecto:**
