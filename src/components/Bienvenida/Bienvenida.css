@@ -1,0 +1,156 @@
+/*
+  ==========================================
+  ESTILOS PARA LA SECCIÓN DE BIENVENIDA
+  ==========================================
+*/
+.bienvenida-interactiva {
+  position: relative;
+  padding-top: 25px; /* Más espacio superior */
+  padding-bottom: 60px; /* Más espacio para el botón */
+  /* Nuevo padding horizontal para que el contenido no toque los bordes */
+  padding-left: 24px;
+  padding-right: 24px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 40px;
+  overflow: hidden;
+  transition: all 0.8s ease-in-out;
+  background-color: var(--color-white); /* Color de fondo para que se vea como una tarjeta */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); /* Sombra más pronunciada */
+  text-align: center; /* Centramos todo el contenido del contenedor */
+  max-height: 2000px; /* Alto máximo para el estado visible */
+}
+
+/* Estado de la bienvenida replegada (oculta) */
+.bienvenida-interactiva.bienvenida-replegada {
+  max-height: 60px; /* Un alto mínimo para que solo se vea el botón */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 0;
+  border-bottom: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.bienvenida-contenido {
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+  padding: 0;
+  margin: 0;
+}
+
+/* El contenido se oculta con opacidad cuando el padre se repliega */
+.bienvenida-replegada .bienvenida-contenido {
+  opacity: 0;
+}
+
+.bienvenida-interactiva h1 {
+  font-size: 2.2em;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 10px;
+  display: inline-block; /* Esto hace que el borde inferior se ajuste al texto */
+}
+
+.bienvenida-interactiva p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Estilos para el nuevo apartado de tecnologías */
+.tecnologias-lista {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los iconos se ajusten a varias líneas en móviles */
+  justify-content: center; /* Centramos los iconos */
+  gap: 25px; /* Espacio entre los iconos */
+  margin-top: 30px;
+}
+
+.tecnologia-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9em;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.tecnologia-item:hover {
+  transform: translateY(-5px);
+  color: var(--color-primary);
+}
+
+.tecnologia-icono {
+  font-size: 2.5em; /* Tamaño grande para los iconos */
+  margin-bottom: 8px;
+  color: var(--color-accent); /* Color de acento para los iconos */
+}
+
+/* Estilos para el botón de toggle */
+.toggle-bienvenida-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 24px; /* Ajustamos la posición para que esté dentro del nuevo padding */
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.toggle-bienvenida-btn:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+/*
+  ==========================================
+  MEDIA QUERY para dispositivos móviles
+  ==========================================
+*/
+@media (max-width: 768px) {
+  .bienvenida-interactiva {
+    padding-left: 16px;
+    padding-right: 16px;
+    /* Añadido un ancho máximo para evitar desbordes */
+    max-width: calc(100% - 32px);
+    box-sizing: border-box;
+  }
+
+  .bienvenida-interactiva h1 {
+    font-size: 1.8em; /* Reducimos el tamaño del título */
+  }
+
+  .bienvenida-interactiva p {
+    font-size: 0.9em; /* Reducimos el tamaño del texto */
+  }
+  
+  .tecnologias-lista {
+    gap: 15px; /* Reducimos el espacio entre iconos en pantallas pequeñas */
+  }
+
+  .tecnologia-item {
+    font-size: 0.8em; /* Corregido: Reducimos el tamaño de la fuente del texto */
+  }
+
+  .tecnologia-icono {
+    font-size: 2em; /* Reducimos el tamaño de los iconos */
+  }
+
+  .toggle-bienvenida-btn {
+    right: 16px; /* Ajustamos la posición del botón a 16px del borde */
+  }
+}

@@ -1,0 +1,28 @@
+:root {
+  /* Colores principales */
+  --color-primary: #1a2f3f;    /* Azul muy oscuro, casi negro */
+  --color-secondary: #2c4a3f;  /* Verde oscuro */
+  --color-accent: #00916e;     /* Verde esmeralda */
+  --color-accent-dark: #00725a;/* Verde esmeralda más oscuro */
+  
+  /* Colores de fondo */
+  --color-background: #f5f7f6; /* Gris verdoso muy claro */
+  --color-white: #ffffff;
+  
+  /* Colores de texto */
+  --color-text: #2d3436;       /* Gris muy oscuro */
+  --color-text-light: #f0f7f4; /* Blanco verdoso */
+  --color-text-muted: #98a4a3; /* Gris medio con toque verdoso */
+  
+  /* Colores de bordes y divisores */
+  --color-border: #e8eeec;     /* Gris verdoso claro */
+  --color-border-light: rgba(255, 255, 255, 0.1);
+  
+  /* Colores de sombras */
+  --shadow-color: rgba(44, 74, 63, 0.15);
+  --shadow-color-dark: rgba(26, 47, 63, 0.3);
+  
+  /* Colores de estados */
+  --color-hover: rgba(0, 145, 110, 0.1);
+  --color-tag: #e8f0ed;        /* Verde muy claro para tags */
+}

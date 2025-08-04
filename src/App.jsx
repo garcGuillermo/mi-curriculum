@@ -1,29 +1,91 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
-import NavegacionLateral from './components/NavegacionLateral'; // Importa el nuevo componente
+import './Variables.css';
+import NavegacionLateral from './components/NavegacionLateral/NavegacionLateral';
+import Bienvenida from './components/Bienvenida/Bienvenida';
+import SobreMi from './components/SobreMi/SobreMi';
+import Experiencia from './components/Experiencia/Experiencia';
+import Estudios from './components/Estudios/Estudios';
+import Proyectos from './components/Proyectos/Proyectos';
+import Contacto from './components/Contacto/Contacto';
 
 function App() {
+  // Estado para controlar si la bienvenida está visible
+  const [mostrarBienvenida, setMostrarBienvenida] = useState(true);
+  // Estado para saber si el usuario ha manipulado la bienvenida manualmente (ocultado/mostrado con el botón)
+  const [bienvenidaManipuladaManualmente, setBienvenidaManipuladaManualmente] = useState(false);
+
+  const location = useLocation(); // Hook para obtener la URL actual
+
+  // Usamos useRef para mantener un registro de la ruta anterior sin causar re-renders innecesarios
+  const prevPathname = useRef(location.pathname);
+  // REFERENCIA AL CONTENEDOR PRINCIPAL PARA HACER SCROLL
+  const contenidoPrincipalRef = useRef(null);
+
+  // Efecto para ocultar la bienvenida automáticamente al primer clic de navegación
+  useEffect(() => {
+    // Solo se ejecuta si la bienvenida no ha sido manipulada manualmente
+    // Y si la navegación es DESDE la ruta raíz ('/') HACIA otra ruta diferente
+    if (!bienvenidaManipuladaManualmente && prevPathname.current === '/' && location.pathname !== '/') {
+      setMostrarBienvenida(false); // Oculta la bienvenida
+      setBienvenidaManipuladaManualmente(true); // Marca que ya se ha auto-ocultado para no hacerlo de nuevo
+    }
+
+    // Actualizamos la ruta anterior para la próxima renderización
+    prevPathname.current = location.pathname;
+  }, [location.pathname, bienvenidaManipuladaManualmente]); // Depende de la ruta y el estado de manipulación
+
+  // Función para alternar la visibilidad de la bienvenida (usada por el botón de flecha)
+  const toggleBienvenida = () => {
+    setMostrarBienvenida(prev => !prev);
+    setBienvenidaManipuladaManualmente(true); // Marca que el usuario la ha manipulado
+  };
+
+  // Nueva función para mostrar la bienvenida y reiniciar su estado al hacer clic en la foto
+  const mostrarBienvenidaAlInicio = () => {
+    setMostrarBienvenida(true); // Asegura que la bienvenida esté visible
+    setBienvenidaManipuladaManualmente(false); // Reinicia el estado para que se pueda auto-ocultar de nuevo
+    
+    // Esta es la nueva línea que hace que la página se desplace hacia arriba
+    // CORREGIDO: ahora hace scroll sobre el div .contenido-principal
+    if (contenidoPrincipalRef.current) {
+      contenidoPrincipalRef.current.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="contenedor-app">
-      {/* Usamos el componente NavegacionLateral aquí */}
-      <NavegacionLateral />
+      <NavegacionLateral mostrarBienvenidaAlInicio={mostrarBienvenidaAlInicio} />
 
-      {/* Aquí irá el contenido principal de las secciones de tu CV */}
-      <div className="contenido-principal">
-        <h1>Bienvenido a mi Currículum</h1>
-        <p>
-          Esta es la sección principal donde se mostrará el contenido de cada parte de mi currículum.
-          Haz clic en los enlaces del menú lateral para navegar entre las secciones.
-        </p>
-        {/* Contenido de ejemplo para permitir el desplazamiento */}
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      {/* Se ha añadido la referencia al div para poder manipular su scroll */}
+      <div ref={contenidoPrincipalRef} className="contenido-principal">
+        <Bienvenida
+          onToggle={toggleBienvenida}
+          estaVisible={mostrarBienvenida}
+        />
+
+        <Routes key={location.pathname}>
+          {/* Ruta principal: cuando la URL es "/", muestra el componente SobreMi */}
+          <Route path="/" element={<SobreMi />} />
+          
+          {/* Ruta explícita para "Sobre Mí": cuando la URL es "/sobre-mi", también muestra SobreMi */}
+          <Route path="/sobre-mi" element={<SobreMi />} />
+          
+          {/* INICIO CODIGO NUEVO */}
+          {/* Añade aquí las rutas para tus otras secciones */}
+          <Route path="/experiencia" element={<Experiencia />} />
+          <Route path="/estudios" element={<Estudios />} />
+          <Route path="/proyectos" element={<Proyectos />} />
+          <Route path="/contacto" element={<Contacto />} />
+          {/* FIN CODIGO NUEVO */}
+          
+          {/* Opcional: Una ruta comodín para manejar URLs no encontradas (error 404) */}
+          {/* <Route path="*" element={<div><h1>404: Página no encontrada</h1><p>La sección que buscas no existe.</p></div>} /> */}
+        </Routes>
       </div>
     </div>
   );

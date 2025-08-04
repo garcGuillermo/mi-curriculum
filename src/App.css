@@ -4,12 +4,12 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Asegura que padding y borde se incluyan en el ancho/alto */
   overflow: hidden; /* ¡CLAVE! Evita el scroll en todo el documento */
 }
 
 *, *::before, *::after {
-  box-sizing: inherit;
+  box-sizing: inherit; /* Hereda box-sizing para todos los elementos */
 }
 
 #root {
@@ -22,140 +22,130 @@ html, body {
 
 /* Estilos para el cuerpo de la página */
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #f0f2f5;
-  color: #333;
-}
-
-/* Estilos para la sección de navegación lateral (AHORA FIJA) */
-.navegacion-lateral {
-  position: fixed; /* Hace que la navegación se quede fija en la ventana */
-  top: 20px; /* Alineado con el margen superior del contenedor principal */
-  left: 20px; /* Alineado con el margen izquierdo del contenedor principal */
-  width: 280px; /* Ancho de la barra lateral */
-  height: calc(100vh - 40px); /* Ocupa casi toda la altura de la ventana, dejando 20px arriba y 20px abajo */
-  background-color: #2c3e50;
-  padding: 30px 20px;
-  color: #ecf0f1;
-  display: flex;
-  flex-direction: column;
-  border-radius: 16px; /* Bordes redondeados para que coincida con el contenedor principal */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra para que "flote" */
-  z-index: 1000; /* Asegura que esté por encima de otros contenidos */
-  overflow-y: auto; /* Permite scroll si el menú es muy largo */
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 /* Estilos para el contenedor principal del CV (AHORA SOLO EL CONTENIDO) */
 .contenedor-app {
-  /* Ya no es un flex container que contenga la navegación lateral */
-  /* Ahora es solo el contenedor del contenido principal */
-  margin-left: calc(280px + 40px); /* Desplaza el contenido a la derecha del menú fijo (ancho nav + margen) */
+  /* He reducido el margen izquierdo para disminuir la separación */
+  margin-left: 25%;
   margin-right: 20px; /* Margen a la derecha para que no ocupe todo */
   margin-top: 20px; /* Margen superior */
   margin-bottom: 20px; /* Margen inferior */
-  width: calc(100% - (280px + 40px + 20px)); /* Ancho restante después de la nav y los márgenes */
+  /* He ajustado el ancho para que se adapte al nuevo margen */
+  width: 75%;
   max-width: 1600px; /* Límite superior para pantallas muy grandes */
   min-height: calc(100vh - 40px); /* Ocupa casi toda la altura de la ventana */
-  background-color: #ffffff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  background-color: var(--color-white);
+  box-shadow: 0 8px 16px var(--shadow-color);
   border-radius: 16px;
   overflow: hidden; /* Mantenemos overflow hidden para los bordes redondeados */
 }
 
 .contenido-principal {
-  /* Este div ahora es el contenido dentro del contenedor-app */
   padding: 40px;
-  background-color: #ffffff;
-  overflow-y: auto; /* ¡CLAVE! Permite scroll solo en esta sección */
-  height: calc(100vh - 80px); /* Establece una altura fija para que el scroll funcione */
-  /* 80px = 20px (margin-top de contenedor-app) + 20px (margin-bottom de contenedor-app) + 40px (padding vertical de contenido-principal) */
-}
-
-/* Media queries para hacer el diseño responsivo en pantallas más pequeñas */
-@media (max-width: 992px) {
-  .navegacion-lateral {
-    position: static; /* En pantallas pequeñas, la navegación vuelve al flujo normal */
-    width: 100%;
-    height: auto;
-    top: auto;
-    left: auto;
-    border-radius: 12px 12px 0 0; /* Bordes redondeados solo arriba */
-    box-shadow: none;
-    margin-bottom: 10px; /* Espacio entre nav y contenido */
-    align-items: center; /* ¡NUEVO! Centra los elementos hijos horizontalmente */
-  }
-
-  .contenedor-app {
-    flex-direction: column; /* Apila los elementos en columna (navegación y contenido) */
-    margin: 10px; /* Márgenes ajustados para móviles */
-    width: calc(100% - 20px); /* Ocupa casi todo el ancho */
-    min-height: auto; /* La altura mínima es automática */
-    height: calc(100vh - 20px); /* ¡CLAVE! El contenedor-app ahora ocupa casi toda la altura del viewport */
-    overflow-y: auto; /* ¡CLAVE! Permite el scroll en todo el contenedor-app */
-  }
-
-  .contenido-principal {
-    padding: 30px;
-    height: auto; /* En móviles, la altura del contenido es automática para que se adapte al scroll del padre */
-    overflow-y: visible; /* Aseguramos que el overflow del contenido-principal no impida el scroll del padre */
-  }
-}
-
-@media (max-width: 768px) {
-  .navegacion-lateral {
-    padding: 20px;
-  }
-
-  .contenedor-app {
-    margin: 10px;
-    border-radius: 12px;
-  }
-
-  .contenido-principal {
-    padding: 25px;
-  }
-}
-
-/* Estilos para elementos dentro de la navegación lateral */
-.navegacion-lateral h2 {
-  color: #f39c12;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.navegacion-lateral ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.navegacion-lateral ul li {
-  margin-bottom: 15px;
-}
-
-.navegacion-lateral ul li a {
-  color: #ecf0f1;
-  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.1em;
-  padding: 8px 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-  display: block;
+  background-color: var(--color-white);
+  overflow-y: auto; /* Permite scroll solo en esta sección */
+  height: calc(100vh - 80px); /* Establece una altura fija para que el scroll funcione */
 }
 
-.navegacion-lateral ul li a:hover {
-  background-color: #34495e;
+/* Estilos generales para todas las secciones del CV */
+.seccion-cv {
+  padding-bottom: 25px; /* Reducimos el padding inferior */
+  margin-bottom: 25px; /* Reducimos el margen inferior */
+  border-bottom: 1px solid var(--color-border);
+  /* Aplicamos la animación de entrada a cada sección */
+  animation: fadeInSlideUp 0.6s ease-out forwards;
 }
 
-/* Estilos para el contenido principal */
-.contenido-principal h1 {
-  color: #2c3e50;
+.seccion-cv:last-child {
+  border-bottom: none; /* Elimina la línea divisoria de la última sección */
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.seccion-cv h1 {
+  color: var(--color-primary);
   margin-bottom: 20px;
-  border-bottom: 2px solid #f39c12;
+  border-bottom: 2px solid var(--color-accent);
   padding-bottom: 10px;
 }
 
-.contenido-principal p {
+.seccion-cv h3 {
+  color: var(--color-primary);
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.seccion-cv p {
   line-height: 1.6;
   margin-bottom: 15px;
+}
+
+.seccion-cv ul {
+  list-style: none;
+  padding-left: 20px; /* Espacio para los puntos de la lista */
+  margin: 0;
+}
+
+.seccion-cv ul li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 15px; /* Espacio para el pseudo-elemento */
+}
+
+.seccion-cv ul li::before {
+  content: '•'; /* Punto de lista personalizado */
+  color: var(--color-accent); /* Color de acento para el punto */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ESTILOS PARA EL RESALTADO DE PALABRAS */
+.resaltado {
+  background-color: var(--color-tag); /* Color de fondo gris claro */
+  color: var(--color-text); /* Color de texto oscuro para buen contraste */
+  padding: 2px 6px; /* Pequeño padding alrededor del texto */
+  border-radius: 4px; /* Bordes ligeramente redondeados */
+  font-weight: 600; /* Un poco menos de negrita para un efecto más discreto */
+  white-space: nowrap; /* Evita que la palabra se rompa en varias líneas */
+}
+
+/* Estilos para la sección de Bienvenida interactiva */
+
+/* Definición de la animación de entrada */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0; /* Empieza completamente transparente */
+    transform: translateY(20px); /* Empieza 20px más abajo */
+  }
+  to {
+    opacity: 1; /* Termina completamente visible */
+    transform: translateY(0); /* Termina en su posición original */
+  }
+}
+
+@media (max-width: 1024px) {
+  #root {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contenedor-app {
+    margin: 20px;
+    width: auto;
+    max-width: none;
+    min-height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    overflow-y: auto;
+  }
+
+  .contenido-principal {
+    height: auto;
+  }
 }

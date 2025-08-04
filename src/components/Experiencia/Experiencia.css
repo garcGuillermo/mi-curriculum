@@ -1,0 +1,148 @@
+/*
+  ==========================================
+  ESTILOS PARA LA SECCIÓN DE EXPERIENCIA
+  ==========================================
+*/
+
+.experiencia-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Espacio entre cada experiencia laboral */
+  padding-left: 20px; /* Alineación con el resto del contenido */
+  position: relative;
+}
+
+/* Línea de tiempo vertical */
+.experiencia-lista::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 28px; /* Ajustamos la posición para que quede centrada con los puntos */
+  height: 100%;
+  width: 2px;
+  background-color: var(--color-border);
+  z-index: 1;
+}
+
+.experiencia-item {
+  position: relative;
+  padding: 20px;
+  background-color: var(--color-background-soft);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 2;
+  margin-left: 20px; /* Espacio para la línea de tiempo */
+}
+
+/* Efecto de hover en cada tarjeta de experiencia */
+.experiencia-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Círculo en la línea de tiempo */
+.experiencia-item::before {
+  content: '';
+  position: absolute;
+  left: -27px; /* Posición del círculo en la línea */
+  top: 30px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  border: 3px solid var(--color-white);
+  z-index: 3;
+}
+
+.experiencia-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.experiencia-rol {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.experiencia-fecha {
+  font-size: 0.9em;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.experiencia-empresa {
+  font-size: 1em;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.experiencia-responsabilidades {
+  padding-left: 0;
+  list-style: none; /* Elimina los puntos de lista predeterminados */
+}
+
+.experiencia-responsabilidades li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+/* Icono o punto de lista personalizado para responsabilidades */
+.experiencia-responsabilidades li::before {
+  content: '✓'; /* O un punto: '•' o un icono de Font Awesome si lo tienes */
+  color: var(--color-accent);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.1em;
+}
+
+/*
+  ==========================================
+  MEDIA QUERIES PARA ADAPTAR EL DISEÑO A MÓVILES
+  ==========================================
+*/
+@media (max-width: 768px) {
+  .experiencia-lista::before {
+    left: 8px;
+  }
+  
+  .experiencia-item {
+    padding: 15px;
+    margin-left: 20px;
+  }
+  
+  .experiencia-item::before {
+    left: -22px;
+    top: 25px;
+  }
+
+  .experiencia-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .experiencia-rol {
+    font-size: 1.1em;
+  }
+  
+  .experiencia-fecha {
+    font-size: 0.85em;
+    margin-top: 5px;
+  }
+  
+  .experiencia-responsabilidades li {
+    padding-left: 15px;
+  }
+  
+  .experiencia-responsabilidades li::before {
+    left: 0;
+  }
+}
