@@ -5,6 +5,15 @@ import './Experiencia.css';
 // Datos de la experiencia laboral extraídos de tu CV
 const experienciaLaboral = [
   {
+    empresa: "FoundEver",
+    periodo: "2024 - 2025",
+    cargo: "Teleoperador",
+    descripcion: [
+      "Gestión de ventas y atención al cliente.",
+      "Manejo de sistemas CRM y bases de datos. Uso de programas informáticos como Siebel 8.",
+    ],
+  },
+  {
     empresa: "BURGER KING SPAIN",
     periodo: "2021 - 2024",
     cargo: "Empleado Experto",
@@ -29,15 +38,6 @@ const experienciaLaboral = [
     descripcion: [
       "Trabajo en infraestructuras de telecomunicaciones con ingenieros informáticos en gestión de redes y su manutención.",
       "Especializado en tareas de microinformática.",
-    ],
-  },
-  {
-    empresa: "FoundEver",
-    periodo: "2024 - 2025",
-    cargo: "Teleoperador",
-    descripcion: [
-      "Venta.",
-      "Uso de programas informáticos como CRM y Siebel 8.",
     ],
   },
 ];

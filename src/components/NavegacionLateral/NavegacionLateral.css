@@ -116,6 +116,7 @@
 .info-contacto-lateral h3 {
   color: var(--color-accent);
   margin-bottom: 15px;
+  font-size: 1.3em;
 }
 
 .info-contacto-lateral ul {

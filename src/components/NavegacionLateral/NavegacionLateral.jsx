@@ -24,6 +24,7 @@ function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
             alt="Foto de perfil de Guillermo"
             className="perfil-foto-lateral"
             onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/120x120/cccccc/333333?text=Foto'; }}
+            title='Haz clic para volver al inicio'
           />
         </Link>
         <h1 className="nombre-cv">Guillermo</h1>
@@ -34,7 +35,7 @@ function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
         
         <ul>
           {seccionesCV.map(seccion => (
-            <li key={seccion.id}>
+            <li key={seccion.id} title={seccion.nombre}>
               <Link to={seccion.path}>
                 {seccion.nombre}
               </Link>
@@ -44,24 +45,24 @@ function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
       </nav>
 
       <div className="info-contacto-lateral">
-        <h3>Contacto</h3>
+        <h3>Puedes contactarme en:</h3>
         <ul>
-          <li>
+          <li title='Correo electrónico'>
             <a href="mailto:garciainurriaguillermo@gmail.com" target="_blank" rel="noopener noreferrer">
               <MdEmail className="icon-contacto" /> garciainurriaguillermo@gmail.com
             </a>
           </li>
-          <li>
+          <li title='Teléfono'>
             <a href="tel:+34645192414" target="_blank" rel="noopener noreferrer">
               <MdPhone className="icon-contacto" /> +34645192414
             </a>
           </li>
-          <li>
+          <li title='GitHub'>
             <a href="https://github.com/garcGuillermo" target="_blank" rel="noopener noreferrer">
               <FaGithub className="icon-contacto" /> GitHub
             </a>
           </li>
-          <li>
+          <li title='LinkedIn'>
             <a href="https://www.linkedin.com/in/guillermo-garc%C3%ADa-inurria-857084152/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="icon-contacto" /> LinkedIn
             </a>

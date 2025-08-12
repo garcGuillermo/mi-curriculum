@@ -1,0 +1,160 @@
+/* Archivo: Contacto.css */
+
+/* Estilos para el contenedor de la sección de contacto */
+.seccion-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espacio entre el formulario y la info de contacto */
+}
+
+/* Estilos para el formulario de contacto */
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilos para la agrupación de campos (fieldset) y su título (legend) */
+.formulario-contacto fieldset {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0;
+}
+
+.formulario-contacto legend {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--color-primary);
+    padding: 0 10px;
+    margin-left: -10px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* Espacio entre cada campo del formulario */
+}
+
+.campo-formulario label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    transition: all 0.3s ease;
+}
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-hover);
+}
+
+.campo-formulario textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 120px;
+    /*max-height: 600px; Limita la altura máxima del textarea */
+}
+
+/* Estilos para el botón de enviar */
+.boton-enviar {
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+    padding: 12px 24px;
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-enviar:hover {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-2px); /* Efecto de "levantar" al pasar el ratón */
+}
+
+/* Estilos para la sección de información de contacto (debajo del formulario) */
+.info-contacto {
+    display: grid;
+    grid-template-columns: 1fr; /* Corregido de '1f' a '1fr' para que funcione */
+    gap: 20px;
+    margin: 0 auto; /* Centra la sección */
+    margin-top: 20px; /* Espacio para separar del formulario */
+}
+
+.info-contacto-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: var(--color-tag);
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 80px; /* Añadido para asegurar una altura mínima consistente */
+}
+
+.info-contacto-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.info-contacto-item .icono {
+    color: var(--color-accent);
+    font-size: 2em;
+}
+
+.info-contacto-item > div {
+    min-width: 0;
+}
+
+.info-contacto-item h4 {
+    margin: 0;
+    color: var(--color-primary);
+}
+
+.info-contacto-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--color-text-muted);
+    /* Se mantiene esta propiedad para evitar que el texto largo se desborde */
+    overflow-wrap: break-word;
+}
+
+/* Estilos específicos para los botones de GitHub y LinkedIn */
+.boton-red-social {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- NUEVOS ESTILOS AÑADIDOS --- */
+
+/* Estilos para el mensaje de estado del formulario */
+.mensaje-estado {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  /* Se podría usar una clase para éxito y otra para error para cambiar el color */
+  background-color: var(--color-tag);
+  color: var(--color-primary);
+}
+
+/* Estilo para el botón cuando está deshabilitado */
+.boton-enviar:disabled {
+  background-color: #ccc; /* Un gris claro para indicar que no se puede usar */
+  cursor: not-allowed;
+  transform: none; /* Quitamos el efecto de "levantar" */
+}

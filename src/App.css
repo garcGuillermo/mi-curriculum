@@ -28,7 +28,6 @@ body {
 
 /* Estilos para el contenedor principal del CV (AHORA SOLO EL CONTENIDO) */
 .contenedor-app {
-  /* He reducido el margen izquierdo para disminuir la separación */
   margin-left: 25%;
   margin-right: 20px; /* Margen a la derecha para que no ocupe todo */
   margin-top: 20px; /* Margen superior */
@@ -64,7 +63,7 @@ body {
 .seccion-cv:last-child {
   border-bottom: none; /* Elimina la línea divisoria de la última sección */
   margin-bottom: 0;
-  padding-bottom: 0;
+  padding-bottom: 40px;
 }
 
 .seccion-cv h1 {

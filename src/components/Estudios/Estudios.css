@@ -1,0 +1,133 @@
+/* ==================================================================================================================== */
+/* -- ESTILOS PARA LA SECCIÓN DE ESTUDIOS -- */
+/* ==================================================================================================================== */
+
+/* Contenedor de la lista de estudios */
+.estudios-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Estilos de cada elemento de la lista */
+.estudios-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: all 0.3s ease;
+}
+
+.estudios-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Estilos del botón de encabezado */
+.estudios-encabezado-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.75rem;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.estudios-encabezado-toggle:hover {
+  background-color: #f8fafc;
+}
+
+/* Estilos de la información principal (título y centro) */
+.estudios-info-principal {
+  flex-grow: 1;
+}
+
+.estudios-curso {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.estudios-centro {
+  font-size: 1rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Estilos de la información secundaria (fecha y enlace) */
+.estudios-info-secundaria {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.estudios-fecha {
+  font-size: 1rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* Estilos para el botón "Ver Certificado" */
+.estudios-enlace-texto {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  background-color: #3b82f6;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.estudios-enlace-texto:hover {
+  background-color: #2563eb;
+  transform: scale(1.08);
+}
+
+/* Estilos para el icono de desplegable */
+.toggle-icon {
+  font-size: 1rem;
+  color: #94a3b8;
+  margin-left: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Estilos para el contenido desplegable */
+.estudios-contenido-desplegable {
+  max-height: 0;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.estudios-contenido-desplegable.open {
+  max-height: 600px;
+  padding-top: 1rem;
+  padding-bottom: 1.75rem;
+}
+
+/* Estilos de la lista de detalles */
+.estudios-detalles {
+  list-style: disc;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  color: #475569;
+}
+
+.estudios-detalles li {
+  margin-bottom: 0.5rem;
+}
