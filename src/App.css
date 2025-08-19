@@ -1,150 +1,298 @@
-/* Reseteo global para eliminar márgenes y paddings por defecto del navegador */
+/* Variables personalizadas para la aplicación principal */
+:root {
+  /* Anchos de navegación lateral para diferentes pantallas */
+  --app-nav-width-base: 25%;
+  --app-nav-width-tablet-lg: 30%;
+  --app-nav-width-tablet-md: 32%;
+  --app-nav-width-tablet-sm: 35%;
+  --app-nav-margin-offset: 40px;
+  --app-nav-spacing-offset: 60px;
+  
+  /* Configuración del contenedor principal */
+  --app-container-max-width: 1600px;
+  --app-container-border-radius: var(--border-radius-xl);
+  --app-container-min-height: calc(100vh - 40px);
+  
+  /* Padding del contenido en diferentes tamaños */
+  --app-content-padding-base: var(--spacing-2xl);
+  --app-content-padding-tablet: var(--spacing-xl);
+  --app-content-padding-mobile: var(--spacing-lg);
+  --app-content-padding-mobile-sm: var(--spacing-md);
+  
+  /* Scrollbar personalizada */
+  --app-scrollbar-width-base: 8px;
+  --app-scrollbar-width-mobile: 6px;
+  --app-scrollbar-width-mobile-sm: 4px;
+  
+  /* Estilos para títulos de sección */
+  --app-section-title-border: 2px solid var(--color-accent);
+  --app-section-title-padding: var(--spacing-sm);
+  
+  /* Configuración del resaltado de texto */
+  --resaltado-padding: var(--spacing-xs) var(--spacing-sm);
+  --resaltado-padding-mobile: 2px var(--spacing-xs);
+  --resaltado-border-radius: var(--border-radius-sm);
+  
+  /* Sombras específicas de la app */
+  --app-main-shadow: 0 8px 16px var(--shadow-color);
+  --app-dark-shadow: 0 8px 32px var(--shadow-color-dark);
+  --app-retina-shadow: 0 4px 16px var(--shadow-color);
+  
+  /* Transiciones específicas */
+  --app-transition-shadow: box-shadow var(--transition-normal) var(--transition-timing);
+  --app-transition-resaltado: background-color var(--transition-fast) var(--transition-timing);
+}
+
+/* Reset básico del documento */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  box-sizing: border-box; /* Asegura que padding y borde se incluyan en el ancho/alto */
-  overflow: hidden; /* ¡CLAVE! Evita el scroll en todo el documento */
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *, *::before, *::after {
-  box-sizing: inherit; /* Hereda box-sizing para todos los elementos */
+  box-sizing: inherit;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 #root {
   width: 100%;
   height: 100%;
-  display: flex; /* Añadido para que #root también se comporte como un flex container */
-  justify-content: center; /* Centra el contenedor-app */
-  align-items: center; /* Centra el contenedor-app */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Estilos para el cuerpo de la página */
 body {
   background-color: var(--color-background);
   color: var(--color-text);
+  font-family: var(--font-primary);
+  line-height: var(--line-height-base);
 }
 
-/* Estilos para el contenedor principal del CV (AHORA SOLO EL CONTENIDO) */
+/* Contenedor principal de la aplicación */
 .contenedor-app {
-  margin-left: 25%;
-  margin-right: 20px; /* Margen a la derecha para que no ocupe todo */
-  margin-top: 20px; /* Margen superior */
-  margin-bottom: 20px; /* Margen inferior */
-  /* He ajustado el ancho para que se adapte al nuevo margen */
-  width: 75%;
-  max-width: 1600px; /* Límite superior para pantallas muy grandes */
-  min-height: calc(100vh - 40px); /* Ocupa casi toda la altura de la ventana */
+  margin: var(--spacing-md);
+  margin-left: calc(var(--app-nav-width-base) + var(--app-nav-margin-offset));
+  width: calc(75% - var(--app-nav-spacing-offset));
+  max-width: var(--app-container-max-width);
+  height: var(--app-container-min-height);
   background-color: var(--color-white);
-  box-shadow: 0 8px 16px var(--shadow-color);
-  border-radius: 16px;
-  overflow: hidden; /* Mantenemos overflow hidden para los bordes redondeados */
+  border-radius: var(--app-container-border-radius);
+  box-shadow: var(--app-main-shadow);
+  overflow: hidden;
+  transition: var(--app-transition-shadow);
+  display: flex;
+  flex-direction: column;
 }
 
+/* Área donde se muestra el contenido del currículum */
 .contenido-principal {
-  padding: 40px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1em;
+  padding: var(--app-content-padding-base);
+  margin-top: var(--app-content-padding-base);
+  margin-bottom: var(--app-content-padding-base);
+  flex: 1;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
   background-color: var(--color-white);
-  overflow-y: auto; /* Permite scroll solo en esta sección */
-  height: calc(100vh - 80px); /* Establece una altura fija para que el scroll funcione */
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+  box-sizing: border-box;
 }
 
-/* Estilos generales para todas las secciones del CV */
+/* Ajustes de márgenes para el primer y último elemento */
+.contenido-principal > *:first-child {
+  margin-top: calc(-1 * var(--spacing-lg)) !important;
+}
+
+.contenido-principal > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Scrollbar personalizada para navegadores webkit */
+.contenido-principal::-webkit-scrollbar {
+  width: var(--app-scrollbar-width-base);
+}
+
+.contenido-principal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contenido-principal::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: var(--border-radius-md);
+}
+
+/* Estilos base para las secciones del CV */
 .seccion-cv {
-  padding-bottom: 25px; /* Reducimos el padding inferior */
-  margin-bottom: 25px; /* Reducimos el margen inferior */
-  border-bottom: 1px solid var(--color-border);
-  /* Aplicamos la animación de entrada a cada sección */
-  animation: fadeInSlideUp 0.6s ease-out forwards;
+  margin-bottom: var(--spacing-3xl);
+  margin-top: 0;
+}
+
+.seccion-cv:first-child {
+  margin-top: 0;
 }
 
 .seccion-cv:last-child {
-  border-bottom: none; /* Elimina la línea divisoria de la última sección */
   margin-bottom: 0;
-  padding-bottom: 40px;
 }
 
+/* Títulos de las secciones */
 .seccion-cv h1 {
   color: var(--color-primary);
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 10px;
+  margin-bottom: var(--spacing-lg);
+  margin-top: 0;
+  border-bottom: var(--app-section-title-border);
+  padding-bottom: var(--app-section-title-padding);
+  width: 100%;
+  text-align: left;
 }
 
-.seccion-cv h3 {
-  color: var(--color-primary);
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.seccion-cv p {
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.seccion-cv ul {
-  list-style: none;
-  padding-left: 20px; /* Espacio para los puntos de la lista */
-  margin: 0;
-}
-
-.seccion-cv ul li {
-  margin-bottom: 8px;
-  position: relative;
-  padding-left: 15px; /* Espacio para el pseudo-elemento */
-}
-
-.seccion-cv ul li::before {
-  content: '•'; /* Punto de lista personalizado */
-  color: var(--color-accent); /* Color de acento para el punto */
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-/* ESTILOS PARA EL RESALTADO DE PALABRAS */
+/* Texto resaltado con fondo de color */
 .resaltado {
-  background-color: var(--color-tag); /* Color de fondo gris claro */
-  color: var(--color-text); /* Color de texto oscuro para buen contraste */
-  padding: 2px 6px; /* Pequeño padding alrededor del texto */
-  border-radius: 4px; /* Bordes ligeramente redondeados */
-  font-weight: 600; /* Un poco menos de negrita para un efecto más discreto */
-  white-space: nowrap; /* Evita que la palabra se rompa en varias líneas */
+  background-color: var(--color-tag);
+  color: var(--color-text);
+  padding: var(--resaltado-padding);
+  border-radius: var(--resaltado-border-radius);
+  font-weight: var(--font-weight-semibold);
+  display: inline-block;
+  transition: var(--app-transition-resaltado);
+  vertical-align: baseline;
+  line-height: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
 }
 
-/* Estilos para la sección de Bienvenida interactiva */
-
-/* Definición de la animación de entrada */
-@keyframes fadeInSlideUp {
-  from {
-    opacity: 0; /* Empieza completamente transparente */
-    transform: translateY(20px); /* Empieza 20px más abajo */
-  }
-  to {
-    opacity: 1; /* Termina completamente visible */
-    transform: translateY(0); /* Termina en su posición original */
+/* En pantallas muy grandes, permitir texto sin wrap */
+@media (min-width: 1400px) {
+  .resaltado {
+    white-space: nowrap;
   }
 }
 
-@media (max-width: 1024px) {
+/* Tablets grandes - navegación al 30% */
+@media (max-width: 1200px) {
+  .contenedor-app {
+    margin-left: calc(var(--app-nav-width-tablet-lg) + var(--app-nav-margin-offset));
+    width: calc(70% - var(--app-nav-spacing-offset));
+  }
+}
+
+/* Tablets medianos - navegación al 32% */
+@media (max-width: 1100px) {
+  .contenedor-app {
+    margin-left: calc(var(--app-nav-width-tablet-md) + var(--app-nav-margin-offset));
+    width: calc(68% - var(--app-nav-spacing-offset));
+  }
+}
+
+/* Tablets pequeños - layout unificado sin perder la navegación */
+@media (max-width: 1050px) {
   #root {
     flex-direction: column;
     align-items: stretch;
+    overflow: hidden;
   }
 
   .contenedor-app {
-    margin: 20px;
+    margin: var(--spacing-md);
     width: auto;
     max-width: none;
-    min-height: auto;
-    border-radius: 16px;
-    box-shadow: 0 8px 16px var(--shadow-color);
+    height: calc(100vh - calc(var(--spacing-md) * 2));
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contenido-principal {
+    padding: var(--app-content-padding-tablet);
+    font-size: var(--font-size-sm);
+    overflow: visible;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex: 1;
+  }
+}
+
+/* Móviles medianos */
+@media (max-width: 768px) {
+  .contenedor-app {
+    margin: var(--spacing-sm);
+    border-radius: var(--border-radius-lg);
   }
 
   .contenido-principal {
-    height: auto;
+    padding: var(--app-content-padding-mobile);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+  }
+
+  .seccion-cv h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .contenedor-app {
+    margin: var(--spacing-xs);
+    border-radius: var(--border-radius-md);
+  }
+
+  .contenido-principal {
+    padding: var(--app-content-padding-mobile-sm);
+    font-size: var(--font-size-xs);
+    line-height: 1.3;
+  }
+
+  .seccion-cv h1 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .resaltado {
+    padding: var(--resaltado-padding-mobile);
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .contenedor-app {
+    box-shadow: var(--app-retina-shadow);
+  }
+}
+
+/* Modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+  .contenedor-app {
+    background-color: var(--color-secondary);
+    box-shadow: var(--app-dark-shadow);
+  }
+}
+
+/* Reducir animaciones para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

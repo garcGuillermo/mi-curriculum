@@ -1,14 +1,24 @@
-/*
-  ==========================================
-  ESTILOS PARA LA SECCIÓN DE EXPERIENCIA
-  ==========================================
-*/
+/* Variables personalizadas para la sección de experiencia */
+:root {
+  /* Layout y espaciado */
+  --experiencia-gap: var(--spacing-xl);
+  --experiencia-padding: var(--spacing-lg);
+  --experiencia-margin-left: var(--spacing-lg);
+  
+  /* Timeline */
+  --timeline-width: 2px;
+  --timeline-circle-size: 12px;
+  --timeline-circle-border: 3px;
+  --timeline-offset: 28px;
+  --timeline-circle-offset: -27px;
+}
 
+/* Lista principal de experiencia con timeline */
 .experiencia-lista {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* Espacio entre cada experiencia laboral */
-  padding-left: 20px; /* Alineación con el resto del contenido */
+  gap: var(--experiencia-gap);
+  padding-left: var(--experiencia-padding);
   position: relative;
 }
 
@@ -17,132 +27,209 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 28px; /* Ajustamos la posición para que quede centrada con los puntos */
+  left: var(--timeline-offset);
   height: 100%;
-  width: 2px;
+  width: var(--timeline-width);
   background-color: var(--color-border);
   z-index: 1;
 }
 
+/* Elemento individual de experiencia */
 .experiencia-item {
   position: relative;
-  padding: 20px;
-  background-color: var(--color-background-soft);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: var(--experiencia-padding);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform var(--transition-fast) var(--transition-timing), 
+              box-shadow var(--transition-fast) var(--transition-timing);
   z-index: 2;
-  margin-left: 20px; /* Espacio para la línea de tiempo */
+  margin-left: var(--experiencia-margin-left);
 }
 
-/* Efecto de hover en cada tarjeta de experiencia */
 .experiencia-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px var(--shadow-color-dark);
 }
 
 /* Círculo en la línea de tiempo */
 .experiencia-item::before {
   content: '';
   position: absolute;
-  left: -27px; /* Posición del círculo en la línea */
-  top: 30px;
-  width: 12px;
-  height: 12px;
+  left: var(--timeline-circle-offset);
+  top: var(--spacing-xl);
+  width: var(--timeline-circle-size);
+  height: var(--timeline-circle-size);
   border-radius: 50%;
   background-color: var(--color-accent);
-  border: 3px solid var(--color-white);
+  border: var(--timeline-circle-border) solid var(--color-white);
   z-index: 3;
 }
 
+/* Contenido de la experiencia */
 .experiencia-encabezado {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: var(--spacing-md);
 }
 
 .experiencia-rol {
-  font-size: 1.2em;
-  font-weight: 600;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
   margin: 0;
 }
 
 .experiencia-fecha {
-  font-size: 0.9em;
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
 }
 
 .experiencia-empresa {
-  font-size: 1em;
+  font-size: var(--font-size-base);
   color: var(--color-accent);
-  margin-bottom: 10px;
-  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
 }
 
+/* Lista de responsabilidades */
 .experiencia-responsabilidades {
   padding-left: 0;
-  list-style: none; /* Elimina los puntos de lista predeterminados */
+  list-style: none;
+  margin: 0;
 }
 
 .experiencia-responsabilidades li {
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-xs);
   position: relative;
-  padding-left: 20px;
-  line-height: 1.5;
+  padding-left: var(--spacing-lg);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
 }
 
-/* Icono o punto de lista personalizado para responsabilidades */
 .experiencia-responsabilidades li::before {
-  content: '✓'; /* O un punto: '•' o un icono de Font Awesome si lo tienes */
+  content: '✓';
   color: var(--color-accent);
   position: absolute;
   left: 0;
   top: 0;
-  font-size: 1.1em;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
 }
 
-/*
-  ==========================================
-  MEDIA QUERIES PARA ADAPTAR EL DISEÑO A MÓVILES
-  ==========================================
-*/
+/* Tablets y dispositivos medianos */
+@media (max-width: 1024px) {
+  .experiencia-item {
+    padding: var(--spacing-md);
+  }
+
+  .experiencia-rol {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Móviles medianos */
 @media (max-width: 768px) {
   .experiencia-lista::before {
-    left: 8px;
+    left: var(--spacing-xs);
   }
   
   .experiencia-item {
-    padding: 15px;
-    margin-left: 20px;
+    padding: var(--spacing-md);
+    margin-left: var(--spacing-lg);
   }
   
   .experiencia-item::before {
-    left: -22px;
-    top: 25px;
+    left: calc(var(--spacing-lg) * -1 + var(--spacing-xs));
+    top: var(--spacing-lg);
   }
 
   .experiencia-encabezado {
     flex-direction: column;
     align-items: flex-start;
+    gap: var(--spacing-xs);
   }
 
   .experiencia-rol {
-    font-size: 1.1em;
+    font-size: var(--font-size-lg);
   }
   
   .experiencia-fecha {
-    font-size: 0.85em;
-    margin-top: 5px;
+    font-size: var(--font-size-xs);
   }
   
   .experiencia-responsabilidades li {
-    padding-left: 15px;
+    padding-left: var(--spacing-md);
   }
-  
-  .experiencia-responsabilidades li::before {
-    left: 0;
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .experiencia-lista {
+    padding-left: var(--spacing-md);
+  }
+
+  .experiencia-item {
+    padding: var(--spacing-sm);
+    margin-left: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+  }
+
+  .experiencia-item::before {
+    width: var(--spacing-sm);
+    height: var(--spacing-sm);
+    left: calc(var(--spacing-md) * -1 + var(--spacing-xs));
+  }
+
+  .experiencia-rol {
+    font-size: var(--font-size-base);
+  }
+
+  .experiencia-empresa {
+    font-size: var(--font-size-sm);
+  }
+
+  .experiencia-responsabilidades li {
+    padding-left: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Soporte para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .experiencia-item {
+    box-shadow: 0 2px 8px var(--shadow-color);
+  }
+
+  .experiencia-item:hover {
+    box-shadow: 0 4px 16px var(--shadow-color-dark);
+  }
+}
+
+/* Preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .experiencia-item {
+    transition: none;
+  }
+
+  .experiencia-item:hover {
+    transform: none;
+  }
+}
+
+/* Modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+  .experiencia-lista::before {
+    background-color: var(--color-border-light);
+  }
+
+  .experiencia-item {
+    box-shadow: 0 4px 12px var(--shadow-color-dark);
+  }
+
+  .experiencia-item::before {
+    border-color: var(--color-secondary);
   }
 }

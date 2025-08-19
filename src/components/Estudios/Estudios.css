@@ -1,133 +1,284 @@
-/* ==================================================================================================================== */
-/* -- ESTILOS PARA LA SECCIÓN DE ESTUDIOS -- */
-/* ==================================================================================================================== */
+/* Variables personalizadas para la sección de estudios */
+:root {
+  /* Layout y espaciado */
+  --estudios-gap: var(--spacing-xl);
+  --estudios-padding: var(--spacing-xl);
+  --estudios-border: 1px solid var(--color-border);
+  --estudios-max-height: 600px;
+}
 
-/* Contenedor de la lista de estudios */
+/* Contenedor principal de la lista de estudios */
 .estudios-lista {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--estudios-gap);
 }
 
-/* Estilos de cada elemento de la lista */
+/* Elemento individual de estudio */
 .estudios-item {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.75rem;
+  background-color: var(--color-white);
+  border: var(--estudios-border);
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all var(--transition-fast) var(--transition-timing);
 }
 
 .estudios-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  box-shadow: 0 20px 25px var(--shadow-color-dark);
 }
 
-/* Estilos del botón de encabezado */
+/* Botón de encabezado expandible */
 .estudios-encabezado-toggle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1.75rem;
-  background-color: #ffffff;
+  padding: var(--spacing-xl);
+  background-color: var(--color-white);
   border: none;
   cursor: pointer;
   text-align: left;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-fast) var(--transition-timing);
 }
 
 .estudios-encabezado-toggle:hover {
-  background-color: #f8fafc;
+  background-color: var(--color-tag);
 }
 
-/* Estilos de la información principal (título y centro) */
+/* Información principal del estudio */
 .estudios-info-principal {
   flex-grow: 1;
 }
 
 .estudios-curso {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.5rem;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
 }
 
 .estudios-centro {
-  font-size: 1rem;
-  color: #64748b;
-  font-weight: 400;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-normal);
 }
 
-/* Estilos de la información secundaria (fecha y enlace) */
+/* Información secundaria (fecha y certificado) */
 .estudios-info-secundaria {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--spacing-lg);
   flex-shrink: 0;
 }
 
 .estudios-fecha {
-  font-size: 1rem;
-  color: #64748b;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
   white-space: nowrap;
 }
 
-/* Estilos para el botón "Ver Certificado" */
+/* Botón de certificado */
 .estudios-enlace-texto {
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #fff;
-  background-color: #3b82f6;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-xl);
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  transition: all var(--transition-fast) var(--transition-timing);
   white-space: nowrap;
 }
 
 .estudios-enlace-texto:hover {
-  background-color: #2563eb;
+  background-color: var(--color-accent-dark);
   transform: scale(1.08);
 }
 
-/* Estilos para el icono de desplegable */
+/* Icono de desplegable */
 .toggle-icon {
-  font-size: 1rem;
-  color: #94a3b8;
-  margin-left: 0.75rem;
-  transition: transform 0.3s ease;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  margin-left: var(--spacing-sm);
+  transition: transform var(--transition-fast) var(--transition-timing);
 }
 
 .toggle-icon.open {
   transform: rotate(180deg);
 }
 
-/* Estilos para el contenido desplegable */
+/* Contenido desplegable */
 .estudios-contenido-desplegable {
   max-height: 0;
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
+  padding-left: var(--spacing-xl);
+  padding-right: var(--spacing-xl);
   overflow: hidden;
-  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  transition: max-height var(--transition-normal) ease-out, 
+              padding var(--transition-normal) ease-out;
 }
 
 .estudios-contenido-desplegable.open {
-  max-height: 600px;
-  padding-top: 1rem;
-  padding-bottom: 1.75rem;
+  max-height: var(--estudios-max-height);
+  padding-top: var(--spacing-md);
+  padding-bottom: var(--spacing-xl);
 }
 
-/* Estilos de la lista de detalles */
+/* Lista de detalles del estudio */
 .estudios-detalles {
   list-style: disc;
-  padding-left: 1.5rem;
-  font-size: 1rem;
-  color: #475569;
+  padding-left: var(--spacing-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
 }
 
 .estudios-detalles li {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 1024px) {
+  .estudios-encabezado-toggle {
+    padding: var(--spacing-lg);
+  }
+
+  .estudios-curso {
+    font-size: var(--font-size-lg);
+  }
+
+  .estudios-contenido-desplegable {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+}
+
+/* Móviles medianos */
+@media (max-width: 768px) {
+  .estudios-encabezado-toggle {
+    padding: var(--spacing-md);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .estudios-info-secundaria {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+  }
+
+  .estudios-curso {
+    font-size: var(--font-size-base);
+  }
+
+  .estudios-centro {
+    font-size: var(--font-size-sm);
+  }
+
+  .estudios-fecha {
+    font-size: var(--font-size-sm);
+  }
+
+  .estudios-enlace-texto {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .estudios-contenido-desplegable {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .estudios-contenido-desplegable.open {
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .estudios-item {
+    border-radius: var(--border-radius-md);
+  }
+
+  .estudios-encabezado-toggle {
+    padding: var(--spacing-sm);
+  }
+
+  .estudios-curso {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .estudios-centro {
+    font-size: var(--font-size-xs);
+  }
+
+  .estudios-fecha {
+    font-size: var(--font-size-xs);
+  }
+
+  .estudios-enlace-texto {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .estudios-contenido-desplegable {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+
+  .estudios-detalles {
+    padding-left: var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Soporte para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .estudios-item {
+    box-shadow: 0 2px 4px var(--shadow-color);
+  }
+
+  .estudios-item:hover {
+    box-shadow: 0 8px 16px var(--shadow-color-dark);
+  }
+}
+
+/* Preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .estudios-item,
+  .estudios-encabezado-toggle,
+  .estudios-enlace-texto,
+  .toggle-icon,
+  .estudios-contenido-desplegable {
+    transition: none;
+  }
+
+  .estudios-item:hover {
+    transform: none;
+  }
+
+  .estudios-enlace-texto:hover {
+    transform: none;
+  }
+
+  .toggle-icon.open {
+    transform: none;
+  }
+}
+
+/* Modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+  .estudios-item {
+    border-color: var(--color-border-light);
+    box-shadow: 0 4px 6px var(--shadow-color-dark);
+  }
+
+  .estudios-encabezado-toggle:hover {
+    background-color: var(--color-secondary);
+  }
 }

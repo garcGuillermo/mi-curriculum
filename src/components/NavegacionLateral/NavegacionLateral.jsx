@@ -27,7 +27,7 @@ function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
             title='Haz clic para volver al inicio'
           />
         </Link>
-        <h1 className="nombre-cv">Guillermo</h1>
+        <h1 className="nombre-cv">Guillermo García Inurria</h1>
         <h2 className="titulo-cv">Desarrollador Frontend &<br></br> Técnico ASIR</h2>
       </div>
 

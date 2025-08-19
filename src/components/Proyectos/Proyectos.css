@@ -1,0 +1,234 @@
+/* Variables personalizadas para la sección de proyectos */
+:root {
+  /* Grid y layout */
+  --grid-min-width: 300px;
+  --grid-gap: var(--spacing-lg);
+  --grid-margin-top: var(--spacing-2xl);
+  
+  /* Tarjetas */
+  --card-border-radius: var(--border-radius-lg);
+  --card-padding: var(--spacing-lg);
+  --card-gap: var(--spacing-md);
+  
+  /* Botones y tags */
+  --tag-padding: var(--spacing-xs) var(--spacing-sm);
+  --tag-border-radius: var(--border-radius-xl);
+  --button-padding: var(--spacing-xs) var(--spacing-md);
+}
+
+/* Grid de proyectos */
+.proyectos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--grid-min-width), 1fr));
+  gap: var(--grid-gap);
+  margin-top: var(--grid-margin-top);
+}
+
+/* Tarjeta individual de proyecto */
+.project-card {
+  background-color: var(--color-bg-card);
+  border-radius: var(--card-border-radius);
+  overflow: hidden; 
+  box-shadow: 0 4px 12px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal) var(--transition-timing), 
+              box-shadow var(--transition-normal) var(--transition-timing);
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px var(--shadow-color-dark);
+}
+
+/* Encabezado de la tarjeta */
+.project-header {
+  padding: var(--card-padding);
+  background-color: var(--color-tag);
+}
+
+.project-title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Cuerpo de la tarjeta */
+.project-body {
+  padding: var(--card-padding);
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.project-description {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+/* Página de detalles del proyecto */
+.project-details-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-card);
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Botón de volver */
+.boton-volver {
+  align-self: flex-start;
+  padding: var(--button-padding);
+  background-color: var(--color-border);
+  color: var(--color-primary);
+  border: none;
+  border-radius: var(--tag-border-radius);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--transition-normal) var(--transition-timing);
+}
+
+.boton-volver:hover {
+  background-color: var(--color-tag);
+}
+
+/* Tecnologías del proyecto */
+.project-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+}
+
+.tech-tag {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: var(--tag-padding);
+  border-radius: var(--tag-border-radius);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Pie de página de la tarjeta */
+.project-footer {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--card-gap);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.project-link {
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+  transition: color var(--transition-normal) var(--transition-timing);
+}
+
+.project-link:hover {
+  color: var(--color-accent-dark);
+}
+
+/* Tablets y dispositivos medianos */
+@media (max-width: 1024px) {
+  .proyectos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .project-card {
+    border-radius: var(--border-radius-md);
+  }
+
+  .project-header,
+  .project-body {
+    padding: var(--spacing-md);
+  }
+
+  .project-title {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* Móviles medianos */
+@media (max-width: 768px) {
+  .proyectos-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+  }
+
+  .project-details-page {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .project-techs {
+    gap: var(--spacing-xs);
+  }
+
+  .tech-tag {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .proyectos-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .project-header,
+  .project-body {
+    padding: var(--spacing-sm);
+  }
+
+  .project-title {
+    font-size: var(--font-size-base);
+  }
+
+  .project-description {
+    font-size: var(--font-size-sm);
+  }
+
+  .project-footer {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .boton-volver,
+  .project-link {
+    transition: none;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+/* Modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+  .project-card {
+    box-shadow: 0 4px 12px var(--shadow-color-dark);
+  }
+
+  .project-card:hover {
+    box-shadow: 0 6px 16px var(--shadow-color-dark);
+  }
+
+  .project-details-page {
+    box-shadow: 0 4px 12px var(--shadow-color-dark);
+  }
+}

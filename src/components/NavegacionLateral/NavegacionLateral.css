@@ -1,122 +1,225 @@
-.navegacion-lateral {
-  position: fixed; /* Hace que la navegación se quede fija en la ventana */
-  top: 20px; /* Alineado con el margen superior del contenedor principal */
-  left: 20px; /* Alineado con el margen izquierdo del contenedor principal */
-  width: 25%; /* Ancho fijo del 25% de la pantalla */
-  height: calc(100vh - 40px); /* Ocupa casi toda la altura de la ventana, dejando 20px arriba y 20px abajo */
-  background: linear-gradient(145deg, var(--color-primary), var(--color-secondary));
-  font-family: "Inter", sans-serif;
-  font-size: 0.9em;
-  color: var(--color-text-light);
-  padding: 40px 20px; /* Aumentamos el padding vertical para más espacio desde los bordes del nav */
-  display: flex;
-  flex-direction: column;
-  border-radius: 16px; /* Bordes redondeados para que coincida con el contenedor principal */
-  box-shadow: 
-    0 8px 32px var(--shadow-color),
-    inset 0 1px var(--color-border-light);
-  overflow-y: auto; 
-  z-index: 1000; /* Asegura que esté por encima de otros contenidos */
-  align-items: center; /* Centra el contenido del menú lateral */
-  text-align: center; /* Centra el texto dentro del menú lateral */
-  justify-content: space-between; /* Distribuye el espacio verticalmente: extremos y entre ellos */
+/* ================================
+   VARIABLES - NAVEGACIÓN LATERAL
+   ================================ */
+:root {
+  /* Dimensiones y posicionamiento */
+  --nav-width-base: 25%;
+  --nav-width-tablet-lg: 30%;
+  --nav-width-tablet-md: 32%;
+  --nav-position-top: 20px;
+  --nav-position-left: 20px;
+  --nav-border-radius: 16px;
+  --nav-z-index: 1000;
+  
+  /* Foto de perfil */
+  --foto-size-base: 150px;
+  --foto-size-tablet-lg: 130px;
+  --foto-size-tablet-md: 115px;
+  --foto-size-tablet-sm: 100px;
+  --foto-size-mobile-sm: 90px;
+  --foto-border-width: 4px;
+  --foto-shadow-offset: 8px;
+  --foto-hover-scale: 1.08;
+  
+  /* Espaciado responsive */
+  --nav-padding-base: var(--spacing-2xl) var(--spacing-lg);
+  --nav-padding-tablet-lg: var(--spacing-xl) var(--spacing-md);
+  --nav-padding-tablet-md: var(--spacing-lg) var(--spacing-sm);
+  
+  /* Transiciones */
+  --nav-transition-transform: transform var(--transition-normal) var(--transition-timing);
+  --nav-transition-all: all var(--transition-fast) var(--transition-timing);
+  
+  /* Sombras */
+  --nav-main-shadow: 0 8px 32px var(--shadow-color), inset 0 1px var(--color-border-light);
+  --nav-dark-shadow: 0 8px 32px var(--shadow-color-dark), inset 0 1px var(--color-border-light);
+  --foto-main-shadow: 0 0 0 var(--foto-border-width) var(--color-accent), 0 var(--foto-shadow-offset) 16px var(--shadow-color-dark);
 }
 
-/* ESTILOS PARA LA FOTO Y EL ENCABEZADO EN EL MENÚ LATERAL */
+/* ================================
+   NAVEGACIÓN LATERAL PRINCIPAL
+   ================================ */
+.navegacion-lateral {
+  position: fixed;
+  top: var(--nav-position-top);
+  left: var(--nav-position-left);
+  width: var(--nav-width-base);
+  height: calc(100vh - calc(var(--nav-position-top) * 2));
+  background: linear-gradient(145deg, var(--color-primary), var(--color-secondary));
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  padding: var(--nav-padding-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  border-radius: var(--nav-border-radius);
+  box-shadow: var(--nav-main-shadow);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: var(--nav-z-index);
+  word-wrap: break-word;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+/* Scrollbar personalizada */
+.navegacion-lateral::-webkit-scrollbar {
+  width: 8px;
+}
+
+.navegacion-lateral::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.navegacion-lateral::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent);
+  border-radius: var(--border-radius-md);
+}
+
+.navegacion-lateral::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent-dark);
+}
+
+/* ================================
+   PERFIL Y ENCABEZADO
+   ================================ */
 .perfil-encabezado-lateral {
-  margin-bottom: 0; /* Eliminamos el margen inferior para que justify-content lo maneje */
-  padding-bottom: 20px; /* Mantenemos el padding para el espacio sobre la línea */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
-  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  margin-bottom: 0;
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  width: 100%;
 }
 
 .perfil-foto-lateral {
-  width: 150px; /* Tamaño de la foto */
-  height: 150px;
-  border-radius: 50%; /* Hace la foto redonda */
-  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-  border: 4px solid var(--color-accent);
-  margin-bottom: 15px; /* Espacio debajo de la foto */
-  box-shadow: 
-    0 0 0 4px var(--color-accent),
-    0 8-px 16px var(--shadow-color-dark);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Animación más suave */
-  cursor: pointer; /* Cambia el cursor para indicar que es clicable */
+  width: var(--foto-size-base);
+  height: var(--foto-size-base);
+  border-radius: 50%;
+  object-fit: cover;
+  border: var(--foto-border-width) solid var(--color-accent);
+  margin-bottom: var(--spacing-md);
+  box-shadow: var(--foto-main-shadow);
+  transition: var(--nav-transition-transform);
+  cursor: pointer;
 }
 
 .perfil-foto-lateral:hover {
-  transform: scale(1.08); /* Hace que la foto crezca un 8% al pasar el ratón */
+  transform: scale(var(--foto-hover-scale));
 }
 
 .nombre-cv {
-  font-size: 1.8em; /* Tamaño del nombre */
-  margin-bottom: 5px;
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-xs);
   color: var(--color-text-light);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .titulo-cv {
-  font-size: 1.2em; /* Tamaño del título/rol */
+  font-size: var(--font-size-lg);
   color: var(--color-text-muted);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
-/* Estilos para la navegación principal (ul de NavegacionLateral) */
+/* ================================
+   MENÚ DE NAVEGACIÓN
+   ================================ */
 .menu-principal-nav {
-  width: 100%; /* Asegura que la navegación ocupe todo el ancho disponible */
-  font-size: 1.5em;
-  display: flex; /* Para controlar el espaciado interno */
-  flex-direction: column; /* Apila los elementos del menú */
-  justify-content: center; /* Centra los elementos del menú verticalmente dentro de su propio espacio */
-  margin-top: 0; /* Aseguramos que no haya margen superior fijo */
-  margin-bottom: 0; /* Aseguramos que no haya margen inferior fijo */
+  width: 100%;
+  font-size: var(--font-size-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin: 0;
+  padding: var(--spacing-lg) 0;
 }
 
 .menu-principal-nav h2 {
   color: var(--color-accent);
-  margin-bottom: 25px;
+  margin-bottom: var(--spacing-lg);
   text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 .menu-principal-nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .menu-principal-nav ul li {
-  margin-bottom: 10px; /* Reducimos el espacio entre elementos del menú */
+  margin-bottom: var(--spacing-sm);
+  width: 100%;
 }
 
 .menu-principal-nav ul li a {
   color: var(--color-text-light);
   text-decoration: none;
-  font-size: 1.1em;
-  padding: 8px 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
+  font-weight: var(--font-weight-normal);
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
 }
 
-.menu-principal-nav ul li a:hover {
-  background-color: var(--color-secondary);
+.menu-principal-nav ul li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
+.menu-principal-nav ul li a:hover,
 .menu-principal-nav ul li a:focus {
   background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.menu-principal-nav ul li a:hover::before {
+  left: 100%;
+}
+
+/* ================================
+   INFORMACIÓN DE CONTACTO
+   ================================ */
 .info-contacto-lateral {
-  margin-top: 0; /* Eliminamos el margen superior para que justify-content lo maneje */
-  padding-top: 15px; /* Mantenemos el padding para el espacio sobre la línea */
-  border-top: 1px solid var(--color-border-light); /* Línea divisoria superior */
+  margin-top: 0;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border-light);
   width: 100%;
   text-align: center;
 }
 
 .info-contacto-lateral h3 {
   color: var(--color-accent);
-  margin-bottom: 15px;
-  font-size: 1.3em;
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 .info-contacto-lateral ul {
@@ -126,34 +229,318 @@
 }
 
 .info-contacto-lateral ul li {
-  margin-bottom: 8px; /* Reducimos el espacio entre elementos de contacto */
+  margin-bottom: var(--spacing-xs);
 }
 
 .info-contacto-lateral ul li a {
   color: var(--color-text-muted);
   text-decoration: none;
-  font-size: 1.1em;
-  transition: color 0.3s ease;
+  font-size: var(--font-size-lg);
+  transition: var(--nav-transition-all);
   display: inline-flex;
   align-items: center;
-  gap: 4px; /* Añadimos gap para separar el icono del texto */
+  gap: var(--spacing-xs);
+  font-weight: var(--font-weight-normal);
+}
+
+.info-contacto-lateral ul li a:hover {
+  color: var(--color-text-light);
+  transform: scale(1.05);
 }
 
 .icon-contacto {
-  font-size: 1.2em; /* Tamaño del icono */
+  font-size: var(--font-size-lg);
+  color: var(--color-accent);
+  transition: color var(--transition-fast) var(--transition-timing);
 }
 
-@media (max-width: 1024px) {
+.info-contacto-lateral ul li a:hover .icon-contacto {
+  color: var(--color-text-light);
+}
+
+/* ================================
+   RESPONSIVE - TABLETS GRANDES
+   ================================ */
+@media (max-width: 1200px) {
+  .navegacion-lateral {
+    width: var(--nav-width-tablet-lg);
+    padding: var(--nav-padding-tablet-lg);
+  }
+
+  .perfil-foto-lateral {
+    width: var(--foto-size-tablet-lg);
+    height: var(--foto-size-tablet-lg);
+  }
+
+  .nombre-cv {
+    font-size: var(--font-size-xl);
+    line-height: 1.2;
+  }
+
+  .titulo-cv {
+    font-size: var(--font-size-base);
+    line-height: 1.3;
+  }
+
+  .menu-principal-nav h2 {
+    font-size: var(--font-size-base);
+  }
+
+  .menu-principal-nav ul li a {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .info-contacto-lateral h3 {
+    font-size: var(--font-size-base);
+  }
+
+  .info-contacto-lateral ul li a {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ================================
+   RESPONSIVE - TABLETS MEDIANOS
+   ================================ */
+@media (max-width: 1100px) {
+  .navegacion-lateral {
+    width: var(--nav-width-tablet-md);
+    padding: var(--nav-padding-tablet-md);
+  }
+
+  .perfil-foto-lateral {
+    width: var(--foto-size-tablet-md);
+    height: var(--foto-size-tablet-md);
+  }
+
+  .nombre-cv {
+    font-size: var(--font-size-lg);
+    line-height: 1.2;
+  }
+
+  .titulo-cv {
+    font-size: var(--font-size-sm);
+    line-height: 1.3;
+  }
+
+  .menu-principal-nav ul li a {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs);
+  }
+
+  .info-contacto-lateral ul li a {
+    font-size: var(--font-size-sm);
+  }
+
+  .info-contacto-lateral h3 {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ================================
+   RESPONSIVE - LAYOUT HORIZONTAL (SIN STICKY)
+   ================================ */
+@media (max-width: 1050px) {
   .navegacion-lateral {
     position: static;
     width: 100%;
     height: auto;
-    border-radius: 0;
-    flex-direction: column; /* Lo he cambiado de 'row' a 'column' */
-    flex-wrap: wrap; /* Desactivamos el 'wrap' para que no se divida en varias filas */
-    justify-content: flex-start; /* Alineamos el contenido al inicio */
-    align-items: center; /* Centramos el contenido horizontalmente */
-    padding: 20px;
-    gap: 20px;
+    overflow: visible;
+    border-radius: 12px 12px 0 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--spacing-lg);
+    padding-bottom: var(--spacing-2xl);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .perfil-foto-lateral {
+    width: var(--foto-size-tablet-sm);
+    height: var(--foto-size-tablet-sm);
+  }
+
+  .nombre-cv {
+    font-size: var(--font-size-base);
+    line-height: 1.1;
+  }
+
+  .titulo-cv {
+    font-size: var(--font-size-sm);
+    line-height: 1.2;
+  }
+
+  .perfil-encabezado-lateral {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .menu-principal-nav {
+    border-top: 1px solid var(--color-border-light);
+    border-bottom: 1px solid var(--color-border-light);
+    padding: var(--spacing-lg) 0;
+  }
+
+  .menu-principal-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+
+  .menu-principal-nav ul li {
+    margin-bottom: 0;
+  }
+
+  .menu-principal-nav ul li a {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs);
+  }
+
+  .info-contacto-lateral {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .info-contacto-lateral ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+
+  .info-contacto-lateral ul li {
+    margin-bottom: 0;
+  }
+
+  .info-contacto-lateral ul li a {
+    font-size: var(--font-size-sm);
+  }
+
+  .info-contacto-lateral h3 {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ================================
+   RESPONSIVE - MÓVILES MEDIANOS
+   ================================ */
+@media (max-width: 768px) {
+  .navegacion-lateral {
+    padding: var(--spacing-lg);
+    padding-bottom: var(--spacing-2xl);
+    gap: var(--spacing-lg);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .perfil-foto-lateral {
+    width: var(--foto-size-tablet-sm);
+    height: var(--foto-size-tablet-sm);
+  }
+
+  .nombre-cv {
+    font-size: var(--font-size-xl);
+  }
+
+  .titulo-cv {
+    font-size: var(--font-size-base);
+  }
+
+  .menu-principal-nav h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .menu-principal-nav ul li a {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .info-contacto-lateral h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .info-contacto-lateral ul li a {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ================================
+   RESPONSIVE - MÓVILES PEQUEÑOS
+   ================================ */
+@media (max-width: 480px) {
+  .navegacion-lateral {
+    padding: var(--spacing-md);
+    padding-bottom: var(--spacing-2xl);
+    gap: var(--spacing-md);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .perfil-foto-lateral {
+    width: var(--foto-size-mobile-sm);
+    height: var(--foto-size-mobile-sm);
+  }
+
+  .nombre-cv {
+    font-size: var(--font-size-lg);
+  }
+
+  .titulo-cv {
+    font-size: var(--font-size-base);
+  }
+
+  .menu-principal-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-principal-nav ul li a {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .info-contacto-lateral ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-contacto-lateral ul li a {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ================================
+   MODO OSCURO DEL SISTEMA
+   ================================ */
+@media (prefers-color-scheme: dark) {
+  .navegacion-lateral {
+    background: linear-gradient(145deg, var(--color-secondary), var(--color-primary));
+    box-shadow: var(--nav-dark-shadow);
+  }
+
+  .perfil-foto-lateral {
+    box-shadow: var(--foto-main-shadow);
+  }
+}
+
+/* ================================
+   ACCESIBILIDAD - ANIMACIONES REDUCIDAS
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+  .perfil-foto-lateral,
+  .menu-principal-nav ul li a,
+  .info-contacto-lateral ul li a,
+  .icon-contacto {
+    transition: none;
+  }
+
+  .perfil-foto-lateral:hover,
+  .menu-principal-nav ul li a:hover,
+  .info-contacto-lateral ul li a:hover {
+    transform: none;
   }
 }
