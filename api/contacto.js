@@ -188,7 +188,7 @@ export default async function handler(req, res) {
     // Enviar email con Resend
     const emailData = await resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>', // Email verificado de Resend
-      to: [process.env.CONTACT_EMAIL || 'garciainurriaguillermo@gmail.com'], // Tu email donde recibes los mensajes
+      to: [process.env.CONTACT_EMAIL || 'ggarciainurria@gmail.com'], // Cambiado al email verificado en Resend
       replyTo: sanitizedEmail,
       subject: `💼 Nuevo mensaje de ${sanitizedName}`,
       html: `
