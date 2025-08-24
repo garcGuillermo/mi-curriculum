@@ -251,14 +251,15 @@ IP del remitente: ${clientIP}
     });
 
     console.log('✅ Email enviado exitosamente!');
-    console.log('📧 ID del mensaje:', emailData.data?.id);
-    console.log('📤 Desde:', emailData.data?.from);
+    console.log('� Respuesta completa de Resend:', JSON.stringify(emailData, null, 2));
+    console.log('�📧 ID del mensaje:', emailData.data?.id || emailData.id);
+    console.log('📤 Desde:', emailData.data?.from || emailData.from);
     console.log('📬 Para:', process.env.CONTACT_EMAIL || 'garciainurriaguillermo@gmail.com');
 
     res.status(200).json({ 
       success: true, 
       message: 'Mensaje enviado correctamente.',
-      messageId: emailData.data?.id 
+      messageId: emailData.data?.id || emailData.id || 'no-id'
     });
 
   } catch (error) {
