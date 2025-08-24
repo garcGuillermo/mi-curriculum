@@ -1,6 +1,24 @@
 /**
  * Función serverless para Vercel que maneja el envío de emails del formulario de contacto.
- * Usa Resend como proveedor de email para mayor confiabilidad.
+ * Usa Resend como proveedor de email  // Verificar variable de entorno de Resend
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Variable de       `.trim()
+    });
+
+    console.log('Email enviado exitosamente:', emailData.data?.id || emailData.id);
+
+    res.status(200).json({ 
+      success: true, 
+      message: 'Mensaje enviado correctamente.',
+      messageId: emailData.data?.id || emailData.id 
+    });_API_KEY no configurada');
+    return res.status(500).json({ 
+      error: 'Configuración del servidor incompleta.' 
+    });
+  }
+
+  // Inicializar Resend
+  const resend = new Resend(process.env.RESEND_API_KEY);onfiabilidad.
  *
  * @param {object} req - El objeto de la petición (Request).
  * @param {object} res - El objeto de la respuesta (Response).
@@ -177,14 +195,6 @@ export default async function handler(req, res) {
     const sanitizedEmail = email.toLowerCase().trim();
     const sanitizedMessage = sanitizeInput(message);
 
-    console.log('📝 Datos sanitizados:', {
-      name: sanitizedName,
-      email: sanitizedEmail,
-      messageLength: sanitizedMessage.length
-    });
-
-    console.log('📤 Enviando email con Resend...');
-
     // Enviar email con Resend
     const emailData = await resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>', // Email verificado de Resend
@@ -263,38 +273,31 @@ IP del remitente: ${clientIP}
     });
 
   } catch (error) {
-    console.error('❌ Error procesando la petición:', {
+    console.error('Error procesando la petición:', {
       message: error.message,
-      stack: error.stack,
       timestamp: new Date().toISOString(),
-      clientIP,
-      errorName: error.name,
-      errorCode: error.code
+      clientIP
     });
 
     // Respuestas de error específicas para Resend
     if (error.message?.includes('API key') || error.message?.includes('Unauthorized')) {
-      console.error('🔑 Error de API key de Resend');
       return res.status(500).json({ 
         error: 'Error de configuración del servicio de email.' 
       });
     }
     
     if (error.message?.includes('rate limit') || error.message?.includes('quota')) {
-      console.error('⏰ Rate limit alcanzado');
       return res.status(503).json({ 
         error: 'Servicio temporalmente no disponible. Intenta más tarde.' 
       });
     }
 
-    if (error.message?.includes('validation')) {
-      console.error('📧 Error de validación en Resend');
-      return res.status(400).json({ 
-        error: 'Error en los datos del email.' 
+    if (error.message?.includes('domain') || error.message?.includes('testing emails')) {
+      return res.status(403).json({ 
+        error: 'Error de configuración de dominio del servicio de email.' 
       });
     }
 
-    console.error('🔥 Error desconocido:', error);
     res.status(500).json({ 
       error: 'Error interno del servidor.',
       timestamp: new Date().toISOString()
