@@ -141,6 +141,9 @@ export default async function handler(req, res) {
     });
   }
 
+  console.log('🔑 RESEND_API_KEY configurada:', process.env.RESEND_API_KEY ? 'SÍ' : 'NO');
+  console.log('📧 CONTACT_EMAIL:', process.env.CONTACT_EMAIL || 'garciainurriaguillermo@gmail.com');
+
   // Inicializar Resend
   const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -173,6 +176,14 @@ export default async function handler(req, res) {
     const sanitizedName = sanitizeInput(name);
     const sanitizedEmail = email.toLowerCase().trim();
     const sanitizedMessage = sanitizeInput(message);
+
+    console.log('📝 Datos sanitizados:', {
+      name: sanitizedName,
+      email: sanitizedEmail,
+      messageLength: sanitizedMessage.length
+    });
+
+    console.log('📤 Enviando email con Resend...');
 
     // Enviar email con Resend
     const emailData = await resend.emails.send({
@@ -239,7 +250,10 @@ IP del remitente: ${clientIP}
       `.trim()
     });
 
-    console.log('Email enviado exitosamente:', emailData.data?.id);
+    console.log('✅ Email enviado exitosamente!');
+    console.log('📧 ID del mensaje:', emailData.data?.id);
+    console.log('📤 Desde:', emailData.data?.from);
+    console.log('📬 Para:', process.env.CONTACT_EMAIL || 'garciainurriaguillermo@gmail.com');
 
     res.status(200).json({ 
       success: true, 
@@ -248,26 +262,38 @@ IP del remitente: ${clientIP}
     });
 
   } catch (error) {
-    console.error('Error procesando la petición:', {
+    console.error('❌ Error procesando la petición:', {
       message: error.message,
       stack: error.stack,
       timestamp: new Date().toISOString(),
-      clientIP
+      clientIP,
+      errorName: error.name,
+      errorCode: error.code
     });
 
     // Respuestas de error específicas para Resend
-    if (error.message?.includes('API key')) {
+    if (error.message?.includes('API key') || error.message?.includes('Unauthorized')) {
+      console.error('🔑 Error de API key de Resend');
       return res.status(500).json({ 
         error: 'Error de configuración del servicio de email.' 
       });
     }
     
     if (error.message?.includes('rate limit') || error.message?.includes('quota')) {
+      console.error('⏰ Rate limit alcanzado');
       return res.status(503).json({ 
         error: 'Servicio temporalmente no disponible. Intenta más tarde.' 
       });
     }
 
+    if (error.message?.includes('validation')) {
+      console.error('📧 Error de validación en Resend');
+      return res.status(400).json({ 
+        error: 'Error en los datos del email.' 
+      });
+    }
+
+    console.error('🔥 Error desconocido:', error);
     res.status(500).json({ 
       error: 'Error interno del servidor.',
       timestamp: new Date().toISOString()
