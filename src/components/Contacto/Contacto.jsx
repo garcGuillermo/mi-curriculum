@@ -42,6 +42,8 @@ function Contacto() {
     // En producción en Vercel, la ruta es solo '/api/contacto'.
     const apiEndpoint = '/api/contacto'; 
     
+    console.log('Enviando formulario a:', apiEndpoint); // Para debug
+    
     try {
       // Envía los datos del formulario a la API usando fetch
       const response = await fetch(apiEndpoint, {
@@ -57,7 +59,9 @@ function Contacto() {
         }),
       });
 
+      console.log('Respuesta del servidor:', response.status, response.statusText); // Para debug
       const data = await response.json();
+      console.log('Datos de respuesta:', data); // Para debug
 
       if (response.ok) {
         setStatus('Mensaje enviado. ¡Gracias por contactar!');
@@ -69,11 +73,20 @@ function Contacto() {
         });
       } else {
         // Muestra el mensaje de error que devuelve la API
-        setStatus(`Error: ${data.error}`);
+        console.error('Error del servidor:', data);
+        setStatus(`Error: ${data.error || 'Error desconocido del servidor'}`);
       }
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
-      setStatus('Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.');
+      
+      // Verificar si es un error de red o de parsing
+      if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        setStatus('Error de conexión. Verifica tu conexión a internet.');
+      } else if (error.name === 'SyntaxError') {
+        setStatus('Error del servidor. El servicio no está disponible.');
+      } else {
+        setStatus('Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.');
+      }
     }
   };
 
