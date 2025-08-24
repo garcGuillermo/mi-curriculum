@@ -7,8 +7,8 @@
   --bienvenida-max-height: 2000px;
   
   /* Tecnologías */
-  --tecnologia-gap: var(--spacing-xl);
-  --tecnologia-gap-mobile: var(--spacing-md);
+  --tecnologia-gap: 8px;
+  --tecnologia-gap-mobile: 4px;
   --tecnologia-icon-size: var(--font-size-2xl);
   --tecnologia-icon-size-mobile: var(--font-size-xl);
 }
@@ -84,11 +84,15 @@
 
 /* Lista de tecnologías */
 .tecnologias-lista {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
   gap: var(--tecnologia-gap);
   margin-top: var(--spacing-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tecnologia-item {
@@ -160,7 +164,10 @@
   }
 
   .tecnologias-lista {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: var(--tecnologia-gap-mobile);
+    max-width: 100%;
   }
 
   .tecnologia-item {
@@ -199,7 +206,10 @@
   }
 
   .tecnologias-lista {
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 6px;
+    max-width: 600px;
   }
 
   .tecnologia-icono {

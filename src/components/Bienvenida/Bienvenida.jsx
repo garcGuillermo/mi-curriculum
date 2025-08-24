@@ -1,7 +1,7 @@
 import React from 'react';
 import './Bienvenida.css'; // Asegúrate de tener un archivo CSS para estilos
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
-import { SiVite } from 'react-icons/si';
+import { SiVite, SiGooglegemini, SiAnthropic, SiVercel } from 'react-icons/si';
 
 // Definimos las tecnologías como un array de objetos para mapear fácilmente
 const tecnologias = [
@@ -9,10 +9,12 @@ const tecnologias = [
   { nombre: 'CSS3', icono: <FaCss3Alt className="tecnologia-icono" /> },
   { nombre: 'Javascript', icono: <FaJs className="tecnologia-icono" /> },
   { nombre: 'React', icono: <FaReact className="tecnologia-icono" /> },
-  { nombre: 'React Router', icono: <FaReact className="tecnologia-icono" /> }, // Usamos el mismo icono de React
+  { nombre: 'Vercel', icono: <SiVercel className="tecnologia-icono" /> },
   { nombre: 'Node.js', icono: <FaNodeJs className="tecnologia-icono" /> },
   { nombre: 'Vite', icono: <SiVite className="tecnologia-icono" /> },
-  { nombre: 'Git', icono: <FaGitAlt className="tecnologia-icono" /> }
+  { nombre: 'Git', icono: <FaGitAlt className="tecnologia-icono" /> },
+  { nombre: 'Claude Sonnet 4', icono: <SiAnthropic className="tecnologia-icono" /> },
+  { nombre: 'Gemini', icono: <SiGooglegemini className="tecnologia-icono" /> }
 ];
 
 function Bienvenida({ onToggle, estaVisible }) { // Recibe las props onToggle y estaVisible
@@ -28,22 +30,19 @@ function Bienvenida({ onToggle, estaVisible }) { // Recibe las props onToggle y 
         <p>
           Me alegra que estés aquí. He creado esta plataforma interactiva donde podrás explorar
           mi perfil profesional, experiencia, formación y habilidades y conocerme un poco más.
-          Al final del menú de navegación incluyo los enlaces al proyecto en GitHub y a mi perfil de LinkedIn.
-          En el apartado proyectos podrás conocer cómo he ido creando esta web y qué tecnologías he utilizado.
         </p>
         <h2>Pequeño tutorial de navegación:</h2>
         <p>
-          Utiliza el menú de navegación lateral para moverte entre las diferentes secciones, como un CV tradicional,
-          y conocer más sobre mi trayectoria como desarrollador frontend y técnico de sistemas.
-          Si haces clic en la foto te llevará al inicio.
-          Para ocultar este mensaje, haz clic en la flecha que aparece en la esquina inferior derecha.
+          Utiliza el menú de navegación lateral para moverte entre las diferentes secciones;
+          este desplegable se ocultará automáticamente. En la sección <i>Sobre Mi</i> te cuento un poco más
+          sobre el proyecto.
         </p>
         <p>
           ¡Espero que disfrutes la visita!
         </p>
         
         {/* Nuevo apartado para los iconos de las tecnologías */}
-        <h2>Tecnologías utilizadas:</h2>
+        <h2>Principales tecnologías utilizadas:</h2>
         <div className="tecnologias-lista">
           {tecnologias.map((tech, index) => (
             <div key={index} className="tecnologia-item">

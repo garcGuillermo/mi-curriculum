@@ -160,23 +160,36 @@ body {
   text-align: left;
 }
 
-/* Texto resaltado con fondo de color */
+/* Texto resaltado con efecto verde limpio */
 .resaltado {
-  background-color: var(--color-tag);
-  color: var(--color-text);
-  padding: var(--resaltado-padding);
-  border-radius: var(--resaltado-border-radius);
-  font-weight: var(--font-weight-semibold);
-  display: inline-block;
+  background: none;
+  color: var(--color-accent);
+  padding: 0;
+  border-radius: 0;
+  font-weight: var(--font-weight-bold);
+  display: inline;
   transition: var(--app-transition-resaltado);
   vertical-align: baseline;
-  line-height: 1;
+  line-height: inherit;
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-width: 100%;
   white-space: normal;
   word-break: break-word;
   hyphens: auto;
+  position: relative;
+}
+
+.resaltado::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+  border-radius: 1px;
+  opacity: 0.6;
 }
 
 /* En pantallas muy grandes, permitir texto sin wrap */
@@ -268,8 +281,7 @@ body {
   }
 
   .resaltado {
-    padding: var(--resaltado-padding-mobile);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
   }
 }
 

@@ -24,6 +24,35 @@
   margin-top: var(--grid-margin-top);
 }
 
+/* Contenedor para vista de detalle de proyecto */
+.contenedor-proyecto-detalle {
+  width: 100%;
+}
+
+/* Botón de volver centralizado */
+.boton-volver {
+  background: var(--color-tag);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--transition-timing);
+  margin-bottom: var(--spacing-xl);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+}
+
+.boton-volver:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateX(-2px);
+}
+
 /* Tarjeta individual de proyecto */
 .project-card {
   background-color: var(--color-bg-card);

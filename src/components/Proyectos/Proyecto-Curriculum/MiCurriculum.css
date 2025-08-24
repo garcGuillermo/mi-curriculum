@@ -1,0 +1,218 @@
+/* ================================
+   MI CURRICULUM - PROYECTO DETALLADO
+   ================================ */
+
+.pagina-detalles-proyecto {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-proyecto {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-background), var(--color-white));
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.titulo-principal-proyecto {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.descripcion-principal-proyecto {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.resumen-proyecto {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.seccion-resumen {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--color-background);
+  border-radius: 12px;
+  border-left: 4px solid var(--color-accent);
+}
+
+.seccion-resumen h2 {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.lista-objetivos, .lista-arquitectura {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-objetivos li, .lista-arquitectura li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--color-white);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primary);
+}
+
+.stack-tecnologico {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.categoria-tecnologia {
+  background: var(--color-white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+}
+
+.categoria-tecnologia h4 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.tecnologias-proyecto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.etiqueta-tecnologia {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.etiqueta-tecnologia.frontend {
+  background: #61dafb;
+  color: #000;
+}
+
+.etiqueta-tecnologia.backend {
+  background: #68d391;
+  color: #000;
+}
+
+.etiqueta-tecnologia.herramientas {
+  background: #ffa726;
+  color: #000;
+}
+
+.etiqueta-tecnologia.deploy {
+  background: #9f7aea;
+  color: var(--color-text-light);
+}
+
+.grid-caracteristicas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.tarjeta-caracteristica {
+  background: var(--color-white);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-caracteristica:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-caracteristica h4 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.tarjeta-caracteristica p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cta-explorador {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 3rem 2rem;
+  background: var(--color-tag);
+  border-radius: 15px;
+  color: var(--color-text);
+  border: 2px solid var(--color-accent);
+}
+
+.cta-explorador h2 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.cta-explorador p {
+  color: var(--color-text);
+  opacity: 0.8;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.boton-explorar-codigo {
+  background: var(--color-tag);
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.boton-explorar-codigo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.pie-proyecto {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.enlace-github {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-tag);
+  color: var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  border: 2px solid var(--color-primary);
+}
+
+.enlace-github:hover {
+  background: var(--color-primary);
+  color: var(--color-tag);
+}

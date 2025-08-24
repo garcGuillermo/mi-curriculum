@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import './NavegacionLateral.css'; // Asegúrate de tener un archivo CSS para estilos
 
-function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
+const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
   const seccionesCV = [
     { id: 'sobre-mi', nombre: 'Sobre Mí', path: '/sobre-mi' },
     { id: 'estudios', nombre: 'Estudios', path: '/estudios' },
@@ -16,7 +16,7 @@ function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
   const location = useLocation();
 
   return (
-    <div className="navegacion-lateral">
+    <div className="navegacion-lateral" ref={ref}>
       <div className="perfil-encabezado-lateral">
         <Link to="/" onClick={mostrarBienvenidaAlInicio}>
           <img
@@ -54,7 +54,7 @@ function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
           </li>
           <li title='Teléfono'>
             <a href="tel:+34645192414" target="_blank" rel="noopener noreferrer">
-              <MdPhone className="icon-contacto" /> +34645192414
+              <MdPhone className="icon-contacto" /> +34 645 192 414
             </a>
           </li>
           <li title='GitHub'>
@@ -69,8 +69,12 @@ function NavegacionLateral({ mostrarBienvenidaAlInicio }) {
           </li>
         </ul>
       </div>
+
+      <div className="copyright-lateral">
+        <p>&copy; {new Date().getFullYear()} Guillermo García Inurria</p>
+      </div>
     </div>
   );
-}
+});
 
 export default NavegacionLateral;

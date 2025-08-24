@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import './Proyectos.css';
-import MiCurriculum, { miCurriculumBrief } from './MiCurriculum';
+import MiCurriculum, { miCurriculumBrief } from './Proyecto-Curriculum/MiCurriculum';
 
-const ProjectCard = ({ project, onSelectProject }) => {
+const ProjectCard = ({ proyecto, alSeleccionarProyecto }) => {
   return (
-    <div className="project-card" onClick={() => onSelectProject(project)}>
+    <div className="project-card" onClick={() => alSeleccionarProyecto(proyecto)}>
       <div className="project-header">
-        <h3 className="project-title">{project.title}</h3>
+        <h3 className="project-title">{proyecto.titulo}</h3>
       </div>
       <div className="project-body">
-        <p className="project-description">{project.description}</p>
+        <p className="project-description">{proyecto.descripcion}</p>
       </div>
     </div>
   );
@@ -17,21 +17,28 @@ const ProjectCard = ({ project, onSelectProject }) => {
 
 // Componente principal de la sección de proyectos
 function Proyectos() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
 
   // Array de objetos con los datos de tus proyectos.
   // Usamos el objeto importado en lugar de tener la información repetida.
-  const myProjects = [
+  const misProyectos = [
     miCurriculumBrief,
     // Si quieres añadir más proyectos, puedes hacerlo aquí
   ];
 
-  if (selectedProject) {
-    if (selectedProject.title === 'Mi Portfolio Personal') {
-      return <MiCurriculum project={selectedProject} onBack={() => setSelectedProject(null)} />;
-    } else {
-      return <ProjectDetails project={selectedProject} onBack={() => setSelectedProject(null)} />;
-    }
+  if (proyectoSeleccionado) {
+    return (
+      <div className="contenedor-proyecto-detalle">
+        <button onClick={() => setProyectoSeleccionado(null)} className="boton-volver">
+          &larr; Volver a Proyectos
+        </button>
+        {proyectoSeleccionado.titulo === 'Curriculum Vitae Online' ? (
+          <MiCurriculum proyecto={proyectoSeleccionado} alVolver={() => setProyectoSeleccionado(null)} />
+        ) : (
+          <ProjectDetails proyecto={proyectoSeleccionado} alVolver={() => setProyectoSeleccionado(null)} />
+        )}
+      </div>
+    );
   }
 
   return (
@@ -39,8 +46,8 @@ function Proyectos() {
       <h1>Mis Proyectos</h1>
       <p>Aquí se mostrarán los proyectos en los que he trabajado.</p>
       <div className="proyectos-grid">
-        {myProjects.map((project, index) => (
-          <ProjectCard key={index} project={project} onSelectProject={setSelectedProject} />
+        {misProyectos.map((proyecto, index) => (
+          <ProjectCard key={index} proyecto={proyecto} alSeleccionarProyecto={setProyectoSeleccionado} />
         ))}
       </div>
     </section>

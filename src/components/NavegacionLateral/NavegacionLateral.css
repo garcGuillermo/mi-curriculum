@@ -46,8 +46,8 @@
   width: var(--nav-width-base);
   height: calc(100vh - calc(var(--nav-position-top) * 2));
   background: linear-gradient(145deg, var(--color-primary), var(--color-secondary));
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-sm);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
   color: var(--color-text-light);
   padding: var(--nav-padding-base);
   display: flex;
@@ -114,6 +114,8 @@
   margin-bottom: var(--spacing-xs);
   color: var(--color-text-light);
   font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
   line-height: 1.2;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -235,7 +237,7 @@
 .info-contacto-lateral ul li a {
   color: var(--color-text-muted);
   text-decoration: none;
-  font-size: var(--font-size-lg);
+  font-size: 0.95rem;
   transition: var(--nav-transition-all);
   display: inline-flex;
   align-items: center;
@@ -543,4 +545,23 @@
   .info-contacto-lateral ul li a:hover {
     transform: none;
   }
+}
+
+/* ================================
+   COPYRIGHT
+   ================================ */
+.copyright-lateral {
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border-light);
+  text-align: center;
+  opacity: 0.7;
+}
+
+.copyright-lateral p {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  padding: var(--spacing-xs) 0;
+  font-weight: var(--font-weight-normal);
 }

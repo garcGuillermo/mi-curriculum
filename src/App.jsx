@@ -22,19 +22,19 @@ function App() {
   const prevPathname = useRef(location.pathname);
   // REFERENCIA AL CONTENEDOR PRINCIPAL PARA HACER SCROLL
   const contenidoPrincipalRef = useRef(null);
+  // REFERENCIA A LA NAVEGACIÓN LATERAL PARA HACER SCROLL
+  const navegacionLateralRef = useRef(null);
 
-  // Efecto para ocultar la bienvenida automáticamente al primer clic de navegación
+  // Efecto para ocultar la bienvenida automáticamente al navegar a cualquier sección
   useEffect(() => {
-    // Solo se ejecuta si la bienvenida no ha sido manipulada manualmente
-    // Y si la navegación es DESDE la ruta raíz ('/') HACIA otra ruta diferente
-    if (!bienvenidaManipuladaManualmente && prevPathname.current === '/' && location.pathname !== '/') {
+    // Siempre oculta la bienvenida cuando navegamos a una ruta diferente de '/'
+    if (location.pathname !== '/') {
       setMostrarBienvenida(false); // Oculta la bienvenida
-      setBienvenidaManipuladaManualmente(true); // Marca que ya se ha auto-ocultado para no hacerlo de nuevo
     }
 
     // Actualizamos la ruta anterior para la próxima renderización
     prevPathname.current = location.pathname;
-  }, [location.pathname, bienvenidaManipuladaManualmente]); // Depende de la ruta y el estado de manipulación
+  }, [location.pathname]); // Solo depende de la ruta
 
   // Función para alternar la visibilidad de la bienvenida (usada por el botón de flecha)
   const toggleBienvenida = () => {
@@ -47,10 +47,9 @@ function App() {
     setMostrarBienvenida(true); // Asegura que la bienvenida esté visible
     setBienvenidaManipuladaManualmente(false); // Reinicia el estado para que se pueda auto-ocultar de nuevo
     
-    // Esta es la nueva línea que hace que la página se desplace hacia arriba
-    // CORREGIDO: ahora hace scroll sobre el div .contenido-principal
-    if (contenidoPrincipalRef.current) {
-      contenidoPrincipalRef.current.scrollTo({
+    // Hace scroll hacia arriba en la navegación lateral
+    if (navegacionLateralRef.current) {
+      navegacionLateralRef.current.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
@@ -59,7 +58,10 @@ function App() {
 
   return (
     <div className="contenedor-app">
-      <NavegacionLateral mostrarBienvenidaAlInicio={mostrarBienvenidaAlInicio} />
+      <NavegacionLateral 
+        mostrarBienvenidaAlInicio={mostrarBienvenidaAlInicio} 
+        ref={navegacionLateralRef}
+      />
 
       {/* Se ha añadido la referencia al div para poder manipular su scroll */}
       <div ref={contenidoPrincipalRef} className="contenido-principal">
