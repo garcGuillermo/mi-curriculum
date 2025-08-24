@@ -109,8 +109,8 @@ module.exports = async (req, res) => {
   const allowedOrigins = [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://curriculumvitaeguillermo.vercel.app/',
-    'garciainurriaguillermo.es'
+    'https://curriculumvitaeguillermo.vercel.app',
+    'https://garciainurriaguillermo.es'
   ];
   
   const origin = req.headers.origin;
