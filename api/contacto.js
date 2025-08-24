@@ -5,7 +5,7 @@
  * @param {object} req - El objeto de la petición (Request).
  * @param {object} res - El objeto de la respuesta (Response).
  */
-const { Resend } = require('resend');
+import { Resend } from 'resend';
 
 // Configuración de límites
 const MAX_LENGTH = {
@@ -104,7 +104,7 @@ function sanitizeInput(input) {
     .trim();
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   // Configurar CORS con más seguridad
   const allowedOrigins = [
     'http://localhost:3000',
@@ -273,4 +273,4 @@ IP del remitente: ${clientIP}
       timestamp: new Date().toISOString()
     });
   }
-};
+}
