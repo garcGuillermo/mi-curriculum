@@ -1,11 +1,11 @@
 /**
  * Función serverless para Vercel que maneja el envío de emails del formulario de contacto.
- * Incluye validaciones, limitación de tamaño y medidas de seguridad.
+ * Usa Resend como proveedor de email para mayor confiabilidad.
  *
  * @param {object} req - El objeto de la petición (Request).
  * @param {object} res - El objeto de la respuesta (Response).
  */
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
 // Configuración de límites
 const MAX_LENGTH = {
@@ -133,13 +133,16 @@ module.exports = async (req, res) => {
     });
   }
 
-  // Verificar variables de entorno
-  if (!process.env.USER_EMAIL || !process.env.USER_PASSWORD) {
-    console.error('Variables de entorno USER_EMAIL y USER_PASSWORD no configuradas');
+  // Verificar variable de entorno de Resend
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Variable de entorno RESEND_API_KEY no configurada');
     return res.status(500).json({ 
       error: 'Configuración del servidor incompleta.' 
     });
   }
+
+  // Inicializar Resend
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   // Rate limiting
   const clientIP = req.headers['x-forwarded-for']?.split(',')[0] || 
@@ -171,35 +174,11 @@ module.exports = async (req, res) => {
     const sanitizedEmail = email.toLowerCase().trim();
     const sanitizedMessage = sanitizeInput(message);
 
-    // Configuración de Nodemailer con timeout y pool
-    const transporter = nodemailer.createTransporter({
-      service: 'gmail',
-      auth: {
-        user: process.env.USER_EMAIL,
-        pass: process.env.USER_PASSWORD,
-      },
-      pool: true, // Usar pool de conexiones
-      maxConnections: 1,
-      maxMessages: 3,
-      rateDelta: 20000, // 20 segundos entre envíos
-      rateLimit: 3, // máximo 3 emails por rateDelta
-      tls: {
-        rejectUnauthorized: true,
-        minVersion: 'TLSv1.2'
-      },
-      timeout: 10000, // 10 segundos timeout
-      connectionTimeout: 10000,
-      greetingTimeout: 5000,
-      socketTimeout: 10000
-    });
-
-    // Verificar conexión antes de enviar
-    await transporter.verify();
-
-    const mailOptions = {
-      from: `"Portfolio Contact" <${process.env.USER_EMAIL}>`,
-      to: process.env.USER_EMAIL,
-      replyTo: `"${sanitizedName}" <${sanitizedEmail}>`,
+    // Enviar email con Resend
+    const emailData = await resend.emails.send({
+      from: 'Portfolio <onboarding@resend.dev>', // Email verificado de Resend
+      to: [process.env.CONTACT_EMAIL || 'garciainurriaguillermo@gmail.com'], // Tu email donde recibes los mensajes
+      replyTo: sanitizedEmail,
       subject: `💼 Nuevo mensaje de ${sanitizedName}`,
       html: `
         <!DOCTYPE html>
@@ -257,31 +236,15 @@ ${sanitizedMessage}
 
 ---
 IP del remitente: ${clientIP}
-      `.trim(),
-      priority: 'normal',
-      headers: {
-        'X-Portfolio-Contact': 'true',
-        'X-Client-IP': clientIP
-      }
-    };
+      `.trim()
+    });
 
-    // Enviar email con timeout
-    const info = await Promise.race([
-      transporter.sendMail(mailOptions),
-      new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('Email timeout')), 15000)
-      )
-    ]);
-
-    console.log('Email enviado exitosamente:', info.messageId);
-
-    // Cerrar transporter
-    transporter.close();
+    console.log('Email enviado exitosamente:', emailData.data?.id);
 
     res.status(200).json({ 
       success: true, 
       message: 'Mensaje enviado correctamente.',
-      messageId: info.messageId 
+      messageId: emailData.data?.id 
     });
 
   } catch (error) {
@@ -292,14 +255,14 @@ IP del remitente: ${clientIP}
       clientIP
     });
 
-    // Respuestas de error más específicas
-    if (error.code === 'EAUTH') {
+    // Respuestas de error específicas para Resend
+    if (error.message?.includes('API key')) {
       return res.status(500).json({ 
-        error: 'Error de autenticación del servidor de email.' 
+        error: 'Error de configuración del servicio de email.' 
       });
     }
     
-    if (error.code === 'ECONNECTION' || error.message === 'Email timeout') {
+    if (error.message?.includes('rate limit') || error.message?.includes('quota')) {
       return res.status(503).json({ 
         error: 'Servicio temporalmente no disponible. Intenta más tarde.' 
       });
