@@ -4,7 +4,6 @@
 [![React](https://img.shields.io/badge/React-19.1.0-61dafb?logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.0.4-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
 
-![Demo del CV](./public/vite.svg)
 
 ## ✨ Descripción del Proyecto
 
