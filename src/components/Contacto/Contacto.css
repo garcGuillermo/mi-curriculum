@@ -1,4 +1,4 @@
-/* Variables personalizadas para la sección de contacto */
+/* Variables específicas para la sección de contacto */
 :root {
   /* Espaciado y dimensiones */
   --contacto-gap: var(--spacing-xl);
@@ -8,7 +8,7 @@
   --textarea-min-height: 120px;
   --contact-item-height: 80px;
   
-  /* Sombras específicas */
+  /* Efectos visuales */
   --form-shadow: 0 0 0 2px var(--color-hover);
   --item-hover-shadow: 0 4px 8px var(--shadow-color);
 }
@@ -18,22 +18,39 @@
   display: flex;
   flex-direction: column;
   gap: var(--contacto-gap);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .seccion-contacto > *:not(h1) {
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Estilos para el formulario de contacto */
+/* Contenedor del formulario de contacto */
 .formulario-contacto {
   display: flex;
   flex-direction: column;
   gap: var(--form-gap);
   width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* Fieldset y legend */
+/* Párrafo descriptivo del formulario */
+.formulario-contacto > p {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: var(--line-height-base);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Fieldset y leyenda del formulario */
 .formulario-contacto fieldset {
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md);
@@ -50,7 +67,7 @@
   margin-left: calc(var(--spacing-sm) * -1);
 }
 
-/* Campos del formulario */
+/* Campos individuales del formulario */
 .campo-formulario {
   display: flex;
   flex-direction: column;
@@ -69,10 +86,12 @@
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-md);
   font-family: var(--font-primary);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   color: var(--color-text);
   background-color: var(--color-white);
   transition: all var(--transition-fast) var(--transition-timing);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .campo-formulario input:focus,
@@ -87,7 +106,7 @@
   min-height: var(--textarea-min-height);
 }
 
-/* Estilos para botones y controles del formulario */
+/* Botón de envío y controles */
 .boton-enviar {
   align-self: flex-start;
   padding: var(--input-padding) var(--spacing-lg);
@@ -127,7 +146,7 @@
   color: var(--color-primary);
 }
 
-/* Estilos para la información de contacto */
+/* Información de contacto y redes sociales */
 .info-contacto {
   display: grid;
   grid-template-columns: 1fr;
@@ -175,7 +194,7 @@
   overflow-wrap: break-word;
 }
 
-/* Tablets y dispositivos medianos */
+/* Responsive - Tablets y dispositivos medianos */
 @media (max-width: 1024px) {
   .seccion-contacto {
     max-width: 100%;
@@ -191,10 +210,29 @@
   }
 }
 
-/* Móviles medianos */
+/* Responsive - Móviles medianos */
 @media (max-width: 768px) {
+  .seccion-contacto {
+    padding: 0 var(--spacing-sm);
+    gap: var(--spacing-lg);
+  }
+
+  .seccion-contacto > *:not(h1) {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .formulario-contacto {
+    padding: 0;
+    width: 100%;
+  }
+
   .formulario-contacto fieldset {
     padding: var(--spacing-md);
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .campo-formulario {
@@ -216,10 +254,20 @@
   }
 }
 
-/* Móviles pequeños */
+/* Responsive - Móviles pequeños */
 @media (max-width: 480px) {
+  .seccion-contacto {
+    padding: 0 var(--spacing-xs);
+    gap: var(--spacing-md);
+  }
+
+  .formulario-contacto fieldset {
+    padding: var(--spacing-sm);
+  }
+
   .formulario-contacto legend {
     font-size: var(--font-size-base);
+    padding: 0 var(--spacing-xs);
   }
 
   .info-contacto {
@@ -239,7 +287,7 @@
   }
 }
 
-/* Preferencias de movimiento reducido */
+/* Accesibilidad - Animaciones reducidas */
 @media (prefers-reduced-motion: reduce) {
   .info-contacto-item,
   .boton-enviar,
@@ -257,7 +305,7 @@
   }
 }
 
-/* Modo oscuro del sistema */
+/* Tema - Adaptación a modo oscuro del sistema */
 @media (prefers-color-scheme: dark) {
   .formulario-contacto fieldset {
     border-color: var(--color-border-light);

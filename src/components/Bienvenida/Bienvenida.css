@@ -20,43 +20,47 @@
   border-bottom: 1px solid var(--color-border);
   margin: 0 auto var(--spacing-3xl) auto;
   overflow: hidden;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.4s ease-in-out;
   background-color: var(--color-white);
   border-radius: var(--bienvenida-border-radius);
   box-shadow: 0 8px 16px var(--shadow-color);
   text-align: center;
   max-height: var(--bienvenida-max-height);
-  will-change: transform, max-height;
 }
 
-/* Estado replegado (oculta) */
+/* Estado replegado - contenido oculto */
 .bienvenida-interactiva.bienvenida-replegada {
   max-height: 60px;
-  padding: var(--spacing-sm) 0;
-  margin: 0;
+  padding: var(--spacing-sm) var(--bienvenida-padding-x) var(--spacing-sm);
+  margin: 0 auto 0 auto;
   border-bottom: none;
   background-color: transparent;
   box-shadow: none;
   overflow: hidden;
-  transition: all var(--transition-slow) var(--transition-timing);
+  transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease-in-out;
 }
 
 /* Contenido principal de bienvenida */
 .bienvenida-contenido {
   opacity: 1;
-  transition: opacity var(--transition-slow) ease-in-out;
+  transition: opacity 0.4s ease-in-out;
   padding: 0;
   margin: 0;
+  transform: translateZ(0); /* Fuerza aceleración por hardware */
 }
 
-.bienvenida-replegada .bienvenida-contenido {
+/* Contenido oculto cuando está replegada */
+.bienvenida-interactiva.bienvenida-replegada .bienvenida-contenido {
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.2s ease-out;
 }
 
 /* Título principal */
 .bienvenida-interactiva h1 {
-  font-size: var(--font-size-2xl); /* Tamaño estándar sin multiplicar */
+  font-size: var(--font-size-2xl);
   font-family: var(--font-primary);
   color: var(--color-primary);
   margin-top: 0;
@@ -71,9 +75,9 @@
   text-align: center !important;
 }
 
-/* Párrafos de texto */
+/* Párrafos descriptivos */
 .bienvenida-interactiva p {
-  font-size: var(--font-size-base); /* Reducido de lg a base */
+  font-size: var(--font-size-base);
   line-height: 1.8;
   margin-bottom: var(--spacing-lg);
   color: var(--color-text);
@@ -82,7 +86,7 @@
   margin-right: auto;
 }
 
-/* Lista de tecnologías */
+/* Listado de tecnologías */
 .tecnologias-lista {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -95,6 +99,7 @@
   margin-right: auto;
 }
 
+/* Elementos individuales de tecnología */
 .tecnologia-item {
   display: flex;
   flex-direction: column;
@@ -143,17 +148,34 @@
   transform: translateY(-2px);
 }
 
-/* Móviles */
+/* Optimizaciones para móviles */
 @media (max-width: 768px) {
   .bienvenida-interactiva {
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
     max-width: calc(100% - (var(--spacing-md) * 2));
     box-sizing: border-box;
+    /* Optimización de animaciones para móvil */
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .bienvenida-interactiva.bienvenida-replegada {
+    /* Transición más rápida para móviles */
+    transition: max-height 0.3s ease-in, opacity 0.2s ease-out;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .bienvenida-contenido {
+    /* Mejora de rendimiento para móviles */
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
   }
 
   .bienvenida-interactiva h1 {
-    font-size: var(--font-size-xl); /* Tamaño estándar sin multiplicar */
+    font-size: var(--font-size-xl);
     padding-bottom: var(--spacing-sm);
     border-bottom-width: 2px;
   }
@@ -195,14 +217,14 @@
   }
 }
 
-/* Tablets */
+/* Tablets y pantallas medianas */
 @media (min-width: 769px) and (max-width: 1024px) {
   .bienvenida-interactiva {
     padding: var(--spacing-lg) var(--spacing-xl);
   }
 
   .bienvenida-interactiva h1 {
-    font-size: var(--font-size-xl); /* Consistente con otros componentes */
+    font-size: var(--font-size-xl);
   }
 
   .tecnologias-lista {
@@ -217,14 +239,14 @@
   }
 }
 
-/* Pantallas de alta densidad */
+/* Optimizaciones para pantallas de alta densidad */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .toggle-bienvenida-btn {
     box-shadow: 0 2px 4px var(--shadow-color);
   }
 }
 
-/* Reducir animaciones para usuarios que lo prefieren */
+/* Accesibilidad - Reducir animaciones para usuarios que lo prefieren */
 @media (prefers-reduced-motion: reduce) {
   .bienvenida-interactiva,
   .bienvenida-contenido,

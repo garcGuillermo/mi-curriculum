@@ -1,8 +1,7 @@
 import React from 'react';
-// Importamos el nuevo archivo CSS para la sección de experiencia
 import './Experiencia.css';
 
-// Datos de la experiencia laboral extraídos de tu CV
+// Array de experiencia laboral y profesional
 const experienciaLaboral = [
   {
     empresa: "FoundEver",
@@ -42,28 +41,24 @@ const experienciaLaboral = [
   },
 ];
 
-// Componente para la sección "Experiencia Profesional"
 const Experiencia = () => {
   return (
     <section id="experiencia" className="seccion-cv">
-      {/* El título de la sección se renderiza como h1 para mantener la consistencia */}
       <h1>Experiencia Profesional</h1>
 
-      {/* Contenedor principal para la línea de tiempo */}
+      {/* Lista con línea de tiempo */}
       <div className="experiencia-lista">
         {experienciaLaboral.map((job, index) => (
-          // Cada experiencia laboral es un item de la línea de tiempo
           <div key={index} className="experiencia-item">
-            {/* Encabezado con cargo y fecha */}
+            {/* Cargo y período */}
             <div className="experiencia-encabezado">
               <h3 className="experiencia-rol">{job.cargo}</h3>
               <span className="experiencia-fecha">{job.periodo}</span>
             </div>
-            {/* Nombre de la empresa */}
+            {/* Empresa */}
             <h4 className="experiencia-empresa">{job.empresa}</h4>
-            {/* Lista de responsabilidades */}
-            <ul className="experiencia-responsabilidades">
-              {job.descripcion.map((item, descIndex) => (
+            {/* Responsabilidades principales */}
+            <ul className="experiencia-responsabilidades">{job.descripcion.map((item, descIndex) => (
                 <li key={descIndex}>
                   {item}
                 </li>

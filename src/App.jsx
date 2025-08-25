@@ -45,7 +45,7 @@ function App() {
   // Nueva función para mostrar la bienvenida y reiniciar su estado al hacer clic en la foto
   const mostrarBienvenidaAlInicio = () => {
     setMostrarBienvenida(true); // Asegura que la bienvenida esté visible
-    setBienvenidaManipuladaManualmente(false); // Reinicia el estado para que se pueda auto-ocultar de nuevo
+    setBienvenidaManipuladaManualmente(false);
     
     // Hace scroll hacia arriba en la navegación lateral
     if (navegacionLateralRef.current) {
@@ -73,20 +73,11 @@ function App() {
         <Routes key={location.pathname}>
           {/* Ruta principal: cuando la URL es "/", muestra el componente SobreMi */}
           <Route path="/" element={<SobreMi />} />
-          
-          {/* Ruta explícita para "Sobre Mí": cuando la URL es "/sobre-mi", también muestra SobreMi */}
           <Route path="/sobre-mi" element={<SobreMi />} />
-          
-          {/* INICIO CODIGO NUEVO */}
-          {/* Añade aquí las rutas para tus otras secciones */}
           <Route path="/experiencia" element={<Experiencia />} />
           <Route path="/estudios" element={<Estudios />} />
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/contacto" element={<Contacto />} />
-          {/* FIN CODIGO NUEVO */}
-          
-          {/* Opcional: Una ruta comodín para manejar URLs no encontradas (error 404) */}
-          {/* <Route path="*" element={<div><h1>404: Página no encontrada</h1><p>La sección que buscas no existe.</p></div>} /> */}
         </Routes>
       </div>
     </div>

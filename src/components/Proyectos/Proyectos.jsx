@@ -23,7 +23,7 @@ function Proyectos() {
   // Usamos el objeto importado en lugar de tener la información repetida.
   const misProyectos = [
     miCurriculumBrief,
-    // Si quieres añadir más proyectos, puedes hacerlo aquí
+    // Aquí se añaden más proyectos en el futuro
   ];
 
   if (proyectoSeleccionado) {

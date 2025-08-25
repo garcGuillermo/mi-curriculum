@@ -1,9 +1,9 @@
 import React from 'react';
-import './Bienvenida.css'; // Asegúrate de tener un archivo CSS para estilos
+import './Bienvenida.css';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
 import { SiVite, SiGooglegemini, SiAnthropic, SiVercel } from 'react-icons/si';
 
-// Definimos las tecnologías como un array de objetos para mapear fácilmente
+// Array de tecnologías con iconos para renderizado dinámico
 const tecnologias = [
   { nombre: 'HTML5', icono: <FaHtml5 className="tecnologia-icono" /> },
   { nombre: 'CSS3', icono: <FaCss3Alt className="tecnologia-icono" /> },
@@ -17,14 +17,14 @@ const tecnologias = [
   { nombre: 'Gemini', icono: <SiGooglegemini className="tecnologia-icono" /> }
 ];
 
-function Bienvenida({ onToggle, estaVisible }) { // Recibe las props onToggle y estaVisible
+function Bienvenida({ onToggle, estaVisible }) {
   return (
     <section 
       id="bienvenida" 
-      // Se añade la clase 'bienvenida-replegada' si la bienvenida no está visible
+      // Clase condicional para mostrar/ocultar contenido
       className={`seccion-cv bienvenida-interactiva ${estaVisible ? '' : 'bienvenida-replegada'}`}
     >
-      {/* El contenido principal de la bienvenida se oculta con opacidad */}
+      {/* Contenido principal - se oculta cuando está replegada */}
       <div className="bienvenida-contenido">
         <h1>¡Bienvenid@ a mi Currículum Online!</h1>
         <p>
@@ -41,7 +41,7 @@ function Bienvenida({ onToggle, estaVisible }) { // Recibe las props onToggle y 
           ¡Espero que disfrutes la visita!
         </p>
         
-        {/* Nuevo apartado para los iconos de las tecnologías */}
+        {/* Listado de tecnologías utilizadas en el proyecto */}
         <h2>Principales tecnologías utilizadas:</h2>
         <div className="tecnologias-lista">
           {tecnologias.map((tech, index) => (
@@ -53,6 +53,7 @@ function Bienvenida({ onToggle, estaVisible }) { // Recibe las props onToggle y 
         </div>
       </div>
 
+      {/* Botón toggle para mostrar/ocultar la sección */}
       <button 
         className="toggle-bienvenida-btn" 
         onClick={onToggle}

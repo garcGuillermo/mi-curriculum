@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Estudios.css';
 
-// Datos de estudios y formación
+// Array de estudios y formación académica
 const estudiosYFormacion = [
   {
     id: 'ifcd0110',
@@ -55,8 +55,10 @@ const estudiosYFormacion = [
 ];
 
 const Estudios = () => {
+  // Estado para controlar qué estudio está expandido
   const [openItemId, setOpenItemId] = useState(null);
 
+  // Alterna la expansión del estudio seleccionado
   const handleToggle = (id) => {
     setOpenItemId(openItemId === id ? null : id);
   };
@@ -80,7 +82,7 @@ const Estudios = () => {
               </div>
               <div className="estudios-info-secundaria">
                 <span className="estudios-fecha">{estudio.periodo}</span>
-                {/* Condicionalmente renderizamos el enlace si la propiedad 'enlace' existe */}
+                {/* Enlace al certificado (si existe) */}
                 {estudio.enlace && (
                   <a href={estudio.enlace} target="_blank" rel="noopener noreferrer" className="estudios-enlace-texto" onClick={(e) => e.stopPropagation()}>
                     Ver Certificado

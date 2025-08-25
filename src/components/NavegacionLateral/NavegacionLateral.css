@@ -21,16 +21,16 @@
   --foto-shadow-offset: 8px;
   --foto-hover-scale: 1.08;
   
-  /* Espaciado responsive */
+  /* Espaciado responsivo */
   --nav-padding-base: var(--spacing-2xl) var(--spacing-lg);
   --nav-padding-tablet-lg: var(--spacing-xl) var(--spacing-md);
   --nav-padding-tablet-md: var(--spacing-lg) var(--spacing-sm);
   
-  /* Transiciones */
+  /* Animaciones */
   --nav-transition-transform: transform var(--transition-normal) var(--transition-timing);
   --nav-transition-all: all var(--transition-fast) var(--transition-timing);
   
-  /* Sombras */
+  /* Efectos visuales */
   --nav-main-shadow: 0 8px 32px var(--shadow-color), inset 0 1px var(--color-border-light);
   --nav-dark-shadow: 0 8px 32px var(--shadow-color-dark), inset 0 1px var(--color-border-light);
   --foto-main-shadow: 0 0 0 var(--foto-border-width) var(--color-accent), 0 var(--foto-shadow-offset) 16px var(--shadow-color-dark);
@@ -65,7 +65,7 @@
   scrollbar-color: var(--color-accent) transparent;
 }
 
-/* Scrollbar personalizada */
+/* Scrollbar personalizado */
 .navegacion-lateral::-webkit-scrollbar {
   width: 8px;
 }
@@ -516,7 +516,7 @@
 }
 
 /* ================================
-   MODO OSCURO DEL SISTEMA
+   TEMA - MODO OSCURO DEL SISTEMA
    ================================ */
 @media (prefers-color-scheme: dark) {
   .navegacion-lateral {

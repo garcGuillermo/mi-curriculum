@@ -4,17 +4,17 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import './Contacto.css';
 
 function Contacto() {
-  // Estado para los campos del formulario
+  // Estado del formulario
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
     mensaje: '',
   });
 
-  // Estado para mostrar mensajes al usuario (éxito, error, cargando)
+  // Estado del envío (mensaje de feedback al usuario)
   const [status, setStatus] = useState('');
 
-  // Información de contacto personal
+  // Datos de contacto personal
   const myInfo = {
     email: "garciainurriaguillermo@gmail.com",
     phone: "+34 645192414",
@@ -22,9 +22,8 @@ function Contacto() {
     linkedinUrl: "https://www.linkedin.com/in/guillermo-garc%C3%ADa-inurria-857084152/",
   };
 
-  // Función para manejar los cambios en los inputs
+  // Maneja cambios en los campos del formulario
   const handleChange = (e) => {
-    // Usamos el 'name' del input para actualizar el campo correcto en el estado
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
@@ -32,22 +31,20 @@ function Contacto() {
     }));
   };
 
-  // Función para manejar el envío del formulario
+  // Maneja el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault(); 
-    setStatus('Cargando...'); // Muestra un mensaje de carga
+    setStatus('Cargando...');
 
-    // URL de tu función serverless en Vercel.
     const apiEndpoint = '/api/contacto'; 
     
     try {
-      // Envía los datos del formulario a la API usando fetch
+      // Envía datos a la API serverless
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        // Los nombres de los campos deben coincidir con los de la API: name, email, message
         body: JSON.stringify({
           name: formData.nombre, 
           email: formData.email, 
@@ -59,14 +56,13 @@ function Contacto() {
 
       if (response.ok) {
         setStatus('Mensaje enviado. ¡Gracias por contactar!');
-        // Limpia el formulario después del envío exitoso
+        // Limpia el formulario tras envío exitoso
         setFormData({
           nombre: '',
           email: '',
           mensaje: '',
         });
       } else {
-        // Muestra el mensaje de error que devuelve la API
         setStatus(`Error: ${data.error || 'Error desconocido del servidor'}`);
       }
     } catch (error) {
@@ -79,7 +75,7 @@ function Contacto() {
     <section id="contacto" className="seccion-cv seccion-contacto">
       <h1>Contacto</h1>
       
-      {/* Formulario de contacto */}
+      {/* Formulario principal */}
       <form className="formulario-contacto" onSubmit={handleSubmit}>
         <p>Me encantaría saber de vosotros. Completa el formulario de abajo y me pondré en contacto lo antes posible. 
           También podeís encontrarme en mis perfiles de redes sociales.</p>
@@ -127,13 +123,13 @@ function Contacto() {
         <button type="submit" className="boton-enviar" disabled={status === 'Cargando...'}>
           {status === 'Cargando...' ? 'Enviando...' : 'Enviar'}
         </button>
-        {/* Mensaje de estado que se muestra al usuario */}
+        {/* Mensaje de estado del envío */}
         {status && <p className="mensaje-estado">{status}</p>}
       </form>
 
-      {/* Información de contacto y redes sociales */}
+      {/* Información de contacto directo y redes sociales */}
       <div className="info-contacto">
-        {/* Email */}
+        {/* Correo electrónico */}
         <div className="info-contacto-item">
           <MdEmail className="icono" />
           <div>
@@ -142,7 +138,7 @@ function Contacto() {
           </div>
         </div>
         
-        {/* Número de teléfono */}
+        {/* Teléfono */}
         <div className="info-contacto-item">
           <MdPhone className="icono" />
           <div>
@@ -151,7 +147,7 @@ function Contacto() {
           </div>
         </div>
         
-        {/* Botón de GitHub */}
+        {/* Perfil de GitHub */}
         <a href={myInfo.githubUrl} target="_blank" rel="noopener noreferrer" className="boton-red-social">
           <div className="info-contacto-item">
             <FaGithub className="icono" />
@@ -162,7 +158,7 @@ function Contacto() {
           </div>
         </a>
         
-        {/* Botón de LinkedIn */}
+        {/* Perfil de LinkedIn */}
         <a href={myInfo.linkedinUrl} target="_blank" rel="noopener noreferrer" className="boton-red-social">
           <div className="info-contacto-item">
             <FaLinkedin className="icono" />

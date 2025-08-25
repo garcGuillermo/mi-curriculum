@@ -1,4 +1,4 @@
-/* Variables personalizadas para la sección de estudios */
+/* Variables específicas para la sección de estudios */
 :root {
   /* Layout y espaciado */
   --estudios-gap: var(--spacing-xl);
@@ -7,14 +7,14 @@
   --estudios-max-height: 600px;
 }
 
-/* Contenedor principal de la lista de estudios */
+/* Contenedor de la lista de estudios */
 .estudios-lista {
   display: flex;
   flex-direction: column;
   gap: var(--estudios-gap);
 }
 
-/* Elemento individual de estudio */
+/* Tarjeta individual de estudio */
 .estudios-item {
   background-color: var(--color-white);
   border: var(--estudios-border);
@@ -29,7 +29,7 @@
   box-shadow: 0 20px 25px var(--shadow-color-dark);
 }
 
-/* Botón de encabezado expandible */
+/* Encabezado expandible de cada estudio */
 .estudios-encabezado-toggle {
   display: flex;
   justify-content: space-between;
@@ -65,7 +65,7 @@
   font-weight: var(--font-weight-normal);
 }
 
-/* Información secundaria (fecha y certificado) */
+/* Datos secundarios (fecha y certificado) */
 .estudios-info-secundaria {
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@
   white-space: nowrap;
 }
 
-/* Botón de certificado */
+/* Enlace al certificado */
 .estudios-enlace-texto {
   display: inline-block;
   font-size: var(--font-size-sm);
@@ -98,7 +98,7 @@
   transform: scale(1.08);
 }
 
-/* Icono de desplegable */
+/* Icono indicador de desplegable */
 .toggle-icon {
   font-size: var(--font-size-base);
   color: var(--color-text-muted);
@@ -110,7 +110,7 @@
   transform: rotate(180deg);
 }
 
-/* Contenido desplegable */
+/* Área de contenido expandible */
 .estudios-contenido-desplegable {
   max-height: 0;
   padding-left: var(--spacing-xl);
@@ -126,7 +126,7 @@
   padding-bottom: var(--spacing-xl);
 }
 
-/* Lista de detalles del estudio */
+/* Lista de detalles adicionales del estudio */
 .estudios-detalles {
   list-style: disc;
   padding-left: var(--spacing-lg);
@@ -138,7 +138,7 @@
   margin-bottom: var(--spacing-xs);
 }
 
-/* Tablets y dispositivos medianos */
+/* Responsive - Tablets y dispositivos medianos */
 @media (max-width: 1024px) {
   .estudios-encabezado-toggle {
     padding: var(--spacing-lg);
@@ -154,7 +154,7 @@
   }
 }
 
-/* Móviles medianos */
+/* Responsive - Móviles medianos */
 @media (max-width: 768px) {
   .estudios-encabezado-toggle {
     padding: var(--spacing-md);
@@ -198,7 +198,7 @@
   }
 }
 
-/* Móviles pequeños */
+/* Responsive - Móviles pequeños */
 @media (max-width: 480px) {
   .estudios-item {
     border-radius: var(--border-radius-md);
@@ -237,7 +237,7 @@
   }
 }
 
-/* Soporte para pantallas de alta densidad */
+/* Optimizaciones para pantallas de alta densidad */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .estudios-item {
     box-shadow: 0 2px 4px var(--shadow-color);
@@ -248,7 +248,7 @@
   }
 }
 
-/* Preferencias de movimiento reducido */
+/* Accesibilidad - Animaciones reducidas */
 @media (prefers-reduced-motion: reduce) {
   .estudios-item,
   .estudios-encabezado-toggle,
@@ -271,7 +271,7 @@
   }
 }
 
-/* Modo oscuro del sistema */
+/* Tema - Adaptación a modo oscuro del sistema */
 @media (prefers-color-scheme: dark) {
   .estudios-item {
     border-color: var(--color-border-light);

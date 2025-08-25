@@ -81,7 +81,7 @@ function MiCurriculum({ proyecto, alVolver }) {
               <h4>Backend & API</h4>
               <div className="tecnologias-proyecto">
                 <span className="etiqueta-tecnologia backend">Node.js</span>
-                <span className="etiqueta-tecnologia backend">Nodemailer</span>
+                <span className="etiqueta-tecnologia backend">Resend</span>
                 <span className="etiqueta-tecnologia backend">Vercel</span>
               </div>
             </div>

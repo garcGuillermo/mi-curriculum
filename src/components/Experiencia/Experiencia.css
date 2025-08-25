@@ -1,11 +1,11 @@
-/* Variables personalizadas para la sección de experiencia */
+/* Variables específicas para la sección de experiencia */
 :root {
   /* Layout y espaciado */
   --experiencia-gap: var(--spacing-xl);
   --experiencia-padding: var(--spacing-lg);
   --experiencia-margin-left: var(--spacing-lg);
   
-  /* Timeline */
+  /* Línea de tiempo */
   --timeline-width: 2px;
   --timeline-circle-size: 12px;
   --timeline-circle-border: 3px;
@@ -13,7 +13,7 @@
   --timeline-circle-offset: -27px;
 }
 
-/* Lista principal de experiencia con timeline */
+/* Contenedor de experiencias con línea de tiempo */
 .experiencia-lista {
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@
   z-index: 1;
 }
 
-/* Elemento individual de experiencia */
+/* Tarjeta individual de experiencia laboral */
 .experiencia-item {
   position: relative;
   padding: var(--experiencia-padding);
@@ -52,7 +52,7 @@
   box-shadow: 0 8px 24px var(--shadow-color-dark);
 }
 
-/* Círculo en la línea de tiempo */
+/* Indicador circular en la línea de tiempo */
 .experiencia-item::before {
   content: '';
   position: absolute;
@@ -66,7 +66,7 @@
   z-index: 3;
 }
 
-/* Contenido de la experiencia */
+/* Encabezado con información principal */
 .experiencia-encabezado {
   display: flex;
   justify-content: space-between;
@@ -94,7 +94,7 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Lista de responsabilidades */
+/* Lista de responsabilidades con iconos de check */
 .experiencia-responsabilidades {
   padding-left: 0;
   list-style: none;
@@ -119,7 +119,7 @@
   font-weight: var(--font-weight-bold);
 }
 
-/* Tablets y dispositivos medianos */
+/* Responsive - Tablets y dispositivos medianos */
 @media (max-width: 1024px) {
   .experiencia-item {
     padding: var(--spacing-md);
@@ -130,7 +130,7 @@
   }
 }
 
-/* Móviles medianos */
+/* Responsive - Móviles medianos */
 @media (max-width: 768px) {
   .experiencia-lista::before {
     left: var(--spacing-xs);
@@ -161,11 +161,11 @@
   }
   
   .experiencia-responsabilidades li {
-    padding-left: var(--spacing-md);
+    padding-left: var(--spacing-xl);
   }
 }
 
-/* Móviles pequeños */
+/* Responsive - Móviles pequeños */
 @media (max-width: 480px) {
   .experiencia-lista {
     padding-left: var(--spacing-md);
@@ -192,12 +192,12 @@
   }
 
   .experiencia-responsabilidades li {
-    padding-left: var(--spacing-sm);
+    padding-left: var(--spacing-lg);
     font-size: var(--font-size-sm);
   }
 }
 
-/* Soporte para pantallas de alta densidad */
+/* Optimizaciones para pantallas de alta densidad */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .experiencia-item {
     box-shadow: 0 2px 8px var(--shadow-color);
@@ -208,7 +208,7 @@
   }
 }
 
-/* Preferencias de movimiento reducido */
+/* Accesibilidad - Animaciones reducidas */
 @media (prefers-reduced-motion: reduce) {
   .experiencia-item {
     transition: none;
@@ -219,7 +219,7 @@
   }
 }
 
-/* Modo oscuro del sistema */
+/* Tema - Adaptación a modo oscuro del sistema */
 @media (prefers-color-scheme: dark) {
   .experiencia-lista::before {
     background-color: var(--color-border-light);
