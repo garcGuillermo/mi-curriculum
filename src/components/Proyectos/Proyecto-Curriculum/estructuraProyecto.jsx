@@ -1,9 +1,17 @@
+// ============================================================
+// estructuraProyecto.jsx
+// ============================================================
+// Estructura y metadatos del árbol de archivos del proyecto.
+//
+// - Define la jerarquía de carpetas y archivos para el explorador.
+// - Incluye descripciones, rutas y tipos de cada elemento.
+// - Utilizado por el explorador para renderizar la documentación.
+// ============================================================
 import { 
   FaFolder, 
   FaFile, 
   FaReact, 
-  FaCss3Alt, 
-  FaJs, 
+  FaCss3Alt,  
   FaHtml5,
   FaCog,
   FaServer,
@@ -21,33 +29,33 @@ const estructuraProyecto = {
   'package.json': {
     type: 'config',
     icon: <FaCog />,
-    description: 'Configuración del proyecto y gestión de dependencias',
+  descripcion: 'Configuración del proyecto y gestión de dependencias',
     contenido: {
-      titulo: 'Configuración del Proyecto',
-      descripcion: 'Archivo central que define las dependencias, scripts y metadatos del proyecto React.',
+  titulo: 'Configuración del proyecto',
+  descripcion: 'Archivo principal donde se definen las dependencias, comandos y datos del proyecto React.',
       caracteristicas: [
         {
           icon: <FaReact />,
-          titulo: 'Framework Principal',
-          descripcion: 'React 19.1.0 como biblioteca principal para la interfaz de usuario'
+          titulo: 'Base de la interfaz',
+          descripcion: 'React 19.1.0 como base para la interfaz de usuario'
         },
         {
           icon: <FaCodeBranch />,
-          titulo: 'Enrutamiento',
-          descripcion: 'React Router DOM para navegación SPA (Single Page Application)'
+          titulo: 'Navegación',
+          descripcion: 'React Router DOM para navegación en una sola página'
         },
         {
           icon: <SiVite />,
-          titulo: 'Build Tool',
-          descripcion: 'Vite como herramienta de desarrollo y construcción ultra-rápida'
+          titulo: 'Herramienta de construcción',
+          descripcion: 'Vite como herramienta de desarrollo y compilación muy rápida'
         },
         {
           icon: <FaServer />,
-          titulo: 'Backend',
-          descripcion: 'Nodemailer para funcionalidad de envío de emails'
+          titulo: 'Servidor',
+          descripcion: 'Resend para enviar correos electrónicos'
         }
       ],
-      etiquetasTecnologicas: ['React', 'Vite', 'React Router', 'Nodemailer'],
+  etiquetasTecnologicas: ['React', 'Vite', 'React Router', 'Resend'],
       ejemploCodigo: `{
   "name": "mi-curriculum",
   "private": true,
@@ -77,30 +85,30 @@ const estructuraProyecto = {
   'package-lock.json': {
     type: 'config',
     icon: <FaCog />,
-    description: 'Lockfile de dependencias de npm',
+    descripcion: 'Lockfile de dependencias de npm',
     contenido: {
       titulo: 'Gestión de Dependencias',
-      descripcion: 'Archivo de bloqueo que garantiza instalaciones consistentes de dependencias en todos los entornos.',
+  descripcion: 'Archivo de bloqueo que asegura instalaciones iguales de dependencias en todos los entornos.',
       caracteristicas: [
         {
           icon: <FaShieldAlt />,
-          titulo: 'Versiones Exactas',
-          descripcion: 'Bloquea versiones específicas de todas las dependencias y subdependencias'
+          titulo: 'Versiones exactas',
+          descripcion: 'Fija versiones concretas de todas las dependencias y subdependencias'
         },
         {
           icon: <FaRocket />,
           titulo: 'Instalación Rápida',
-          descripcion: 'Acelera npm install al tener información precalculada'
+          descripcion: 'Hace más rápido npm install al tener información ya calculada'
         },
         {
           icon: <FaTools />,
           titulo: 'Integridad de Paquetes',
-          descripcion: 'Checksums SHA para verificar la integridad de los paquetes'
+          descripcion: 'Sumas de comprobación SHA para asegurar la integridad de los paquetes'
         },
         {
           icon: <FaCodeBranch />,
           titulo: 'Reproducibilidad',
-          descripcion: 'Garantiza que todos los desarrolladores tengan las mismas versiones'
+          descripcion: 'Asegura que todos los desarrolladores usen las mismas versiones'
         }
       ],
       ejemploCodigo: `{
@@ -137,15 +145,15 @@ const estructuraProyecto = {
   'README.md': {
     type: 'documentation',
     icon: <FaFile />,
-    description: 'Documentación principal del proyecto',
+  descripcion: 'Documentación principal del proyecto',
     contenido: {
-      titulo: 'Documentación del Proyecto',
-      descripcion: 'Archivo de documentación que explica el propósito, instalación y uso del portfolio web.',
+  titulo: 'Documentación del proyecto',
+  descripcion: 'Archivo de documentación que explica el propósito, instalación y uso del portfolio web.',
       caracteristicas: [
         {
           icon: <FaLightbulb />,
-          titulo: 'Descripción del Proyecto',
-          descripcion: 'Portfolio personal desarrollado en React con diseño responsivo'
+          titulo: 'Descripción del proyecto',
+          descripcion: 'Portfolio personal desarrollado en React con diseño adaptable'
         },
         {
           icon: <FaRocket />,
@@ -165,7 +173,14 @@ const estructuraProyecto = {
       ],
       ejemploCodigo: `# Mi Portfolio - Guillermo García Inurria
 
+[![Vercel](https://vercelbadge.vercel.app/api/garcGuillermo/mi-curriculum)](https://curriculumvitaeguillermo.vercel.app)
+[![React](https://img.shields.io/badge/React-19.1.0-61dafb?logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7.0.4-646cff?logo=vite)](https://vitejs.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Portfolio personal desarrollado con React y Vite, presentando mi experiencia como Desarrollador Frontend y Técnico ASIR.
+
+🔗 **Demo online:** [curriculumvitaeguillermo.vercel.app](https://curriculumvitaeguillermo.vercel.app)
 
 ## 🚀 Tecnologías
 
@@ -173,25 +188,31 @@ Portfolio personal desarrollado con React y Vite, presentando mi experiencia com
 - **Vite** - Herramienta de desarrollo y construcción
 - **React Router** - Navegación SPA
 - **React Icons** - Iconografía moderna
+- **Resend** - Envío de emails desde el formulario de contacto
 - **CSS Moderno** - Variables CSS y diseño responsivo
 
 ## 📦 Instalación
 
-\\\`\\\`\\\`bash
+\`\`\`bash
 npm install
 npm run dev
-\\\`\\\`\\\`
+\`\`\`
 
 ## 🌐 Despliegue
 
-Desplegado en Vercel con integración continua desde GitHub.`,
+Desplegado en Vercel con integración continua desde GitHub.
+
+---
+
+© 2025 Guillermo García Inurria
+`,
       etiquetasTecnologicas: ['React', 'Vite', 'Vercel', 'Portfolio']
     }
   },
   'vercel.json': {
     type: 'config',
     icon: <SiVercel />,
-    description: 'Configuración de despliegue para Vercel',
+    descripcion: 'Configuración de despliegue para Vercel',
     contenido: {
       titulo: 'Configuración de Vercel',
       descripcion: 'Archivo de configuración para el despliegue en Vercel, optimizado para aplicaciones React SPA.',
@@ -246,7 +267,7 @@ Desplegado en Vercel con integración continua desde GitHub.`,
   'vite.config.js': {
     type: 'config',
     icon: <SiVite />,
-    description: 'Configuración de Vite para desarrollo y construcción',
+    descripcion: 'Configuración de Vite para desarrollo y construcción',
     contenido: {
       titulo: 'Configuración de Vite',
       descripcion: 'Herramienta de build moderna que proporciona desarrollo ultra-rápido con Hot Module Replacement.',
@@ -268,7 +289,7 @@ Desplegado en Vercel con integración continua desde GitHub.`,
   'eslint.config.js': {
     type: 'config',
     icon: <SiEslint />,
-    description: 'Configuración de ESLint para calidad de código',
+    descripcion: 'Configuración de ESLint para calidad de código',
     contenido: {
       titulo: 'Linting y Calidad de Código',
       descripcion: 'ESLint configurado con reglas específicas para React y mejores prácticas de JavaScript.',
@@ -290,14 +311,14 @@ Desplegado en Vercel con integración continua desde GitHub.`,
   'index.html': {
     type: 'html',
     icon: <FaHtml5 />,
-    description: 'Punto de entrada HTML del SPA',
+    descripcion: 'Punto de entrada HTML del SPA',
     contenido: {
       titulo: 'Documento HTML Base',
       descripcion: 'Estructura HTML mínima donde se monta la aplicación React.',
       caracteristicas: [
         {
           icon: <FaReact />,
-          titulo: 'Root Element',
+          titulo: 'Elemento Root',
           descripcion: 'Contenedor #root donde React renderiza la aplicación'
         },
         {
@@ -313,20 +334,20 @@ Desplegado en Vercel con integración continua desde GitHub.`,
     'main.jsx': {
       type: 'js',
       icon: <FaReact />,
-      description: 'Punto de entrada de React',
+      descripcion: 'Punto de entrada de React',
       content: {
-        title: 'Bootstrap de la Aplicación',
-        description: 'Inicializa React, configura el router y monta la aplicación en el DOM.',
+        titulo: 'Bootstrap de la Aplicación',
+        descripcion: 'Inicializa React, configura el router y monta la aplicación en el DOM.',
         features: [
           {
             icon: <FaReact />,
-            title: 'React Strict Mode',
-            description: 'Modo estricto para detectar problemas potenciales'
+            titulo: 'React Strict Mode',
+            descripcion: 'Modo estricto para detectar problemas potenciales'
           },
           {
             icon: <FaCodeBranch />,
-            title: 'BrowserRouter',
-            description: 'Configuración del enrutamiento para SPA'
+            titulo: 'BrowserRouter',
+            descripcion: 'Configuración del enrutamiento para SPA'
           }
         ],
         techTags: ['React', 'React DOM', 'React Router'],
@@ -347,25 +368,25 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     'App.jsx': {
       type: 'js',
       icon: <FaReact />,
-      description: 'Componente raíz y gestión de estado principal',
+      descripcion: 'Componente raíz y gestión de estado principal',
       content: {
-        title: 'Arquitectura Principal',
-        description: 'Componente central que maneja el estado global, enrutamiento y lógica de navegación.',
+        titulo: 'Arquitectura Principal',
+        descripcion: 'Componente central que maneja el estado global, enrutamiento y lógica de navegación.',
         features: [
           {
             icon: <FaCodeBranch />,
-            title: 'Sistema de Rutas',
-            description: 'React Router con rutas dinámicas para cada sección del CV'
+            titulo: 'Sistema de Rutas',
+            descripcion: 'React Router con rutas dinámicas para cada sección del CV'
           },
           {
             icon: <FaLightbulb />,
-            title: 'Estado Inteligente',
-            description: 'Gestión del toggle de bienvenida con lógica de auto-ocultación'
+            titulo: 'Estado Inteligente',
+            descripcion: 'Gestión del toggle de bienvenida con lógica de auto-ocultación'
           },
           {
             icon: <FaMobile />,
-            title: 'Scroll Management',
-            description: 'Control del scroll suave para navegación fluida'
+            titulo: 'Scroll Management',
+            descripcion: 'Control del scroll suave para navegación fluida'
           }
         ],
         techTags: ['React Hooks', 'React Router', 'State Management'],
@@ -416,24 +437,24 @@ function App() {
     'App.css': {
       type: 'css',
       icon: <FaCss3Alt />,
-      description: 'Estilos principales del componente App',
+      descripcion: 'Estilos principales del componente App',
       content: {
-        title: 'Estilos de Aplicación Principal',
-        description: 'Estilos CSS que definen el layout principal y la estructura visual de toda la aplicación.',
+        titulo: 'Estilos de Aplicación Principal',
+        descripcion: 'Estilos CSS que definen el layout principal y la estructura visual de toda la aplicación.',
         features: [
           {
             icon: <FaCss3Alt />,
-            title: 'Layout Principal',
-            description: 'Estructura de grid principal para navbar lateral y contenido'
+            titulo: 'Layout Principal',
+            descripcion: 'Estructura de grid principal para navbar lateral y contenido'
           },
           {
             icon: <FaMobile />,
-            title: 'Diseño Responsivo',
-            description: 'Adaptación del layout para diferentes tamaños de pantalla'
+            titulo: 'Diseño Responsivo',
+            descripcion: 'Adaptación del layout para diferentes tamaños de pantalla'
           },
           {
             icon: <FaRocket />,
-            title: 'Animaciones de Transición',
+            titulo: 'Animaciones de Transición',
             descripcion: 'Transiciones suaves entre secciones y estados'
           },
           {
@@ -488,30 +509,30 @@ function App() {
     'index.css': {
       type: 'css',
       icon: <FaCss3Alt />,
-      description: 'Estilos base y normalización CSS global',
+      descripcion: 'Estilos base y normalización CSS global',
       content: {
-        title: 'CSS Global y Normalización',
-        description: 'Estilos base que normalizan el comportamiento del navegador y establecen fundamentos del diseño.',
+        titulo: 'CSS Global y Normalización',
+        descripcion: 'Estilos base que normalizan el comportamiento del navegador y establecen fundamentos del diseño.',
         features: [
           {
             icon: <FaCss3Alt />,
-            title: 'CSS Reset',
-            description: 'Normalización de estilos entre navegadores para consistencia'
+            titulo: 'CSS Reset',
+            descripcion: 'Normalización de estilos entre navegadores para consistencia'
           },
           {
             icon: <FaSearch />,
-            title: 'Tipografía Base',
-            description: 'Configuración de fuentes y estilos tipográficos globales'
+            titulo: 'Tipografía Base',
+            descripcion: 'Configuración de fuentes y estilos tipográficos globales'
           },
           {
             icon: <FaMobile />,
-            title: 'Responsive Foundation',
-            description: 'Base responsiva con viewport y media queries'
+            titulo: 'Responsive Foundation',
+            descripcion: 'Base responsiva con viewport y media queries'
           },
           {
             icon: <FaShieldAlt />,
-            title: 'Accesibilidad',
-            description: 'Estilos base para mejorar la accesibilidad web'
+            titulo: 'Accesibilidad',
+            descripcion: 'Estilos base para mejorar la accesibilidad web'
           }
         ],
         ejemploCodigo: `/* RESETEO GLOBAL */
@@ -540,25 +561,25 @@ html, body {
     'Variables.css': {
       type: 'css',
       icon: <FaCss3Alt />,
-      description: 'Sistema de variables CSS globales',
+      descripcion: 'Sistema de variables CSS globales',
       content: {
-        title: 'Design System',
-        description: 'Variables CSS personalizadas que definen el sistema de diseño completo del proyecto.',
+        titulo: 'Design System',
+        descripcion: 'Variables CSS personalizadas que definen el sistema de diseño completo del proyecto.',
         features: [
           {
             icon: <FaCss3Alt />,
-            title: 'Color Palette',
-            description: 'Paleta de colores consistente con modo claro/oscuro'
+            titulo: 'Paleta de Colores',
+            descripcion: 'Paleta de colores consistente con modo claro/oscuro'
           },
           {
             icon: <FaTools />,
-            title: 'Typography Scale',
-            description: 'Sistema tipográfico escalable y consistente'
+            titulo: 'Escala Tipográfica',
+            descripcion: 'Sistema tipográfico escalable y consistente'
           },
           {
             icon: <FaMobile />,
-            title: 'Responsive Values',
-            description: 'Breakpoints y espaciados para diseño responsivo'
+            titulo: 'Valores Responsivos',
+            descripcion: 'Breakpoints y espaciados para diseño responsivo'
           }
         ],
         techTags: ['CSS Variables', 'Design System', 'Responsive'],
@@ -612,25 +633,25 @@ html, body {
         'NavegacionLateral.jsx': {
           type: 'js',
           icon: <FaReact />,
-          description: 'Componente de navegación lateral',
+          descripcion: 'Componente de navegación lateral',
           content: {
-            title: 'Sistema de Navegación',
-            description: 'Sidebar fijo con información personal, menú de navegación y enlaces de contacto.',
+            titulo: 'Sistema de Navegación',
+            descripcion: 'Sidebar fijo con información personal, menú de navegación y enlaces de contacto.',
             features: [
               {
                 icon: <FaCodeBranch />,
-                title: 'React Router Links',
-                description: 'Navegación SPA con Link components y useLocation hook'
+                titulo: 'Enlaces de React Router',
+                descripcion: 'Navegación SPA con Link components y useLocation hook'
               },
               {
                 icon: <FaReact />,
-                title: 'React Icons',
-                description: 'Iconografía consistente con Material Design y Font Awesome'
+                titulo: 'Iconos React',
+                descripcion: 'Iconografía consistente con Material Design y Font Awesome'
               },
               {
                 icon: <FaMobile />,
-                title: 'Responsive Design',
-                description: 'Adaptación automática a diferentes tamaños de pantalla'
+                titulo: 'Diseño Responsivo',
+                descripcion: 'Adaptación automática a diferentes tamaños de pantalla'
               }
             ],
             techTags: ['React Router', 'React Icons', 'CSS Grid'],
@@ -666,7 +687,7 @@ const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
             src="https://placehold.co/120x120/ecf0f1/2c3e50?text=Tu+Foto"
             alt="Foto de perfil de Guillermo"
             className="perfil-foto-lateral"
-            title='Haz clic para volver al inicio'
+            titulo='Haz clic para volver al inicio'
           />
         </Link>
         <h1 className="nombre-cv">Guillermo García Inurria</h1>
@@ -677,7 +698,7 @@ const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
       <nav className="menu-principal-nav">
         <ul>
           {seccionesCV.map(seccion => (
-            <li key={seccion.id} title={seccion.nombre}>
+            <li key={seccion.id} titulo={seccion.nombre}>
               <Link 
                 to={seccion.path}
                 className={location.pathname === seccion.path ? 'active' : ''}
@@ -696,25 +717,25 @@ const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
         'NavegacionLateral.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos del componente de navegación',
+          descripcion: 'Estilos del componente de navegación',
           content: {
-            title: 'Estilos de Navegación',
-            description: 'CSS optimizado para el sidebar con efectos hover, estados activos y diseño responsivo.',
+            titulo: 'Estilos de Navegación',
+            descripcion: 'CSS optimizado para el sidebar con efectos hover, estados activos y diseño responsivo.',
             features: [
               {
                 icon: <FaCss3Alt />,
-                title: 'Sticky Position',
-                description: 'Posicionamiento fijo que se adapta al scroll'
+                titulo: 'Posicion Fija',
+                descripcion: 'Posicionamiento fijo que se adapta al scroll'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Hover Effects',
-                description: 'Transiciones suaves y efectos visuales en interacciones'
+                titulo: 'Efectos Hover',
+                descripcion: 'Transiciones suaves y efectos visuales en interacciones'
               },
               {
                 icon: <FaMobile />,
-                title: 'Media Queries',
-                description: 'Breakpoints para móvil, tablet y desktop'
+                titulo: 'Media Queries',
+                descripcion: 'Breakpoints para móvil, tablet y desktop'
               }
             ],
             techTags: ['CSS Grid', 'Flexbox', 'Transitions', 'Media Queries'],
@@ -776,25 +797,25 @@ const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
         'Bienvenida.jsx': {
           type: 'js',
           icon: <FaReact />,
-          description: 'Componente de mensaje de bienvenida',
+          descripcion: 'Componente de mensaje de bienvenida',
           content: {
-            title: 'Sistema de Bienvenida',
-            description: 'Componente interactivo con toggle que presenta el proyecto y guía al usuario.',
+            titulo: 'Sistema de Bienvenida',
+            descripcion: 'Componente interactivo con toggle que presenta el proyecto y guía al usuario.',
             features: [
               {
                 icon: <FaReact />,
-                title: 'Controlled Component',
-                description: 'Estado controlado desde App.jsx con props de control'
+                titulo: 'Componente controlado',
+                descripcion: 'Estado controlado desde App.jsx con props de control'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Toggle Interaction',
-                description: 'Botón de show/hide con estados visuales y aria-labels'
+                titulo: 'Interacción con el toggle',
+                descripcion: 'Botón de show/hide con estados visuales y aria-labels'
               },
               {
                 icon: <FaTools />,
-                title: 'Tech Showcase',
-                description: 'Display dinámico de tecnologías usadas con iconos'
+                titulo: 'Display de tecnologías',
+                descripcion: 'Display dinámico de tecnologías usadas con iconos'
               }
             ],
             techTags: ['React Props', 'Conditional Rendering', 'Accessibility'],
@@ -846,30 +867,30 @@ function Bienvenida({ onToggle, estaVisible }) {
         'Bienvenida.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos del componente de bienvenida interactiva',
+          descripcion: 'Estilos del componente de bienvenida interactiva',
           content: {
-            title: 'Estilos de Bienvenida Interactiva',
-            description: 'CSS para la sección de bienvenida con animaciones, efectos visuales y diseño responsivo.',
+            titulo: 'Estilos de Bienvenida Interactiva',
+            descripcion: 'CSS para la sección de bienvenida con animaciones, efectos visuales y diseño responsivo.',
             features: [
               {
                 icon: <FaRocket />,
-                title: 'Animaciones CSS',
-                description: 'Transiciones suaves para mostrar/ocultar contenido'
+                titulo: 'Animaciones CSS',
+                descripcion: 'Transiciones suaves para mostrar/ocultar contenido'
               },
               {
                 icon: <FaMobile />,
-                title: 'Responsive Design',
-                description: 'Adaptación completa para dispositivos móviles'
+                titulo: 'Diseño Responsivo',
+                descripcion: 'Adaptación completa para dispositivos móviles'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Efectos Visuales',
-                description: 'Gradientes, sombras y efectos hover interactivos'
+                titulo: 'Efectos Visuales',
+                descripcion: 'Gradientes, sombras y efectos hover interactivos'
               },
               {
                 icon: <FaShieldAlt />,
-                title: 'Accesibilidad',
-                description: 'Soporte para usuarios con preferencias de movimiento reducido'
+                titulo: 'Accesibilidad',
+                descripcion: 'Soporte para usuarios con preferencias de movimiento reducido'
               }
             ],
             ejemploCodigo: `/* VARIABLES PERSONALIZADAS */
@@ -926,25 +947,25 @@ function Bienvenida({ onToggle, estaVisible }) {
         'SobreMi.jsx': {
           type: 'js',
           icon: <FaReact />,
-          description: 'Sección de información personal',
+          descripcion: 'Sección de información personal',
           content: {
-            title: 'Presentación Personal',
-            description: 'Componente estático que presenta información personal, trayectoria y objetivos profesionales.',
+            titulo: 'Presentación Personal',
+            descripcion: 'Componente estático que presenta información personal, trayectoria y objetivos profesionales.',
             features: [
               {
                 icon: <FaReact />,
-                title: 'Functional Component',
-                description: 'Componente funcional simple sin estado interno'
+                titulo: 'Componente Funcional',
+                descripcion: 'Componente funcional simple sin estado interno'
               },
               {
                 icon: <FaCss3Alt />,
-                title: 'Semantic HTML',
-                description: 'Estructura semántica con sections, headings y listas'
+                titulo: 'HTML Semántico',
+                descripcion: 'Estructura semántica con sections, headings y listas'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Highlighted Text',
-                description: 'Elementos destacados con clases CSS específicas'
+                titulo: 'Texto Enriquecido',
+                descripcion: 'Elementos destacados con clases CSS específicas'
               }
             ],
             techTags: ['React', 'Semantic HTML', 'CSS Classes'],
@@ -1007,30 +1028,30 @@ function SobreMi() {
         'SobreMi.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos para la sección de información personal',
+          descripcion: 'Estilos para la sección de información personal',
           content: {
-            title: 'Estilos de Presentación Personal',
-            description: 'CSS para la sección Sobre Mí con tipografía elegante, espaciado y elementos destacados.',
+            titulo: 'Estilos de Presentación Personal',
+            descripcion: 'CSS para la sección Sobre Mí con tipografía elegante, espaciado y elementos destacados.',
             features: [
               {
                 icon: <FaCss3Alt />,
-                title: 'Tipografía Jerárquica',
-                description: 'Sistema de tamaños y pesos de fuente bien estructurado'
+                titulo: 'Tipografía Jerárquica',
+                descripcion: 'Sistema de tamaños y pesos de fuente bien estructurado'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Elementos Destacados',
-                description: 'Clases CSS para resaltar información importante'
+                titulo: 'Elementos Destacados',
+                descripcion: 'Clases CSS para resaltar información importante'
               },
               {
                 icon: <FaMobile />,
-                title: 'Diseño Responsivo',
-                description: 'Adaptación de espaciado y tipografía para móviles'
+                titulo: 'Diseño Responsivo',
+                descripcion: 'Adaptación de espaciado y tipografía para móviles'
               },
               {
                 icon: <FaShieldAlt />,
-                title: 'Legibilidad Optimizada',
-                description: 'Interlineado y espaciado optimizados para lectura'
+                titulo: 'Legibilidad Optimizada',
+                descripcion: 'Interlineado y espaciado optimizados para lectura'
               }
             ],
             ejemploCodigo: `/* CONTENEDOR PRINCIPAL */
@@ -1075,25 +1096,25 @@ function SobreMi() {
         'Experiencia.jsx': {
           type: 'js',
           icon: <FaReact />,
-          description: 'Timeline de experiencia laboral',
+          descripcion: 'Timeline de experiencia laboral',
           content: {
-            title: 'Timeline Profesional',
-            description: 'Componente que renderiza la experiencia laboral en formato timeline con datos estructurados.',
+            titulo: 'Timeline Profesional',
+            descripcion: 'Componente que renderiza la experiencia laboral en formato timeline con datos estructurados.',
             features: [
               {
                 icon: <FaReact />,
-                title: 'Data Mapping',
-                description: 'Array de objetos mapeado dinámicamente con .map()'
+                titulo: 'Mapeo de datos',
+                descripcion: 'Array de objetos mapeado dinámicamente con .map()'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Timeline Design',
-                description: 'Diseño de línea temporal visual con CSS Grid/Flexbox'
+                titulo: 'Timeline Diseño',
+                descripcion: 'Diseño de línea temporal visual con CSS Grid/Flexbox'
               },
               {
                 icon: <FaCode />,
-                title: 'Structured Data',
-                description: 'Datos organizados en objetos con empresa, período, cargo'
+                titulo: 'Estructura de datos',
+                descripcion: 'Datos organizados en objetos con empresa, período, cargo'
               }
             ],
             techTags: ['React Rendering', 'Array Methods', 'Data Structure'],
@@ -1157,30 +1178,30 @@ const Experiencia = () => {
         'Experiencia.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos para el timeline de experiencia laboral',
+          descripcion: 'Estilos para el timeline de experiencia laboral',
           content: {
-            title: 'Timeline de Experiencia Profesional',
-            description: 'CSS para el componente de experiencia con diseño de timeline, iconos y animaciones.',
+            titulo: 'Timeline de Experiencia Profesional',
+            descripcion: 'CSS para el componente de experiencia con diseño de timeline, iconos y animaciones.',
             features: [
               {
                 icon: <FaRocket />,
-                title: 'Timeline Visual',
-                description: 'Línea temporal vertical con conectores y puntos de referencia'
+                titulo: 'Timeline Visual',
+                descripcion: 'Línea temporal vertical con conectores y puntos de referencia'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Iconos de Verificación',
-                description: 'Iconos check con animaciones y colores temáticos'
+                titulo: 'Iconos de Verificación',
+                descripcion: 'Iconos check con animaciones y colores temáticos'
               },
               {
                 icon: <FaMobile />,
-                title: 'Adaptación Móvil',
-                description: 'Timeline simplificado y espaciado optimizado para móviles'
+                titulo: 'Adaptación Móvil',
+                descripcion: 'Timeline simplificado y espaciado optimizado para móviles'
               },
               {
                 icon: <FaShieldAlt />,
-                title: 'Hover Effects',
-                description: 'Efectos interactivos y transiciones suaves'
+                titulo: 'Efectos Hover',
+                descripcion: 'Efectos interactivos y transiciones suaves'
               }
             ],
             ejemploCodigo: `.experiencia-lista {
@@ -1209,25 +1230,25 @@ const Experiencia = () => {
         'Estudios.jsx': {
             type: 'js',
             icon: <FaReact />,
-            description: 'Sección de formación académica',
+            descripcion: 'Sección de formación académica',
             content: {
-              title: 'Formación Académica',
-              description: 'Componente interactivo con acordeón que muestra estudios y certificaciones.',
+              titulo: 'Formación Académica',
+              descripcion: 'Componente interactivo con acordeón que muestra estudios y certificaciones.',
               features: [
                 {
                   icon: <FaReact />,
-                  title: 'useState Hook',
-                  description: 'Estado local para controlar acordeones expandidos'
+                  titulo: 'useState Hook',
+                  descripcion: 'Estado local para controlar acordeones expandidos'
                 },
                 {
                   icon: <FaLightbulb />,
-                  title: 'Accordion UI',
-                  description: 'Interfaz de acordeón con animaciones CSS'
+                  titulo: 'Accordion UI',
+                  descripcion: 'Interfaz de acordeón con animaciones CSS'
                 },
                 {
                   icon: <FaTools />,
-                  title: 'Dynamic IDs',
-                  description: 'IDs dinámicos para accesibilidad y aria-controls'
+                  titulo: 'Dynamic IDs',
+                  descripcion: 'IDs dinámicos para accesibilidad y aria-controls'
                 }
               ],
               techTags: ['React Hooks', 'Interactive UI', 'Accessibility'],
@@ -1314,30 +1335,30 @@ function Estudios() {
         'Estudios.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos para acordeón de formación académica',
+          descripcion: 'Estilos para acordeón de formación académica',
           content: {
-            title: 'Acordeón Interactivo de Estudios',
-            description: 'CSS para el componente de estudios con acordeón expansible, animaciones y diseño moderno.',
+            titulo: 'Acordeón Interactivo de Estudios',
+            descripcion: 'CSS para el componente de estudios con acordeón expansible, animaciones y diseño moderno.',
             features: [
               {
                 icon: <FaRocket />,
-                title: 'Acordeón Animado',
-                description: 'Transiciones suaves para expandir/contraer contenido'
+                titulo: 'Acordeón Animado',
+                descripcion: 'Transiciones suaves para expandir/contraer contenido'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Estados Interactivos',
-                description: 'Efectos hover y estados activos para botones'
+                titulo: 'Estados Interactivos',
+                descripcion: 'Efectos hover y estados activos para botones'
               },
               {
                 icon: <FaMobile />,
-                title: 'Responsive Design',
-                description: 'Adaptación de espaciado y tipografía para móviles'
+                titulo: 'Diseño Responsivo',
+                descripcion: 'Adaptación de espaciado y tipografía para móviles'
               },
               {
                 icon: <FaShieldAlt />,
-                title: 'Accesibilidad Visual',
-                description: 'Indicadores visuales claros y contraste optimizado'
+                titulo: 'Accesibilidad Visual',
+                descripcion: 'Indicadores visuales claros y contraste optimizado'
               }
             ],
             ejemploCodigo: `.estudios-lista {
@@ -1362,25 +1383,25 @@ function Estudios() {
         'Proyectos.jsx': {
             type: 'js',
             icon: <FaReact />,
-            description: 'Grid de proyectos con navegación',
+            descripcion: 'Grid de proyectos con navegación',
             content: {
-              title: 'Showcase de Proyectos',
-              description: 'Componente que maneja la visualización de proyectos con navegación condicional.',
+              titulo: 'Showcase de Proyectos',
+              descripcion: 'Componente que maneja la visualización de proyectos con navegación condicional.',
               features: [
                 {
                   icon: <FaReact />,
-                  title: 'Conditional Rendering',
-                  description: 'Renderizado condicional entre lista y detalles de proyecto'
+                  titulo: 'Renderizado Condicional',
+                  descripcion: 'Renderizado condicional entre lista y detalles de proyecto'
                 },
                 {
                   icon: <FaCodeBranch />,
-                  title: 'Component Routing',
-                  description: 'Navegación interna entre componentes sin React Router'
+                  titulo: 'Component Routing',
+                  descripcion: 'Navegación interna entre componentes sin React Router'
                 },
                 {
                   icon: <FaLightbulb />,
-                  title: 'State Management',
-                  description: 'Estado local para proyecto seleccionado'
+                  titulo: 'Manejo de Estado',
+                  descripcion: 'Estado local para proyecto seleccionado'
                 }
               ],
               techTags: ['React State', 'Conditional Rendering', 'Component Composition'],
@@ -1392,10 +1413,10 @@ const ProjectCard = ({ proyecto, alSeleccionarProyecto }) => {
   return (
     <div className="project-card" onClick={() => alSeleccionarProyecto(proyecto)}>
       <div className="project-header">
-        <h3 className="project-title">{proyecto.titulo}</h3>
+        <h3 className="project-titulo">{proyecto.titulo}</h3>
       </div>
       <div className="project-body">
-        <p className="project-description">{proyecto.descripcion}</p>
+        <p className="project-descripcion">{proyecto.descripcion}</p>
       </div>
     </div>
   );
@@ -1442,30 +1463,30 @@ function Proyectos() {
         'Proyectos.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos para el grid de proyectos',
+          descripcion: 'Estilos para el grid de proyectos',
           content: {
-            title: 'Grid de Proyectos Interactivo',
-            description: 'CSS para la sección de proyectos con grid responsivo, cards interactivas y efectos visuales.',
+            titulo: 'Grid de Proyectos Interactivo',
+            descripcion: 'CSS para la sección de proyectos con grid responsivo, cards interactivas y efectos visuales.',
             features: [
               {
                 icon: <FaCss3Alt />,
-                title: 'CSS Grid Layout',
-                description: 'Grid responsivo que se adapta automáticamente al contenido'
+                titulo: 'CSS Grid Layout',
+                descripcion: 'Grid responsivo que se adapta automáticamente al contenido'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Hover Effects',
-                description: 'Efectos de hover con transformaciones y sombras'
+                titulo: 'Efectos Hover',
+                descripcion: 'Efectos de hover con transformaciones y sombras'
               },
               {
                 icon: <FaMobile />,
-                title: 'Responsive Cards',
-                description: 'Cards que se adaptan desde grid a layout de columna única'
+                titulo: 'Cartas Responsivas',
+                descripcion: 'Cards que se adaptan desde grid a layout de columna única'
               },
               {
                 icon: <FaRocket />,
-                title: 'Animaciones CSS',
-                description: 'Transiciones suaves y animaciones de entrada'
+                titulo: 'Animaciones CSS',
+                descripcion: 'Transiciones suaves y animaciones de entrada'
               }
             ],
             ejemploCodigo: `.proyectos-grid {
@@ -1489,20 +1510,20 @@ function Proyectos() {
             'MiCurriculum.jsx': {
           type: 'js',
           icon: <FaReact />,
-          description: 'Detalles del proyecto actual',
+          descripcion: 'Detalles del proyecto actual',
           content: {
-            title: 'Meta-Proyecto',
-            description: 'Componente que documenta el propio proyecto de curriculum, creando una referencia recursiva.',
+            titulo: 'Meta-Proyecto',
+            descripcion: 'Componente que documenta el propio proyecto de curriculum, creando una referencia recursiva.',
             features: [
               {
                 icon: <FaReact />,
-                title: 'Self-Reference',
-                description: 'El proyecto se documenta a sí mismo'
+                titulo: 'Self-Reference',
+                descripcion: 'El proyecto se documenta a sí mismo'
               },
               {
                 icon: <FaCodeBranch />,
-                title: 'Export Pattern',
-                description: 'Exporta tanto el componente como los datos'
+                titulo: 'Export Pattern',
+                descripcion: 'Exporta tanto el componente como los datos'
               }
             ],
             techTags: ['React', 'Module Exports', 'Meta-Programming']
@@ -1511,35 +1532,35 @@ function Proyectos() {
             'ExploradorProyecto.jsx': {
             type: 'js',
             icon: <FaReact />,
-            description: 'Explorador interactivo de archivos del proyecto (¡auto-referencia!)',
+            descripcion: 'Explorador interactivo de archivos del proyecto (¡auto-referencia!)',
             content: {
-                title: 'Meta-Explorador de Código',
-                description: 'El componente que se documenta a sí mismo: un explorador interactivo que muestra la estructura completa del proyecto.',
+                titulo: 'Meta-Explorador de Código',
+                descripcion: 'El componente que se documenta a sí mismo: un explorador interactivo que muestra la estructura completa del proyecto.',
                 features: [
                 {
                     icon: <FaFolder />,
-                    title: 'Estructura de Datos',
-                    description: 'Objeto JavaScript que mapea toda la arquitectura del proyecto'
+                    titulo: 'Estructura de Datos',
+                    descripcion: 'Objeto JavaScript que mapea toda la arquitectura del proyecto'
                 },
                 {
                     icon: <FaReact />,
-                    title: 'React Hooks',
-                    description: 'useState para estado de archivos y carpetas expandidas'
+                    titulo: 'React Hooks',
+                    descripcion: 'useState para estado de archivos y carpetas expandidas'
                 },
                 {
                     icon: <FaLightbulb />,
-                    title: 'Renderizado Recursivo',
-                    description: 'Función recursiva que renderiza el árbol de archivos dinámicamente'
+                    titulo: 'Renderizado Recursivo',
+                    descripcion: 'Función recursiva que renderiza el árbol de archivos dinámicamente'
                 },
                 {
                     icon: <FaCode />,
-                    title: 'Auto-Documentación',
-                    description: 'Se incluye a sí mismo en la documentación (recursión infinita conceptual)'
+                    titulo: 'Auto-Documentación',
+                    descripcion: 'Se incluye a sí mismo en la documentación (recursión infinita conceptual)'
                 },
                 {
                     icon: <FaSearch />,
-                    title: 'Navegación Interactiva',
-                    description: 'Click en archivos para ver documentación, expansión de carpetas'
+                    titulo: 'Navegación Interactiva',
+                    descripcion: 'Click en archivos para ver documentación, expansión de carpetas'
                 }
                 ],
                 ejemploCodigo: `// Estado para archivos seleccionados y carpetas expandidas
@@ -1575,30 +1596,30 @@ function Proyectos() {
             'ExploradorProyecto.css': {
             type: 'css',
             icon: <FaCss3Alt />,
-            description: 'Estilos para el explorador de archivos/documentación',
+            descripcion: 'Estilos para el explorador de archivos/documentación',
             content: {
-                title: 'Estilos del Explorador de Proyecto',
-                description: 'CSS para el explorador de archivos con layout flexible, cards y resaltado de código.',
+                titulo: 'Estilos del Explorador de Proyecto',
+                descripcion: 'CSS para el explorador de archivos con layout flexible, cards y resaltado de código.',
                 features: [
                 {
                     icon: <FaFolder />,
-                    title: 'Árbol de Archivos',
-                    description: 'Estructura visual jerárquica con iconos y estados expandidos'
+                    titulo: 'Árbol de Archivos',
+                    descripcion: 'Estructura visual jerárquica con iconos y estados expandidos'
                 },
                 {
                     icon: <FaCode />,
-                    title: 'Syntax Highlighting',
-                    description: 'Resaltado de código con colores temáticos'
+                    titulo: 'Syntax Highlighting',
+                    descripcion: 'Resaltado de código con colores temáticos'
                 },
                 {
                     icon: <FaMobile />,
-                    title: 'Layout Responsivo',
-                    description: 'Panel lateral colapsable y adaptación móvil'
+                    titulo: 'Layout Responsivo',
+                    descripcion: 'Panel lateral colapsable y adaptación móvil'
                 },
                 {
                     icon: <FaLightbulb />,
-                    title: 'Estados Interactivos',
-                    description: 'Hover effects, selección activa y feedback visual'
+                    titulo: 'Estados Interactivos',
+                    descripcion: 'Hover effects, selección activa y feedback visual'
                 }
                 ],
                 ejemploCodigo: `.explorador-proyecto {
@@ -1618,30 +1639,30 @@ function Proyectos() {
             'MiCurriculum.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos para la presentación del meta-proyecto',
+          descripcion: 'Estilos para la presentación del meta-proyecto',
           content: {
-            title: 'Estilos del Meta-Proyecto',
-            description: 'CSS para la presentación del proyecto curriculum que se documenta a sí mismo.',
+            titulo: 'Estilos del Meta-Proyecto',
+            descripcion: 'CSS para la presentación del proyecto curriculum que se documenta a sí mismo.',
             features: [
               {
                 icon: <FaLightbulb />,
-                title: 'Diseño Meta',
-                description: 'Estilos que reflejan la naturaleza auto-referencial del proyecto'
+                titulo: 'Diseño Meta',
+                descripcion: 'Estilos que reflejan la naturaleza auto-referencial del proyecto'
               },
               {
                 icon: <FaRocket />,
-                title: 'Presentación Elegante',
-                description: 'Layout limpio y profesional para mostrar información del proyecto'
+                titulo: 'Presentación Elegante',
+                descripcion: 'Layout limpio y profesional para mostrar información del proyecto'
               },
               {
                 icon: <FaMobile />,
-                title: 'Responsive Cards',
-                description: 'Cards adaptativas con información técnica y características'
+                titulo: 'Cartas Responsivas',
+                descripcion: 'Cards adaptativas con información técnica y características'
               },
               {
                 icon: <FaShieldAlt />,
-                title: 'Jerarquía Visual',
-                description: 'Tipografía y espaciado que guía la lectura de forma natural'
+                titulo: 'Jerarquía Visual',
+                descripcion: 'Tipografía y espaciado que guía la lectura de forma natural'
               }
             ],
             ejemploCodigo: `.pagina-detalles-proyecto {
@@ -1667,30 +1688,30 @@ function Proyectos() {
         'Contacto.jsx': {
           type: 'js',
           icon: <FaReact />,
-          description: 'Formulario de contacto funcional',
+          descripcion: 'Formulario de contacto funcional',
           content: {
-            title: 'Sistema de Contacto',
-            description: 'Formulario completo con validación, estado y integración con API backend.',
+            titulo: 'Sistema de Contacto',
+            descripcion: 'Formulario completo con validación, estado y integración con API backend.',
             features: [
               {
                 icon: <FaReact />,
-                title: 'Form State Management',
-                description: 'useState para datos del formulario y estados de envío'
+                titulo: 'Form State Management',
+                descripcion: 'useState para datos del formulario y estados de envío'
               },
               {
                 icon: <FaShieldAlt />,
-                title: 'Client Validation',
-                description: 'Validación en tiempo real y feedback visual'
+                titulo: 'Client Validation',
+                descripcion: 'Validación en tiempo real y feedback visual'
               },
               {
                 icon: <FaServer />,
-                title: 'API Integration',
-                description: 'Fetch API para comunicación con serverless function'
+                titulo: 'API Integration',
+                descripcion: 'Fetch API para comunicación con serverless function'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'UX States',
-                description: 'Estados de loading, success y error con feedback visual'
+                titulo: 'UX States',
+                descripcion: 'Estados de loading, success y error con feedback visual'
               }
             ],
             techTags: ['React Forms', 'Fetch API', 'Validation', 'UX States'],
@@ -1719,30 +1740,30 @@ const handleSubmit = async (e) => {
         'Contacto.css': {
           type: 'css',
           icon: <FaCss3Alt />,
-          description: 'Estilos para el formulario de contacto',
+          descripcion: 'Estilos para el formulario de contacto',
           content: {
-            title: 'Formulario de Contacto Interactivo',
-            description: 'CSS para el formulario de contacto con validación visual, estados UX y diseño responsivo.',
+            titulo: 'Formulario de Contacto Interactivo',
+            descripcion: 'CSS para el formulario de contacto con validación visual, estados UX y diseño responsivo.',
             features: [
               {
                 icon: <FaReact />,
-                title: 'Estados Visuales',
-                description: 'Estilos para estados de loading, success, error y validación'
+                titulo: 'Estados Visuales',
+                descripcion: 'Estilos para estados de loading, success, error y validación'
               },
               {
                 icon: <FaLightbulb />,
-                title: 'Feedback Visual',
-                description: 'Indicadores claros de estado del formulario y campos'
+                titulo: 'Feedback Visual',
+                descripcion: 'Indicadores claros de estado del formulario y campos'
               },
               {
                 icon: <FaMobile />,
-                title: 'Formulario Responsivo',
-                description: 'Adaptación completa para móviles con espaciado optimizado'
+                titulo: 'Formulario Responsivo',
+                descripcion: 'Adaptación completa para móviles con espaciado optimizado'
               },
               {
                 icon: <FaShieldAlt />,
-                title: 'Accesibilidad',
-                description: 'Estilos para focus, contraste y lectores de pantalla'
+                titulo: 'Accesibilidad',
+                descripcion: 'Estilos para focus, contraste y lectores de pantalla'
               }
             ],
             ejemploCodigo: `.seccion-contacto {
@@ -1774,38 +1795,38 @@ const handleSubmit = async (e) => {
     'contacto.js': {
       type: 'js',
       icon: <SiVercel />,
-      description: 'Serverless function para emails',
+      descripcion: 'Serverless function para emails',
       content: {
-        title: 'API Serverless',
-        description: 'Función serverless de Vercel que maneja el envío de emails con seguridad y validaciones avanzadas.',
+        titulo: 'API Serverless',
+        descripcion: 'Función serverless de Vercel que maneja el envío de emails con seguridad y validaciones avanzadas.',
         features: [
           {
             icon: <SiNodedotjs />,
-            title: 'Node.js Runtime',
-            description: 'Función serverless ejecutada en runtime de Node.js'
+            titulo: 'Node.js Runtime',
+            descripcion: 'Función serverless ejecutada en runtime de Node.js'
           },
           {
             icon: <FaServer />,
-            title: 'Nodemailer Integration',
-            description: 'Integración con Gmail SMTP para envío de emails'
+            titulo: 'Integración Resend',
+            descripcion: 'Integración con Gmail SMTP para envío de emails'
           },
           {
             icon: <FaShieldAlt />,
-            title: 'Security Features',
-            description: 'Rate limiting, validación de entrada, sanitización XSS'
+            titulo: 'Security Features',
+            descripcion: 'Rate limiting, validación de entrada, sanitización XSS'
           },
           {
             icon: <FaTools />,
-            title: 'Error Handling',
-            description: 'Manejo robusto de errores con logging detallado'
+            titulo: 'Manejo de Errores',
+            descripcion: 'Manejo robusto de errores con logging detallado'
           },
           {
             icon: <FaLightbulb />,
-            title: 'CORS Configuration',
-            description: 'CORS configurado para orígenes específicos'
+            titulo: 'CORS Configuration',
+            descripcion: 'CORS configurado para orígenes específicos'
           }
         ],
-        techTags: ['Vercel Functions', 'Nodemailer', 'Security', 'Rate Limiting'],
+        techTags: ['Vercel Functions', 'Resend', 'Security', 'Rate Limiting'],
         ejemploCodigo: `// Rate limiting implementation
 const checkRateLimit = (ip) => {
   const now = Date.now();

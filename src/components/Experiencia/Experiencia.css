@@ -1,4 +1,14 @@
-/* Variables específicas para la sección de experiencia */
+/*
+============================================================
+ Experiencia.css
+============================================================
+ Estilos específicos para la sección de experiencia profesional.
+
+ - Layout, línea de tiempo y tarjetas de experiencia.
+ - Adaptación responsiva y detalles visuales.
+============================================================
+*/
+
 :root {
   /* Layout y espaciado */
   --experiencia-gap: var(--spacing-xl);

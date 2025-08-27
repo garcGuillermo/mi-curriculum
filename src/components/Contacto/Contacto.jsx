@@ -1,3 +1,14 @@
+// ============================================================
+// Contacto.jsx
+// ============================================================
+// Componente de formulario de contacto para la SPA.
+//
+// - Permite a los usuarios enviar mensajes directamente desde la web.
+// - Incluye validación de campos (nombre, email, mensaje) y feedback visual.
+// - Muestra mensajes de éxito/error según la respuesta del backend.
+// - Gestiona el estado de envío, loading y errores de red.
+// - Accesible y adaptado a dispositivos móviles.
+// ============================================================
 import React, { useState } from 'react';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';

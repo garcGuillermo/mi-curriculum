@@ -1,3 +1,12 @@
+// ============================================================
+// App.jsx
+// ============================================================
+// Componente principal de la SPA "mi-curriculum".
+//
+// - Gestiona el layout general y el enrutamiento de la aplicación.
+// - Incluye la navegación lateral y renderiza las distintas secciones.
+// - Controla el estado global y la lógica de navegación.
+// ============================================================
 import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
@@ -13,8 +22,6 @@ import Contacto from './components/Contacto/Contacto';
 function App() {
   // Estado para controlar si la bienvenida está visible
   const [mostrarBienvenida, setMostrarBienvenida] = useState(true);
-  // Estado para saber si el usuario ha manipulado la bienvenida manualmente (ocultado/mostrado con el botón)
-  const [bienvenidaManipuladaManualmente, setBienvenidaManipuladaManualmente] = useState(false);
 
   const location = useLocation(); // Hook para obtener la URL actual
 
@@ -39,14 +46,11 @@ function App() {
   // Función para alternar la visibilidad de la bienvenida (usada por el botón de flecha)
   const toggleBienvenida = () => {
     setMostrarBienvenida(prev => !prev);
-    setBienvenidaManipuladaManualmente(true); // Marca que el usuario la ha manipulado
   };
 
-  // Nueva función para mostrar la bienvenida y reiniciar su estado al hacer clic en la foto
+  // Nueva función para mostrar la bienvenida al hacer clic en la foto
   const mostrarBienvenidaAlInicio = () => {
     setMostrarBienvenida(true); // Asegura que la bienvenida esté visible
-    setBienvenidaManipuladaManualmente(false);
-    
     // Hace scroll hacia arriba en la navegación lateral
     if (navegacionLateralRef.current) {
       navegacionLateralRef.current.scrollTo({

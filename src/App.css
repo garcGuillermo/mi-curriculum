@@ -1,4 +1,16 @@
-/* Variables personalizadas para la aplicación principal */
+  /*
+  ============================================================
+   App.css
+  ============================================================
+   Estilos globales principales para la aplicación.
+
+   - Define variables CSS personalizadas y resets generales.
+   - Gestiona el layout principal, contenedores y tipografía.
+   - Incluye estilos responsivos y utilidades para toda la SPA.
+   - Personaliza scrollbar, títulos, resaltados y modo oscuro.
+  ============================================================
+  */
+
 :root {
   /* Anchos de navegación lateral para diferentes pantallas */
   --app-nav-width-base: 25%;

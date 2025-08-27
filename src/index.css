@@ -1,4 +1,15 @@
-/* Reseteo global para eliminar márgenes y paddings por defecto del navegador */
+/*
+============================================================
+ index.css
+============================================================
+ Reseteo y normalización global de estilos.
+
+ - Elimina márgenes y paddings por defecto del navegador.
+ - Define box-sizing global y asegura que el #root ocupe todo el viewport.
+ - Base para la consistencia visual en todos los navegadores.
+============================================================
+*/
+
 html, body {
   margin: 0;
   padding: 0;

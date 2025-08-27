@@ -1,4 +1,14 @@
-/* Variables personalizadas para la sección de proyectos */
+/*
+============================================================
+ Proyectos.css
+============================================================
+ Estilos específicos para la sección de proyectos.
+
+ - Grid, tarjetas, botones y etiquetas de tecnologías.
+ - Adaptación responsiva y detalles visuales.
+============================================================
+*/
+
 :root {
   /* Grid y layout */
   --grid-min-width: 300px;

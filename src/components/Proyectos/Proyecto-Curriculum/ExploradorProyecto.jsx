@@ -1,3 +1,12 @@
+// ============================================================
+// ExploradorProyecto.jsx
+// ============================================================
+// Componente explorador de archivos/documentación del proyecto.
+//
+// - Muestra la estructura del proyecto en árbol interactivo.
+// - Permite visualizar descripciones, características, tecnologías y ejemplos de código de cada archivo.
+// - Facilita la navegación y comprensión de la arquitectura y lógica del portfolio.
+// ============================================================
 import React, { useState } from 'react';
 import './ExploradorProyecto.css';
 import { 
@@ -127,7 +136,7 @@ function ExploradorProyecto({ alVolver }) {
         </div>
 
         <div className="content-description">
-          {contenido.descripcion || contenido.description}
+          {contenido.descripcion}
         </div>
 
         <div className="content-section">
@@ -140,8 +149,8 @@ function ExploradorProyecto({ alVolver }) {
               <li key={index} className="feature-item">
                 <div className="feature-icon">{caracteristica.icon}</div>
                 <div className="feature-content">
-                  <div className="feature-title">{caracteristica.titulo || caracteristica.title}</div>
-                  <div className="feature-description">{caracteristica.descripcion || caracteristica.description}</div>
+                  <div className="feature-title">{caracteristica.titulo}</div>
+                  <div className="feature-description">{caracteristica.descripcion}</div>
                 </div>
               </li>
             ))}

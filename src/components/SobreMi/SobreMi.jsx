@@ -1,3 +1,12 @@
+// ============================================================
+// SobreMi.jsx
+// ============================================================
+// Componente para la sección "Sobre Mí" del portfolio.
+//
+// - Presenta información personal, intereses y valores.
+// - Incluye avatar, descripción y detalles adicionales.
+// - Adaptado a dispositivos móviles y visualmente atractivo.
+// ============================================================
 import React, { useState } from 'react';
 import './SobreMi.css';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
@@ -46,7 +55,7 @@ function SobreMi() {
             Me llamo Guillermo y soy técnico superior en <span className="resaltado">Administración de Sistemas Informáticos en 
             Red (ASIR)</span> y como tal adquirí una sólida base en <span className="resaltado">redes y sistemas. </span> 
             Además de ello, obtuve en mi aprendizaje la lógica de la programación pudiendome adaptar a cualquier lenguaje
-            que se me presente. A parte de los utilizados en este proyecto, aprendimos <span className="resaltado">Java, SQL, 
+            que se me presente. A parte de los utilizados en este proyecto, aprendí bastante contenido de <span className="resaltado">Java, SQL, 
               PHP y bash en Windows y Linux entre otros.</span> 
           </p>
         </div>
@@ -64,8 +73,8 @@ function SobreMi() {
             continuar con la programación como me hubiese gustado aunque eso no me impidió seguir formándome por mi cuenta. 
           </p>
           <p>
-            Siento que si hubiese 
-            tenido algo más de suerte, podría haber seguido una carrera en desarrollo de software mucho antes, desde hace años.
+            Siento que si hubiese tenido algo más de suerte, podría haber seguido una carrera en 
+            desarrollo de software mucho antes, desde hace varios años.
           </p>
         </div>
       )
@@ -75,7 +84,7 @@ function SobreMi() {
       iconoFondo: iconosGenerados[2],
       contenido: (
         <div>
-          <h2>Poco a poco, sin rendirme</h2>
+          <h2>Poco a poco ¡Sin rendirme!</h2>
           <p>
             Gracias al curso IFCD0110 de Confección y Publicación de Páginas Web, he podido encauzar mi carrera hacia la programación web.
             Este curso me ha hecho recordar la gran cantidad de conocimientos que aprendí en el <span className="resaltado">ciclo superior</span> y
@@ -92,11 +101,11 @@ function SobreMi() {
         <div>
           <h2>Mis habilidades</h2>
           <p>
-            Tampoco es que yo sea un superhumano, pero he aprendido a sobrellevar situaciones difíciles de estrés en mis anteriores trabajos, 
-            he desarrollado la capacidad de adaptación, mejorado la comunicación en equipo, el trato a las personas y sobre todo a resolver 
+            No soy un superhumano ni nada, pero me gustaría destacar que he aprendido a sobrellevar situaciones 
+            difíciles de estrés en mis anteriores trabajos, he desarrollado la capacidad de adaptación, mejorado la comunicación en equipo, el trato a las personas y sobre todo a resolver 
             los problemas. Algo que destacaría de mí es que soy una persona tranquila y que tengo muy claro mis objetivos profesionales.
           </p>
-          <h3>En resumen:</h3>
+          <h3>Si tuviese que definirme en pocas palabras:</h3>
           <div className="grid-habilidades">
             <div>Tranquilo</div>
             <div>Resolutivo</div>
@@ -113,10 +122,12 @@ function SobreMi() {
       iconoFondo: iconosGenerados[4],
       contenido: (
         <div>
-          <h2>Pequeño resumen de la realización del proyecto</h2>
+          <h2>Pequeño resumen de la experiencia en el proyecto</h2>
           <p>
             No voy a negar que me he servido de la ayuda de las <span className="resaltado">Inteligencias Artificiales</span> para este proyecto, 
             tan a mano que están en la actualidad y que representan el futuro de la tecnología en sí. Aunque todo no ha sido un camino de rosas.
+            He aprendido que pueden ser de gran ayuda para tareas repetitivas o para resolver dudas puntuales, pero que no son infalibles y que a veces
+            pueden llevarte por mal camino si no sabes lo que estás haciendo.
           </p>
           <p>
             Por ejemplo, me he ayudado de <span className="resaltado">Google Gemini</span> para ideas, estructura recomendada y para los primeros pasos de este proyecto. Brindándome
@@ -130,14 +141,15 @@ function SobreMi() {
       iconoFondo: iconosGenerados[0],
       contenido: (
         <div>
-          <h2>Pequeño resumen de la realización del proyecto</h2>
+          <h2>Pequeño resumen de la experiencia en el proyecto</h2>
           <p>
             Para la realización del código he usado Visual Studio Code ayudándome de <span className="resaltado">Github copilot y de Claude Sonnet 4</span> para 
             tareas repetitivas o de poca importancia, para mejorar el código y su responsividad y para mejora de la lógica en general.
           </p>
           <p>
-            Pienso que en la actualidad todavía es muy difícil pedirle a una Inteligencia Artificial la realización completa de un proyecto. 
-            A pesar de ello, es una herramienta muy útil a tener en cuenta y que sin duda será cada vez más importante en el futuro.
+            Pienso que en la actualidad, en pleno avance de las IAs, es necesario conocer su uso y funcionamiento
+            ya que serán herramientas muy útiles en el futuro. Aunque hay que tener cuidado con dejarles demasiada
+            libertad ya que no son infalibles y suelen cometer errores.
           </p>
         </div>
       )

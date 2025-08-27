@@ -1,6 +1,14 @@
-/* ================================
-   MI CURRICULUM - PROYECTO DETALLADO
-   ================================ */
+/*
+============================================================
+ MiCurriculum.css
+============================================================
+ Estilos específicos para la página de detalles del proyecto "mi-curriculum".
+
+ - Layout, hero, resumen, stack tecnológico y llamadas a la acción.
+ - Adaptación responsiva y detalles visuales.
+============================================================
+*/
+
 
 .pagina-detalles-proyecto {
   max-width: 1200px;

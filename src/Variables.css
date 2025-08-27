@@ -1,3 +1,14 @@
+/*
+============================================================
+ Variables.css
+============================================================
+ Variables CSS globales para la aplicación.
+
+ - Define paleta de colores, tipografía, espaciados, bordes y transiciones.
+ - Centraliza la configuración visual y facilita la personalización.
+ - Importado en los estilos principales para mantener consistencia.
+============================================================
+*/
 :root {
   /* Colores principales */
   --color-primary: #1a2f3f;    /* Azul muy oscuro, casi negro */

@@ -1,4 +1,14 @@
-/* Variables específicas para la sección de contacto */
+/*
+============================================================
+ Contacto.css
+============================================================
+ Estilos específicos para el formulario y la sección de contacto.
+
+ - Layout, inputs, botones y mensajes de validación.
+ - Adaptación responsiva y accesibilidad.
+============================================================
+*/
+
 :root {
   /* Espaciado y dimensiones */
   --contacto-gap: var(--spacing-xl);

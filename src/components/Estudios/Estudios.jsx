@@ -1,3 +1,12 @@
+// ============================================================
+// Estudios.jsx
+// ============================================================
+// Componente para mostrar la formación académica y cursos.
+//
+// - Lista los estudios realizados y certificaciones relevantes.
+// - Presenta la información de forma visual y estructurada.
+// - Adaptado a dispositivos móviles y accesible.
+// ============================================================
 import React, { useState } from 'react';
 import './Estudios.css';
 

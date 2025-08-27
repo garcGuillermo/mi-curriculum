@@ -1,6 +1,16 @@
+// ============================================================
+// Proyectos.jsx
+// ============================================================
+// Componente para mostrar el listado de proyectos destacados.
+//
+// - Presenta tarjetas de proyectos con detalles, tecnologías y enlaces.
+// - Permite navegar a la vista de detalle de cada proyecto.
+// - Adaptado a dispositivos móviles y accesible.
+// ============================================================
 import React, { useState } from 'react';
 import './Proyectos.css';
-import MiCurriculum, { miCurriculumBrief } from './Proyecto-Curriculum/MiCurriculum';
+import MiCurriculum from './Proyecto-Curriculum/MiCurriculum';
+import { miCurriculumBrief } from './Proyecto-Curriculum/utilsMiCurriculum';
 
 const ProjectCard = ({ proyecto, alSeleccionarProyecto }) => {
   return (

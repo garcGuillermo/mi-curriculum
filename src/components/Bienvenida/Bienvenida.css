@@ -1,4 +1,15 @@
-/* Variables personalizadas para la sección de bienvenida */
+/*
+============================================================
+ Bienvenida.css
+============================================================
+ Estilos específicos para la sección de bienvenida.
+
+ - Layout, animaciones y responsividad de la bienvenida.
+ - Personalización de tecnologías y botón de toggle.
+ - Optimización para móviles y accesibilidad.
+============================================================
+*/
+
 :root {
   /* Layout y espaciado */
   --bienvenida-padding-x: var(--spacing-lg);

@@ -1,6 +1,14 @@
-/* ================================
-   VARIABLES - NAVEGACIÓN LATERAL
-   ================================ */
+/*
+============================================================
+ NavegacionLateral.css
+============================================================
+ Estilos específicos para la barra de navegación lateral.
+
+ - Layout, iconos, animaciones y responsividad.
+ - Personalización visual y adaptación a distintos tamaños.
+============================================================
+*/
+
 :root {
   /* Dimensiones y posicionamiento */
   --nav-width-base: 25%;

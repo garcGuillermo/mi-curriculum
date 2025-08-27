@@ -1,18 +1,19 @@
+// ============================================================
+// MiCurriculum.jsx
+// ============================================================
+// Página de detalles y presentación del proyecto "mi-curriculum".
+//
+// - Resume objetivos, arquitectura, stack tecnológico y características clave.
+// - Incluye llamadas a la acción y enlaces a código fuente.
+// - Presenta la información de forma visual y estructurada.
+// ============================================================
 import React, { useState } from 'react';
 import ExploradorProyecto from './ExploradorProyecto';
 import '../Proyectos.css';
 import './MiCurriculum.css';
 
-// Objeto que exportamos con la información breve del proyecto
-export const miCurriculumBrief = {
-  titulo: 'Curriculum Vitae Online',
-  descripcion: 'Este es mi primer proyecto real. Usando React, CSS y Node.js para crear un CV interactivo.',
-  tecnologias: ['React', 'CSS', 'Node.js', 'Vercel'],
-  enlaceGithub: 'https://github.com/garcGuillermo/mi-curriculum',
-};
-
 // Componente principal de MiCurriculum
-function MiCurriculum({ proyecto, alVolver }) {
+function MiCurriculum({ proyecto }) {
   const [mostrarExplorador, setMostrarExplorador] = useState(false);
 
   // Aseguramos que el objeto proyecto exista para evitar errores
@@ -50,7 +51,8 @@ function MiCurriculum({ proyecto, alVolver }) {
           <p>
             Este portfolio personal es una <strong>Single Page Application (SPA)</strong> desarrollada con React que 
             funciona como un CV interactivo y moderno. El proyecto demuestra competencias en desarrollo frontend, 
-            integración de APIs, y despliegue en la nube.
+            integración de APIs, y despliegue en la nube. Mi objetivo es demostrar la capacidad de crear una página 
+            web moderna, funcional y atractiva que sirva como carta de presentación profesional.
           </p>
         </div>
 
@@ -59,7 +61,7 @@ function MiCurriculum({ proyecto, alVolver }) {
           <ul className="lista-objetivos">
             <li><strong>Mostrar habilidades técnicas:</strong> Demostrar competencias en React, CSS moderno, y JavaScript</li>
             <li><strong>Experiencia de usuario:</strong> Crear una navegación fluida e intuitiva</li>
-            <li><strong>Responsive Design:</strong> Garantizar compatibilidad en todos los dispositivos</li>
+            <li><strong>Diseño Responsivo:</strong> Garantizar compatibilidad en todos los dispositivos</li>
             <li><strong>Funcionalidad real:</strong> Incluir un sistema de contacto funcional</li>
             <li><strong>Código limpio:</strong> Implementar buenas prácticas y arquitectura escalable</li>
           </ul>
@@ -119,12 +121,12 @@ function MiCurriculum({ proyecto, alVolver }) {
               <p>Formulario de contacto real con validación, rate limiting y envío de emails.</p>
             </div>
             <div className="tarjeta-caracteristica">
-              <h4>🎨 Design System</h4>
+              <h4>🎨 Diseño del Sistema</h4>
               <p>Sistema de variables CSS cohesivo con paleta de colores y tipografía consistente.</p>
             </div>
             <div className="tarjeta-caracteristica">
               <h4>⚡ Mucho más moderno</h4>
-              <p>Optimizado con Vite, lazy loading y técnicas de optimización modernas.</p>
+              <p>Optimizado con Vite, lazy loading y técnicas de optimización modernas como ESLint</p>
             </div>
             <div className="tarjeta-caracteristica">
               <h4>🔒 Seguridad</h4>
@@ -140,10 +142,10 @@ function MiCurriculum({ proyecto, alVolver }) {
           </p>
           <ul className="lista-arquitectura">
             <li><strong>App.jsx:</strong> Componente raíz con gestión de estado global y enrutamiento</li>
-            <li><strong>Components:</strong> Componentes reutilizables organizados por funcionalidad</li>
-            <li><strong>CSS Modules:</strong> Estilos encapsulados por componente</li>
-            <li><strong>API Layer:</strong> Funciones serverless para backend</li>
-            <li><strong>Design System:</strong> Variables CSS centralizadas</li>
+            <li><strong>Componentes:</strong> Componentes reutilizables organizados por funcionalidad</li>
+            <li><strong>Modulos CSS:</strong> Estilos encapsulados por componente</li>
+            <li><strong>Capa de API:</strong> Funciones serverless para backend</li>
+            <li><strong>Diseño del Sistema:</strong> Variables CSS centralizadas</li>
           </ul>
         </div>
       </div>

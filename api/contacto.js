@@ -1,34 +1,35 @@
 /**
- * Función serverless para Vercel que maneja el envío de emails del formulario de contacto.
- * Usa Resend como proveedor de email  // Verificar variable de entorno de Resend
-  if (!process.env.RESEND_API_KEY) {
-    console.error('Variable de       `.trim()
-    });
-
-    console.log('Email enviado exitosamente:', emailData.data?.id || emailData.id);
-
-    res.status(200).json({ 
-      success: true, 
-      message: 'Mensaje enviado correctamente.',
-      messageId: emailData.data?.id || emailData.id 
-    });_API_KEY no configurada');
-    return res.status(500).json({ 
-      error: 'Configuración del servidor incompleta.' 
-    });
-  }
-
-  // Inicializar Resend
-  const resend = new Resend(process.env.RESEND_API_KEY);onfiabilidad.
+ * API Serverless para Vercel: Envío de emails desde el formulario de contacto.
  *
- * @param {object} req - El objeto de la petición (Request).
- * @param {object} res - El objeto de la respuesta (Response).
+ * ¿Qué hace este archivo?
+ * - Recibe los datos del formulario de contacto (nombre, email, mensaje).
+ * - Valida y limpia los datos recibidos.
+ * - Limita el número de envíos por IP para evitar spam.
+ * - Envía el mensaje por email usando el servicio Resend.
+ * - Responde con éxito o error según el resultado.
+ *
+ * ¿Qué necesitas para que funcione?
+ * - Tener una cuenta en https://resend.com y configurar la variable de entorno RESEND_API_KEY.
+ * - Configurar CONTACT_EMAIL con el email que recibirá los mensajes.
+ *
+ * ¿Dónde se usa?
+ * - Este archivo se ejecuta automáticamente cuando alguien envía el formulario de contacto en la web.
+ *
+ * Parámetros:
+ * @param {object} req - Petición HTTP (Request), con los datos del formulario.
+ * @param {object} res - Respuesta HTTP (Response), para devolver el resultado al usuario.
+ *
+ * Seguridad:
+ * - No almacena datos personales.
+ * - Protege contra spam y ataques XSS.
  */
+
 import { Resend } from 'resend';
 
 // Configuración de límites
 const MAX_LENGTH = {
   name: 100,
-  email: 254, // RFC 5321 estándar
+  email: 254, // Es el RFC 5321 estándar, lo máximo que puede ser de largo un email.
   message: 2000
 };
 
@@ -80,12 +81,14 @@ function validateInput(name, email, message) {
  * Implementa rate limiting básico por IP
  */
 function checkRateLimit(ip) {
+  //Obtenemos la hora actual
   const now = Date.now();
+  //Buscamos las solicitudes previas de esta IP
   const userRequests = requests.get(ip) || [];
   
-  // Filtrar solicitudes dentro de la ventana de tiempo
+  // Filtrar solicitudes dentro de la ventana de tiempo (15 minutos)
   const recentRequests = userRequests.filter(timestamp => now - timestamp < TIME_WINDOW);
-  
+  //Si ya ha hecho demasiadas solicitudes, bloqueamos
   if (recentRequests.length >= RATE_LIMIT) {
     return false;
   }
@@ -111,6 +114,7 @@ function checkRateLimit(ip) {
 
 /**
  * Sanitiza el contenido para prevenir inyecciones HTML/XSS
+ * Básicamente evitamos que se puedan insertar etiquetas HTML.
  */
 function sanitizeInput(input) {
   return input
@@ -122,28 +126,32 @@ function sanitizeInput(input) {
     .trim();
 }
 
+//La función asíncrona principal que maneja la petición.
 export default async function handler(req, res) {
-  // Configurar CORS con más seguridad
+  // Configurar CORS con más seguridad.
+  //Permitimos solo orígenes específicos.
   const allowedOrigins = [
     'http://localhost:3000',
     'http://localhost:5173',
     'https://curriculumvitaeguillermo.vercel.app',
     'https://garciainurriaguillermo.es'
   ];
-  
+  //Obtenemos el origen de la petición.
   const origin = req.headers.origin;
+  //Si el origen está en la lista, lo permitimos.
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   }
-  
+  //Solo permitimos POST y OPTIONS.
+  //Solo permitimos el header Content-Type.
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Max-Age', '86400'); // Cache preflight por 24h
-
+  //Si la petición es OPTIONS, respondemos 200 y salimos.
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
-
+  // Solo permitimos POST.
   if (req.method !== 'POST') {
     return res.status(405).json({ 
       error: 'Método no permitido. Solo se acepta POST.',
@@ -151,21 +159,22 @@ export default async function handler(req, res) {
     });
   }
 
-  // Verificar variable de entorno de Resend
+  // Verificar que la clave API está configurada para evitar errores confusos.
   if (!process.env.RESEND_API_KEY) {
     console.error('Variable de entorno RESEND_API_KEY no configurada');
     return res.status(500).json({ 
       error: 'Configuración del servidor incompleta.' 
     });
   }
-
+  //Dejo estos logs para depuración en caso de problemas.
   console.log('🔑 RESEND_API_KEY configurada:', process.env.RESEND_API_KEY ? 'SÍ' : 'NO');
   console.log('📧 CONTACT_EMAIL:', process.env.CONTACT_EMAIL || 'garciainurriaguillermo@gmail.com');
 
-  // Inicializar Resend
+  //Ahora por fin inicializamos Resend.
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  // Rate limiting
+  //Comprobamos que la IP no ha excedido el límite de solicitudes.
+  //Obtenemos la IP del cliente.
   const clientIP = req.headers['x-forwarded-for']?.split(',')[0] || 
                    req.headers['x-real-ip'] || 
                    req.connection?.remoteAddress || 
@@ -177,11 +186,12 @@ export default async function handler(req, res) {
       retryAfter: 900 // 15 minutos en segundos
     });
   }
-
+  
   try {
+    // Extraer datos del cuerpo de la petición.
     const { name, email, message } = req.body || {};
 
-    // Validar entrada
+    // Validar entrada de datos.
     const validationErrors = validateInput(name, email, message);
     if (validationErrors.length > 0) {
       return res.status(400).json({ 
@@ -190,7 +200,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // Sanitizar datos
+    // Sanitizar datos para evitar XSS.
     const sanitizedName = sanitizeInput(name);
     const sanitizedEmail = email.toLowerCase().trim();
     const sanitizedMessage = sanitizeInput(message);
@@ -273,6 +283,7 @@ IP del remitente: ${clientIP}
     });
 
   } catch (error) {
+    // Registro detallado del error para depuración.
     console.error('Error procesando la petición:', {
       message: error.message,
       timestamp: new Date().toISOString(),

@@ -1,19 +1,18 @@
+// ============================================================
+// NavegacionLateral.jsx
+// ============================================================
+// Componente para la barra de navegación lateral del portfolio.
+//
+// - Permite navegar entre las distintas secciones de la SPA.
+// - Incluye iconos, animaciones y gestión de sección activa.
+// - Adaptado a dispositivos móviles y accesible.
+// ============================================================
 import React, { forwardRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import './NavegacionLateral.css';
 
-/**
- * COMPONENTE: NavegacionLateral
- * 
- * Sidebar de navegación con información del perfil y enlaces de contacto.
- * Utiliza forwardRef para permitir control del scroll desde componentes padre.
- * 
- * Props:
- * - mostrarBienvenidaAlInicio: Función para resetear la vista al hacer clic en la foto
- * - ref: Referencia para control del scroll desde App.jsx
- */
 const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
   // CONFIGURACIÓN: Secciones del menú de navegación
   const seccionesCV = [
@@ -24,7 +23,6 @@ const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
     { id: 'contacto', nombre: 'Contacto', path: '/contacto' },
   ];
 
-  const location = useLocation();
 
   return (
     <div className="navegacion-lateral" ref={ref}>
@@ -33,7 +31,7 @@ const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
         <Link to="/" onClick={mostrarBienvenidaAlInicio}>
           <img
             src="https://placehold.co/120x120/ecf0f1/2c3e50?text=Tu+Foto"
-            alt="Foto de perfil de Guillermo"
+            alt="Foto de perfil propia"
             className="perfil-foto-lateral"
             onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/120x120/cccccc/333333?text=Foto'; }}
             title='Haz clic para volver al inicio'
@@ -58,7 +56,7 @@ const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
 
       {/* SECCIÓN: Información de contacto con iconos y enlaces */}
       <div className="info-contacto-lateral">
-        <h3>Puedes contactarme en:</h3>
+        <h3>Puedes encontrarme en:</h3>
         <ul>
           {/* CONTACTO: Email con icono y enlace mailto */}
           <li title='Correo electrónico'>

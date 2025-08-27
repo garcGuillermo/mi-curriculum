@@ -1,4 +1,14 @@
-/* Variables específicas para la sección de estudios */
+/*
+============================================================
+ Estudios.css
+============================================================
+ Estilos específicos para la sección de estudios y formación.
+
+ - Layout, tarjetas, títulos y detalles de estudios.
+ - Adaptación responsiva y visual.
+============================================================
+*/
+
 :root {
   /* Layout y espaciado */
   --estudios-gap: var(--spacing-xl);

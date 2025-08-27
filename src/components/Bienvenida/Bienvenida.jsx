@@ -1,3 +1,11 @@
+// ============================================================
+// Bienvenida.jsx
+// ============================================================
+// Componente de bienvenida interactiva para la portada del CV.
+//
+// - Muestra mensaje de bienvenida, tutorial y tecnologías usadas.
+// - Permite mostrar/ocultar la sección con un botón toggle.
+// ============================================================
 import React from 'react';
 import './Bienvenida.css';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';

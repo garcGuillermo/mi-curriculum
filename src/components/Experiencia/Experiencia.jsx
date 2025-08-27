@@ -1,3 +1,12 @@
+// ============================================================
+// Experiencia.jsx
+// ============================================================
+// Componente para mostrar la experiencia profesional.
+//
+// - Lista los trabajos, roles y responsabilidades desempeñadas.
+// - Presenta la información en formato de línea de tiempo visual.
+// - Adaptado a dispositivos móviles y accesible.
+// ============================================================
 import React from 'react';
 import './Experiencia.css';
 

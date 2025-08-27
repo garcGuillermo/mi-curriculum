@@ -1,6 +1,14 @@
-/* ================================
-   VARIABLES - EXPLORADOR PROYECTO
-   ================================ */
+/*
+============================================================
+ ExploradorProyecto.css
+============================================================
+ Estilos específicos para el explorador de archivos y documentación.
+
+ - Layout, árbol de archivos, bloques de código y responsividad.
+ - Personalización visual y detalles interactivos.
+============================================================
+*/
+
 :root {
   /* Dimensiones del explorador */
   --explorador-max-width: 1200px;
