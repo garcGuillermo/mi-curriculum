@@ -30,7 +30,7 @@ function Contacto() {
     email: "garciainurriaguillermo@gmail.com",
     phone: "+34 645192414",
     githubUrl: "https://github.com/garcGuillermo",
-    linkedinUrl: "https://www.linkedin.com/in/guillermo-garc%C3%ADa-inurria-857084152/",
+    linkedinUrl: "https://www.linkedin.com/in/guillermo-garcia-inurria",
   };
 
   // Maneja cambios en los campos del formulario
