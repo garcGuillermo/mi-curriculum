@@ -19,7 +19,6 @@ const HamburguesaIcon = () => (
 import { Link } from 'react-router-dom';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { FaGithub, FaLinkedin, FaFilePdf } from 'react-icons/fa';
-import fotoPerfil from '../../assets/foto-perfil.jpg';
 import './NavegacionLateral.css';
 
 const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
