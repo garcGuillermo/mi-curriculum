@@ -125,8 +125,8 @@ function SobreMi() {
           <h2>Pequeño resumen de la experiencia en el proyecto</h2>
           <p>
             No voy a negar que me he servido de la ayuda de las <span className="resaltado">Inteligencias Artificiales</span> para este proyecto, 
-            tan a mano que están en la actualidad y que representan el futuro de la tecnología en sí. Aunque todo no ha sido un camino de rosas.
-            He aprendido que pueden ser de gran ayuda para tareas repetitivas o para resolver dudas puntuales, pero que no son infalibles y que a veces
+            tan a mano que están en la actualidad y que representan el futuro de la tecnología en sí. Aunque no todo ha sido un camino de rosas,
+            he aprendido que pueden ser de gran ayuda para tareas repetitivas o para resolver dudas puntuales, pero que no son infalibles y que a veces
             pueden llevarte por mal camino si no sabes lo que estás haciendo.
           </p>
           <p>
