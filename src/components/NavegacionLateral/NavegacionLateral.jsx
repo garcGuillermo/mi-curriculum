@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 import { MdEmail, MdPhone } from 'react-icons/md';
 import { FaGithub, FaLinkedin, FaFilePdf } from 'react-icons/fa';
 import './NavegacionLateral.css';
+import fotoPerfil from '../../assets/foto-curriculum.jpg'; // Foto de perfil local como fallback
 
 const NavegacionLateral = forwardRef(({ mostrarBienvenidaAlInicio }, ref) => {
   // CONFIGURACIÓN: Secciones del menú de navegación
